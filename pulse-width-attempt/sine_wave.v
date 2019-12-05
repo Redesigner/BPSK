@@ -16,15 +16,15 @@ module sine_wave
 
     initial begin
         //Define our sine table!
-        sine_table = {0,48,89,117,127,117,89,48};
+        sine_table = {0,55,99,123,123,99,55};
     end
 
     always @ (phase) begin
         //the phase is divided into two sections, [0,31] and [32,63] where one set is an inversion of the other
         if (phase > SINE_RESOLUTION-1) begin
-            amp <= -1 * sine_table[phase-SINE_RESOLUTION];
+            amp = -1 * sine_table[phase-SINE_RESOLUTION];
         end else begin
-            amp <= sine_table[phase];
+            amp = sine_table[phase];
         end
 
     end

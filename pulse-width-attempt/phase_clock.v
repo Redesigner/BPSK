@@ -2,8 +2,7 @@ module phase_clock
     (
         input wire clock,
         input wire data,
-        output reg [DATA_WIDTH-1:0] phase,
-        output reg next
+        output reg [DATA_WIDTH-1:0] phase
     );
     integer internal_phase = 0;
     
@@ -11,15 +10,13 @@ module phase_clock
         next <= ~next;
     end*/
        
-    always @ (posedge clock) begin
+    always @ (clock) begin
     //replace modulos eventually, fine for testing
         if (internal_phase + 2 > WAVELENGTH) begin
-            internal_phase <= 0;
-            //request the next bit
-            next <= ~next;
+            internal_phase = 0;
         end else begin
-            internal_phase <= (internal_phase + 1);
+            internal_phase = internal_phase + 1;
         end
-        phase <= ((internal_phase + (SHIFT * data)) % WAVELENGTH);
+        phase = ((internal_phase + (SHIFT * data)) % WAVELENGTH);
     end
 endmodule

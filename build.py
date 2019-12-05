@@ -1,5 +1,7 @@
 from string import Template
-import fileinput, os, sys, math
+import fileinput, os, sys, math, traceback
+
+defaults = [8, 12, 750]
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 src = os.path.join(dir_path,"src")
@@ -8,10 +10,16 @@ build = os.path.join(dir_path,"build")
 if not os.path.exists(build):
     os.makedirs(build)
 
-input_bits = int(raw_input("Wave size (in bits): "))
-clock_speed = int(raw_input("Base clock frequency (in MHz): "))
-wavelength = int(math.ceil(1000 * clock_speed / float(raw_input("Wave frequency (in KHz): "))))
-table_size = int(math.ceil(wavelength / 2))
+try:
+    print("Press ENTER for default values.")
+    input_bits = int(raw_input("Wave size (in bits): ") or defaults[0])
+    clock_speed = int(raw_input("Base clock frequency (in MHz): ") or defaults[1])
+    wavelength = int(math.ceil(1000 * clock_speed / (float(raw_input("Wave frequency (in KHz): ") or defaults[2]))))
+    table_size = int(math.ceil(wavelength / 2))
+except:
+    print("Invalid arguments for command. Make sure your integers are formatted properly:")
+    traceback.print_exc()
+    exit()
 
 factor = math.pi / table_size
 amplitude = 2 ** (input_bits-1) - 1
