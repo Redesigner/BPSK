@@ -10,7 +10,7 @@ module data_send
     //the next bit is being requested!
     initial begin
     //we need the first bit. later, this won't be necessary
-            current_bit = packet[index];
+        current_bit = packet[index];
     end
     
     always @ (clock) begin

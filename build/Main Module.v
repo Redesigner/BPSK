@@ -17,7 +17,7 @@ module Main (
 	led0
 	);
 	input wire clock;
-	wire clock2;
+	//wire clock2;
 	output wire led0;
 
 	reg signed [DATA_WIDTH-1:0] amp;	
@@ -26,9 +26,11 @@ module Main (
 	reg current_bit;
 	reg packet [0:PACKET_SIZE-1] = {0,1,0,0,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0,1,1,0,0,0,1,1,0,1,1,0,0,0,1,1,0,1,1,1,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,1,1,0,1,1,0,1,1,1,1,0,1,1,1,0,0,1,0,0,1,1,0,1,1,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	
-	phase_clock counter(clock2, current_bit, phase, next_bit_signal);
+	phase_clock counter(clock, current_bit, phase, next_bit_signal);
 	sine_wave generator(phase, amp);
 	data_send sender(packet, next_bit_signal, current_bit);
 
-	pulse_width_mod light(clock, amp, led0, clock2);
+	demodulator test(clock, amp, led0);
+
+	//pulse_width_mod light(clock, amp, led0, clock2);
 endmodule
