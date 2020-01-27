@@ -2,9 +2,10 @@ module demodulator
     (
         input clock,
         input signed [7:0] signal,
-        output wire guess,
-        output wire write
+        output reg guess,
+        output reg write
     );
+    reg write = 0;
     int signed sum = 0;
     reg [15:0] phase = 0;
     reg signed [DATA_WIDTH-1:0] amp;

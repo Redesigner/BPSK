@@ -1,6 +1,6 @@
 module data_send
     (
-        input packet [0:PACKET_SIZE-1],
+        input [0:PACKET_SIZE-1] packet,
         input wire next,
         output reg current_bit
     );

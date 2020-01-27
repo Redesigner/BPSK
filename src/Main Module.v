@@ -24,13 +24,15 @@ module Main (
 	reg [DATA_WIDTH-1:0] phase;
 	reg next_bit_signal = 0;
 	reg current_bit;
-	reg packet [0:PACKET_SIZE-1] = 16'hCAFE;
+	reg [PACKET_SIZE-1:0] packet = 16'hCAFE;
 	
 	phase_clock counter(clock, current_bit, phase, next_bit_signal);
 	sine_wave generator(phase, amp);
 	data_send sender(packet, next_bit_signal, current_bit);
 
-	demodulator test(clock, amp, led0);
+	//demodulator test(clock, amp, led0);
+
+	reciever test2(clock, clock, amp, led0);
 
 	//pulse_width_mod light(clock, amp, led0, clock2);
 endmodule
