@@ -10,7 +10,7 @@ parameter SINE_RESOLUTION = $SINE_TABLE_SIZE;
 parameter WAVELENGTH = $WAVELENGTH;
 parameter SHIFT = $SHIFT;
 
-parameter PACKET_SIZE = 128;
+parameter PACKET_SIZE = 16; //2 bytes
 
 module Main (
 	clock,
@@ -24,7 +24,7 @@ module Main (
 	reg [DATA_WIDTH-1:0] phase;
 	reg next_bit_signal = 0;
 	reg current_bit;
-	reg packet [0:PACKET_SIZE-1] = {0,1,0,0,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0,1,1,0,0,0,1,1,0,1,1,0,0,0,1,1,0,1,1,1,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,1,1,0,1,1,0,1,1,1,1,0,1,1,1,0,0,1,0,0,1,1,0,1,1,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	reg packet [0:PACKET_SIZE-1] = 16'hCAFE;
 	
 	phase_clock counter(clock, current_bit, phase, next_bit_signal);
 	sine_wave generator(phase, amp);

@@ -2,7 +2,8 @@ module demodulator
     (
         input clock,
         input signed [7:0] signal,
-        output reg guess
+        output wire guess,
+        output wire write
     );
     int signed sum = 0;
     reg [15:0] phase = 0;
@@ -20,6 +21,8 @@ module demodulator
                 guess <= 1;
                 sum <= 0;
             end
+            //tell our recipient the data is ready!
+            write = ~write;
         end else begin
             sum <= sum + (signal * amp);
             phase <= phase + 1;
