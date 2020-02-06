@@ -3,7 +3,7 @@ module data_buffer
         input reg read,
         input reg clear,
         input reg data,
-        output reg  [PACKET_SIZE-1:0] packet,
+        output reg [PACKET_SIZE-1:0] packet,
         output reg send = 0
     );
     reg [32:0] index = 0;
@@ -11,11 +11,13 @@ module data_buffer
 
     //the demodulator has guessed our most recent bit, add it to the buffer
     always @ (read) begin
-        if (index <= PACKET_SIZE) begin
+        if (index < PACKET_SIZE) begin
             buffer[PACKET_SIZE-index] = data;
             index = index + 1;
         end else begin
             //the buffer is full, so copy the buffer to a new packet
+            //add our last bit though!
+            buffer[PACKET_SIZE-index] = data;
             packet <= buffer;
             send <= 1;
             //tell the uart modules to begin sending the full packet
