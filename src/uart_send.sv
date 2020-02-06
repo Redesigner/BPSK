@@ -14,13 +14,9 @@ module uart_send
 
     //signal recieved to clear our current UART packet and grab the next one!
     always @ (data_clear) begin
-       // index <= 0;
-    end
-    
-    always @ (posedge data_ready) begin
-        index <= index + 1;
+       index = index + 1;
         a = 1'b1;
-        b = packet[index*8];
+        b = packet[(PACKET_SIZE - index*8)+:8];
         c = ^b;
         d = 1'b1;
         tx = {>>{a,b,c,d}};

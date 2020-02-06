@@ -13,5 +13,5 @@ module reciever
     reg [10:0] uart_word;
     reg uart_write, uart_clear;
     uart_send bridge(packet_full, buffer1_send, uart_clear, buffer1_clear, uart_word);
-    uart_serialize serial1(uart_word, baud_clock, tx, uart_clear);
+    uart_serialize serial1(uart_word, baud_clock, buffer1_send, tx, uart_clear);
 endmodule

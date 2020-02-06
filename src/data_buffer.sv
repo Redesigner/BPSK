@@ -11,8 +11,8 @@ module data_buffer
 
     //the demodulator has guessed our most recent bit, add it to the buffer
     always @ (read) begin
-        if (index < PACKET_SIZE) begin
-            buffer[index] = data;
+        if (index <= PACKET_SIZE) begin
+            buffer[PACKET_SIZE-index] = data;
             index = index + 1;
         end else begin
             //the buffer is full, so copy the buffer to a new packet
