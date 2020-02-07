@@ -10,7 +10,7 @@ module uart_serialize
     reg tx_serialized = 1'bx;
     assign tx = tx_serialized;
 
-    always @ (posedge clock) begin
+    always @ (clock) begin
         tx_serialized = packet[index];
             if(serialize_write) begin
             if (index >= 10) begin

@@ -19,7 +19,7 @@ module uart_send
         b = packet[(PACKET_SIZE - index*8)+:8];
         c = ^b;
         d = 1'b1;
-        tx = {>>{a,b,c,d}};
+        tx = {>>{d, c, b, a}};
     end
 endmodule
     
