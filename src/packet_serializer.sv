@@ -1,8 +1,8 @@
-module data_send
+module packet_serializer
     (
-        input [0:PACKET_SIZE-1] packet,
+        input [0:PACKET_SIZE-1] sys_packet,
         input wire next,
-        output reg current_bit,
+        output reg signal_stream,
         output reg data_clear = 0
     );
     //should be able to hold the range of packet values, log2 of PACKET_SIZE
@@ -17,6 +17,6 @@ module data_send
         end else begin
             index <= index + 1;
         end
-        current_bit <= packet[index];
+        signal_stream <= sys_packet[index];
     end
 endmodule

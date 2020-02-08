@@ -1,7 +1,7 @@
-module demodulator
+module signal_demodulator
     (
         input clock,
-        input signed [7:0] signal,
+        input reg signed [7:0] signal,
         output reg guess,
         output reg write
     );
@@ -9,9 +9,9 @@ module demodulator
     int signed sum = 0;
     reg [15:0] phase = 0;
     reg signed [DATA_WIDTH-1:0] amp;
-    sine_wave base_signal(phase, amp);
+    wave_table_sine sine_table(phase, amp);
 
-    always @ (posedge clock) begin
+    always @ (clock) begin
         if (phase + 2 > WAVELENGTH) begin
             phase <= 0;
             //make our guess!

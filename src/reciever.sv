@@ -1,17 +1,20 @@
 module reciever
     (
-        input wire clock,
-        input wire baud_clock,
+        input wire clk,
+        input wire clk_baud,
         input signed [7:0] signal,
-        output tx
+        output uart_stream
     );
-    reg demod_data, demod_write;
-    demodulator demod(clock, signal, demod_data, demod_write);
-    reg [PACKET_SIZE-1:0] packet_full;
-    reg buffer1_send, buffer1_clear;
-    data_buffer buffer1(demod_write, buffer1_clear, demod_data, packet_full, buffer1_send);
-    reg [10:0] uart_word;
-    reg uart_write, uart_clear;
-    uart_send bridge(packet_full, buffer1_send, uart_clear, buffer1_clear, uart_word);
-    uart_serialize serial1(uart_word, baud_clock, buffer1_send, tx, uart_clear);
+    wire demod_data, demod_write;
+    signal_demodulator demod(clk, signal, demod_data, demod_write);
+
+    reg [PACKET_SIZE-1:0] sys_packet;
+    wire buf_ready, buf_clear, buf_send;
+    data_buffer_demodulator buffer(demod_write, buf_clear, demod_data, sys_packet, buf_send);
+
+    reg [10:0] uart_packet;
+    reg enc_write, enc_clear;
+    uart_encode encode(sys_packet, buf_send, enc_clear, buf_clear, uart_packet);
+
+    uart_serialize serial(uart_packet, clk_baud, uart_stream);
 endmodule
