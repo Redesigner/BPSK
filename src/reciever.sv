@@ -2,7 +2,7 @@ module reciever
     (
         input wire clk,
         input wire clk_baud,
-        input signed [7:0] signal,
+        input signed [DATA_WIDTH-1:0] signal,
         output uart_stream
     );
     wire demod_data, demod_write;
@@ -16,5 +16,5 @@ module reciever
     reg enc_write, enc_clear;
     uart_encode encode(sys_packet, buf_send, enc_clear, buf_clear, uart_packet);
 
-    uart_serialize serial(uart_packet, clk_baud, uart_stream);
+    uart_serialize serial(uart_packet, clk_baud, uart_stream, enc_clear);
 endmodule

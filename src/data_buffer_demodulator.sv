@@ -13,14 +13,14 @@ module data_buffer_demodulator
     //the demodulator has guessed our most recent bit, add it to the buffer
     always @ (read) begin
         if (index < PACKET_SIZE) begin
-            buffer[PACKET_SIZE-index] = data_stream;
+            buffer[PACKET_SIZE-1-index] = data_stream;
             index = index + 1;
         end else begin
             //the buffer is full, so copy the buffer to a new packet
-            //add our last bit though!
-            buffer[PACKET_SIZE-index] = data_stream;
-            sys_packet <= buffer;
-            send <= 1;
+            //add our last bit though
+            buffer[PACKET_SIZE-1-index] = data_stream;
+            sys_packet = buffer;
+            send = 1;
             //tell the uart modules to begin sending the full packet
         end
     end

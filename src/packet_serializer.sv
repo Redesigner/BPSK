@@ -1,22 +1,24 @@
 module packet_serializer
     (
-        input [0:PACKET_SIZE-1] sys_packet,
+        input reg [PACKET_SIZE-1:0] sys_packet,
         input wire next,
         output reg signal_stream,
         output reg data_clear = 0
     );
     //should be able to hold the range of packet values, log2 of PACKET_SIZE
-    reg [7:0] index = 0;
-    reg current_bit = 0;
-
+    integer index = 0;
+    always @ (sys_packet) begin
+        index = 0;
+    end
     
     always @ (next) begin
+        signal_stream = sys_packet[PACKET_SIZE-index-1];
         if (index + 2 > PACKET_SIZE) begin
             //end of packet
-            data_clear <= ~data_clear;
-        end else begin
-            index <= index + 1;
+            data_clear = ~data_clear;
         end
-        signal_stream <= sys_packet[index];
+        else if (index < PACKET_SIZE) begin
+            index = index + 1;
+        end
     end
 endmodule

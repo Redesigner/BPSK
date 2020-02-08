@@ -2,7 +2,7 @@ module uart_deserialize
     (
         input uart_stream,          //UART data, streamed directly from the UART bridge
         input clk_baud,             //Clock synchronized to the baud rate
-        output reg [8:0] uart_word, //The data content of the uart message (bits 1-8)
+        output reg [7:0] uart_word, //The data content of the uart message (bits 1-8)
         output reg ready = 0            //uart_word is valid and has been registered
     );
     reg [4:0] index = 0;

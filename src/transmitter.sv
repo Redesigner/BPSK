@@ -7,15 +7,21 @@ module transmitter
     );
     reg [7:0] uart_packet;
 
-	reg next_bit_signal = 0, data_ready = 0;
+	wire next_bit_signal, data_ready;
 
     uart_deserialize uart_rx(data, clk_baud, uart_packet, data_ready);
-    uart_data_buffer buffer2(data_ready, data_clear, uart_packet, packet, buffer_send);
 
-    /*phase_clock counter(clk, current_bit, buffer_send, phase, next_bit_signal);
-	sine_wave generator(phase, amp);
-	data_send sender(packet, next_bit_signal, current_bit, data_clear);*/
+    wire buffer_send;
+
+    uart_data_buffer buffer(data_ready, data_clear, uart_packet, sys_packet, buffer_send);
+
 	reg [DATA_WIDTH-1:0] signal_analog;
+
+    wire ser_next = 0;
 	signal_modulator modulator(clk, ser_signal, buffer_send, signal_analog, ser_next);
+
+    reg [PACKET_SIZE-1:0] sys_packet;
+
+    packet_serializer serialize(sys_packet, ser_next, ser_signal, data_clear);
 
 endmodule

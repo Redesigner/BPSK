@@ -12,22 +12,24 @@ module uart_encode
     reg [7:0] uart_word;
 
     //signal recieved to clear our current UART packet and grab the next one!
-    always @ (next, ready) begin
-        if ((byte_index * 8) >= PACKET_SIZE) begin
-            uart_word = 8'b00000000; //zero all bits
-            uart_word = sys_packet[(PACKET_SIZE - (byte_index * 8)) +:8]; //copy what we have left
-            done = ~done;
-            byte_index = 0;
-        end
-        else begin
-            byte_index = byte_index + 1;
+    always @ (next) begin
+        if (ready == 1) begin
+            if ((byte_index * 8) >= PACKET_SIZE) begin
+                uart_word = 8'b00000000; //zero all bits
+                uart_word = sys_packet[(PACKET_SIZE - (byte_index * 8)) +:8]; //copy what we have left
+                done = ~done;
+                byte_index = 0;
+            end
+            else begin
+                byte_index = byte_index + 1;
 
-            open = 1'b1;
-            uart_word = sys_packet[(PACKET_SIZE - (byte_index * 8)) +:8];
-            parity = ^uart_word;
-            close = 1'b1;
+                open = 1'b1;
+                uart_word = sys_packet[(PACKET_SIZE - (byte_index * 8)) +:8];
+                parity = ^uart_word;
+                close = 1'b1;
 
-            uart_packet = {>>{close, parity, uart_word, open}}; //LSB first
+                uart_packet = {>>{close, parity, uart_word, open}}; //LSB first
+            end
         end
     end
 endmodule
