@@ -8,7 +8,7 @@ module uart_deserialize
     reg [4:0] index = 0;
     reg [7:0] buffer;
 
-    always @ (clk_baud) begin
+    always @ (posedge clk_baud) begin
         case (index) inside
             0: begin
                 if (uart_stream == 1) begin //the first bit *must* be 1

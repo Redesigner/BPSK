@@ -8,7 +8,7 @@ module uart_serialize
     );
     reg [4:0] index = 0;
 
-    always @ (clk_baud) begin
+    always @ (posedge clk_baud) begin
         uart_stream <= uart_packet[index];
         if (index >= 10) begin
             index <= 0;

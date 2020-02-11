@@ -1,6 +1,6 @@
 module data_buffer_demodulator
     (
-        input read,                             //flips when data should be added to the bugger
+        input read,                             //flips when data should be added to the buffer
         input clear,                            //flips when buffer should be emptied
         input data_stream,                      //data coming from the demodulator
         output reg [PACKET_SIZE-1:0] sys_packet,//completed packet
@@ -11,8 +11,12 @@ module data_buffer_demodulator
 
 
     //the demodulator has guessed our most recent bit, add it to the buffer
-    always @ (read) begin
-        if (index < PACKET_SIZE) begin
+    always @ (posedge read, posedge clear) begin
+        if (clear == 1) begin
+            index <= 0;
+            send <= 0;
+        end
+        else if (index < PACKET_SIZE) begin
             buffer[PACKET_SIZE-1-index] = data_stream;
             index = index + 1;
         end else begin
@@ -23,11 +27,5 @@ module data_buffer_demodulator
             send = 1;
             //tell the uart modules to begin sending the full packet
         end
-    end
-
-    always @ (clear) begin
-        //stop sending, our packet is expired, begin recieving new packet
-        index <= 0;
-        send <= 0;
     end
 endmodule

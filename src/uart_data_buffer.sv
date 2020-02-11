@@ -9,10 +9,13 @@ module uart_data_buffer
     reg [32:0] index = 0;
     reg [PACKET_SIZE-1:0] buffer;
 
-    always @ (posedge ready) begin //ready has just been switched to on!
-        if ((index * 8) < PACKET_SIZE) begin
-            buffer[PACKET_SIZE - 1 - (index * 8) -:8] <= uart_word;//(PACKET_SIZE-1) - (index-8)
-            index <= index + 1; //we must count up by 8, or packets would be restricted to being multiples of 9 only
+    always @ (posedge ready, posedge clear) begin //ready has just been switched to on!
+        if (clear == 1) begin
+            index <= 0;
+        end
+        else if ((index * 8) < PACKET_SIZE) begin
+            buffer[PACKET_SIZE - 1 - (index * 8) -:8] = uart_word;//(PACKET_SIZE-1) - (index-8)
+            index = index + 1; //we must count up by 8, or packets would be restricted to being multiples of 9 only
         end
         else begin
             //the buffer is full, so copy the buffer to a new packet
@@ -23,11 +26,4 @@ module uart_data_buffer
             //begin transmitting
         end
     end
-
-    always @ (clear) begin
-        //stop sending, our packet is expired, begin recieving new packet
-        index <= 0;
-        //send <= 0;
-    end
-
 endmodule: uart_data_buffer

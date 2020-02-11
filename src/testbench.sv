@@ -21,7 +21,6 @@ module testbench
 	
 
 	//use our premade packet to test our reciever
-	wire ser_next, ser_signal, ser_clear;
 	packet_serializer serializer_1(packet, ser_next, ser_signal, ser_clear);
 
 	wire mod_enable = 1; //force signal generation for testing

@@ -11,7 +11,7 @@ module signal_demodulator
     reg signed [DATA_WIDTH-1:0] amp;
     wave_table_sine sine_table(phase, amp);
 
-    always @ (clock) begin
+    always @ (posedge clock) begin
         if (phase + 2 > WAVELENGTH) begin
             phase <= 0;
             //make our guess!
@@ -23,10 +23,11 @@ module signal_demodulator
                 sum = 0;
             end
             //tell our recipient the data is ready!
-            write = ~write;
+            write = 1;
         end else begin
             sum <= sum + (signal * amp);
             phase <= phase + 1;
+            write <= 0;
         end
     end
 endmodule
