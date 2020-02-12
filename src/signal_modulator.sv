@@ -4,7 +4,7 @@ module signal_modulator
         input data_stream,                  //current bit to modulate
         input enable,                       //generates signal on high, silent on low
         output reg [DATA_WIDTH-1:0] signal, //parallel signal to be sent to DAC
-        output reg next = 0                 //flips when complete signal has been sent
+        output reg next                 //flips when complete signal has been sent
     );
 
     reg [DATA_WIDTH-1:0] index = 0;
@@ -12,7 +12,7 @@ module signal_modulator
 
     wave_table_sine sine_table(phase, signal);
     
-    always @ (posedge clk, posedge enable) begin
+    always @ (posedge clk) begin
         if (enable == 1) begin
             if (index + 1 >= WAVELENGTH) begin
                 index <= 0;

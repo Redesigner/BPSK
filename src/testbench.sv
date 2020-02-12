@@ -14,7 +14,7 @@ parameter PACKET_SIZE = 184;
 
 module testbench
 	(
-		input clk
+		input clock
 	);
 
 	reg [PACKET_SIZE-1:0] packet = 184'h5468697320697320612074657374206d65737361676521;
@@ -23,11 +23,11 @@ module testbench
 	//use our premade packet to test our reciever
 	packet_serializer serializer_1(packet, ser_next, ser_signal, ser_clear);
 
-	wire mod_enable = 1; //force signal generation for testing
+	reg mod_enable = 0; //force signal generation for testing
 	reg [DATA_WIDTH-1:0] signal_analog;
-	signal_modulator modulator(clk, ser_signal, mod_enable, signal_analog, ser_next);
+	signal_modulator modulator(clock, ser_signal, mod_enable, signal_analog, ser_next);
 
-	reciever rx(clk, clk, signal_analog, uart_stream);
-	transmitter tx(clk, clk, uart_stream, led0);
+	reciever rx(clock, clock, signal_analog, uart_stream);
+	transmitter tx(clock, clock, uart_stream, led0);
 
 endmodule

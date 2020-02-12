@@ -10,7 +10,7 @@ module packet_serializer
     
     reg [PACKET_SIZE-1:0] sys_packet_old;
     
-    always @ (posedge next, sys_packet) begin
+    always @ (posedge next) begin
         if (sys_packet != sys_packet_old) begin
             sys_packet_old <= sys_packet;
             index <= 0;

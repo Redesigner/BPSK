@@ -17,7 +17,6 @@ module transmitter
 
 	reg [DATA_WIDTH-1:0] signal_analog;
 
-    wire ser_next = 0;
 	signal_modulator modulator(clk, ser_signal, buffer_send, signal_analog, ser_next);
 
     reg [PACKET_SIZE-1:0] sys_packet;
