@@ -1,9 +1,4 @@
-parameter DATA_WIDTH = $DATA_WIDTH;
-parameter SINE_RESOLUTION = $SINE_TABLE_SIZE;
-parameter WAVELENGTH = $WAVELENGTH;
-parameter SHIFT = $SHIFT;
-
-parameter PACKET_SIZE = 184;
+`include "../built-src/parameters.svh"
 
 module transmitter
     (

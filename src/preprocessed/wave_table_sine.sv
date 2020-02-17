@@ -1,3 +1,5 @@
+`include "parameters.svh"
+
 module wave_table_sine
     (
 	    input reg [DATA_WIDTH-1:0] phase,

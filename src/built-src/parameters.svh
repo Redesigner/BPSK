@@ -7,10 +7,10 @@ parameter SHIFT = 32;*/
 
 `ifndef parameters_h
 `define parameters_h
-localparam DATA_WIDTH = $DATA_WIDTH;
-localparam SINE_RESOLUTION = $SINE_TABLE_SIZE;
-localparam WAVELENGTH = $WAVELENGTH;
-localparam SHIFT = $SHIFT;
+localparam DATA_WIDTH = 8;
+localparam SINE_RESOLUTION = 8;
+localparam WAVELENGTH = 16;
+localparam SHIFT = 8;
 
 parameter PACKET_SIZE = 184;
 `endif

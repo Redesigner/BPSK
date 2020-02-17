@@ -5,8 +5,8 @@ import fileinput, os, sys, math, traceback
 defaults = [8, 12, 750]
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-src = os.path.join(dir_path,"src/preprocessed")
-build = os.path.join(dir_path,"src/built-src")
+src = os.path.join(dir_path,"src\\preprocessed")
+build = os.path.join(dir_path,"src\\built-src")
 
 if not os.path.exists(build):
     os.makedirs(build)
@@ -38,7 +38,7 @@ replacement_values = {"DATA_WIDTH":input_bits,
 "sine_table": sine_table_string}
 
 
-for root, dirs, files in os.walk('src'):
+for root, dirs, files in os.walk(src):
     for filename in files:
         print('>parsing ' + filename)
         source = open(os.path.join(src, filename), "r")
