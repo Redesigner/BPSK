@@ -1,0 +1,16 @@
+/*parameter DATA_WIDTH = 12;
+parameter SINE_RESOLUTION = 32;
+parameter WAVELENGTH = 64;
+parameter SHIFT = 32;*/
+//because the sin table is represented in integers,
+//the wavelength is always twice the SINE_RESOLUTION
+
+`ifndef parameters_h
+`define parameters_h
+localparam DATA_WIDTH = 8;
+localparam SINE_RESOLUTION = 8;
+localparam WAVELENGTH = 16;
+localparam SHIFT = 8;
+
+parameter PACKET_SIZE = 184;
+`endif

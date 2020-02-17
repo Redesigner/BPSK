@@ -1,20 +1,21 @@
+#PLEASE USE PYTHON 3.0 OR NEWER!!!!
 from string import Template
 import fileinput, os, sys, math, traceback
 
 defaults = [8, 12, 750]
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-src = os.path.join(dir_path,"src")
-build = os.path.join(dir_path,"build")
+src = os.path.join(dir_path,"src\\preprocessed")
+build = os.path.join(dir_path,"src\\built-src")
 
 if not os.path.exists(build):
     os.makedirs(build)
 
 try:
     print("Press ENTER for default values.")
-    input_bits = int(raw_input("Wave size (in bits): ") or defaults[0])
-    clock_speed = int(raw_input("Base clock frequency (in MHz): ") or defaults[1])
-    wavelength = int(math.ceil(1000 * clock_speed / (float(raw_input("Wave frequency (in KHz): ") or defaults[2]))))
+    input_bits = int(input("Wave size (in bits): ") or defaults[0])
+    clock_speed = int(input("Base clock frequency (in MHz): ") or defaults[1])
+    wavelength = int(math.ceil(1000 * clock_speed / (float(input("Wave frequency (in KHz): ") or defaults[2]))))
     table_size = int(math.ceil(wavelength / 2))
 except:
     print("Invalid arguments for command. Make sure your integers are formatted properly:")
@@ -33,11 +34,11 @@ sine_table_string = "{" +  ','.join(map(str,sine_table)) + "}"
 replacement_values = {"DATA_WIDTH":input_bits,
 "SINE_TABLE_SIZE": table_size,
 "WAVELENGTH": wavelength,
-"SHIFT": wavelength/2,
+"SHIFT": int(wavelength/2),
 "sine_table": sine_table_string}
 
 
-for root, dirs, files in os.walk('src'):
+for root, dirs, files in os.walk(src):
     for filename in files:
         print('>parsing ' + filename)
         source = open(os.path.join(src, filename), "r")
