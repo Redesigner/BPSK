@@ -1,3 +1,2 @@
-*.cache
-*.ip_user_files
-*.sim
+/project_files/*
+!/project_files/*.xpr
