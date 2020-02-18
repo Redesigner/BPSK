@@ -9,9 +9,9 @@ module testbench
 	
 
 	//use our premade packet to test our reciever
-	packet_serializer serializer_1(packet, ser_next, ser_signal, ser_clear);
+	packet_serializer serializer_1(packet, clock, ser_next, ser_signal, ser_clear);
 
-	reg mod_enable = 0; //force signal generation for testing
+	reg mod_enable = 1; //force signal generation for testing
 	reg [DATA_WIDTH-1:0] signal_analog;
 	signal_modulator modulator(clock, ser_signal, mod_enable, signal_analog, ser_next);
 

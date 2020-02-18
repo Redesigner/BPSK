@@ -7,10 +7,10 @@ parameter SHIFT = 32;*/
 
 `ifndef parameters_h
 `define parameters_h
-localparam DATA_WIDTH = 8;
-localparam SINE_RESOLUTION = 8;
-localparam WAVELENGTH = 16;
-localparam SHIFT = 8;
+localparam DATA_WIDTH = 12;
+localparam SINE_RESOLUTION = 6;
+localparam WAVELENGTH = 12;
+localparam SHIFT = 6;
 
 parameter PACKET_SIZE = 184;
 `endif
