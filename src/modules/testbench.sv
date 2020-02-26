@@ -5,7 +5,7 @@ module testbench
 		input clock
 	);
 
-	reg [PACKET_SIZE-1:0] packet = 184'h5468697320697320612074657374206d65737361676521;
+	reg [PACKET_SIZE-1:0] packet = 192'hff5468697320697320612074657374206d65737361676521;
 	
 
 	//use our premade packet to test our reciever

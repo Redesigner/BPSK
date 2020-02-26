@@ -12,5 +12,6 @@ localparam SINE_RESOLUTION = $SINE_TABLE_SIZE;
 localparam WAVELENGTH = $WAVELENGTH;
 localparam SHIFT = $SHIFT;
 
-parameter PACKET_SIZE = 184;
+localparam THRESHOLD = 1000;
+parameter PACKET_SIZE = 192;
 `endif
