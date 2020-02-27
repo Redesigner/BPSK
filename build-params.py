@@ -2,7 +2,7 @@
 from string import Template
 import fileinput, os, sys, math, traceback
 
-defaults = [8, 12, 750]
+defaults = [12, 12, 1000]
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 src = os.path.join(dir_path,"src\\preprocessed")
@@ -16,13 +16,13 @@ try:
     input_bits = int(input("Wave size (in bits): ") or defaults[0])
     clock_speed = int(input("Base clock frequency (in MHz): ") or defaults[1])
     wavelength = int(math.ceil(1000 * clock_speed / (float(input("Wave frequency (in KHz): ") or defaults[2]))))
-    table_size = wavelength
+    table_size = int(math.ceil(wavelength))
 except:
     print("Invalid arguments for command. Make sure your integers are formatted properly:")
     traceback.print_exc()
     exit()
 
-factor = 2 * math.pi / table_size
+factor = math.pi / table_size * 2
 amplitude = 2 ** (input_bits-1) - 1
 
 sine_table = [0] * table_size
@@ -35,8 +35,9 @@ replacement_values = {"DATA_WIDTH":input_bits,
 "SINE_TABLE_SIZE": table_size,
 "WAVELENGTH": wavelength,
 "SHIFT": int(wavelength/2),
-"sine_table": sine_table_string}
-
+"sine_table": sine_table_string,
+"AMPLITUDE": amplitude
+}
 
 for root, dirs, files in os.walk(src):
     for filename in files:

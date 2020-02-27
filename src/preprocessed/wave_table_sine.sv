@@ -9,11 +9,6 @@ module wave_table_sine
     reg [DATA_WIDTH-1:0] sine_table [0:SINE_RESOLUTION-1] = $sine_table; //loaded by python
 
     always @ (phase) begin
-        //the phase is divided into two sections, where one set is an inversion of the other
-        if (phase > SINE_RESOLUTION-1) begin
-            signal <= -1 * sine_table[phase-SINE_RESOLUTION];
-        end else begin
-            signal <= sine_table[phase];
-        end
+        signal <= sine_table[phase];
     end
 endmodule

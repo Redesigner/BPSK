@@ -1,24 +1,16 @@
 `include "../built-src/parameters.svh"
 
-module testbench
-	(
-		input clk,
-		output pio1,
-		output pio2,
-        output pio3,
-		output pio4,		
-		output pio5,
-		output pio6,
-        output pio7,
-		output pio8,
-        output pio9,
-		output pio10,
-        output pio11,
-		output pio12,
-        output pio20,
-        output pio48
-	);
+module testbench;
 
+timeunit 10ns;
+timeprecision 100ps;
+reg clock;
+initial begin
+  $display($time, " << Starting the Simulation >>");
+    clock = 0;
+end
+
+	always #5 clock=~clock;
 	reg [PACKET_SIZE-1:0] packet = 192'hff5468697320697320612074657374206d65737361676521;
 	
 
