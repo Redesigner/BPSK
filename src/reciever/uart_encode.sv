@@ -1,5 +1,6 @@
 module uart_encode
     (
+        input clk_baud,
         input [PACKET_SIZE-1:0] sys_packet,
         input ready,
         input next,
@@ -12,8 +13,8 @@ module uart_encode
     reg [7:0] uart_word;
 
     //signal recieved to clear our current UART packet and grab the next one!
-    always @ (next) begin
-        if (ready == 1) begin
+    always @ (posedge clk_baud) begin
+        if (ready == 1 && next == 1) begin
             if ((byte_index * 8) >= PACKET_SIZE) begin
                 uart_word = 8'b00000000; //zero all bits
                 uart_word = sys_packet[(PACKET_SIZE - (byte_index * 8)) +:8]; //copy what we have left

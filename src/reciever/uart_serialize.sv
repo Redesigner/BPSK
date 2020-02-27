@@ -12,9 +12,10 @@ module uart_serialize
         uart_stream <= uart_packet[index];
         if (index >= 10) begin
             index <= 0;
-            next <= ~next;
+            next <= 1;
         end else begin
             index <= index + 1;
+            next <= 0;
         end
     end
     /*always @ (posedge serialize_write) begin

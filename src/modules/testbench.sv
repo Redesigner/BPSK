@@ -21,7 +21,7 @@ end
 	reg [DATA_WIDTH-1:0] signal_analog;
 	signal_modulator modulator(clock, ser_signal, mod_enable, signal_analog, ser_next);
 
-	reciever rx(clock, clock, signal_analog, uart_stream);
-	transmitter tx(clock, clock, uart_stream, led0);
+	reciever rx(clock, signal_analog, uart_stream);
+	transmitter tx(clock, uart_stream);
 
 endmodule

@@ -21,21 +21,22 @@ module signal_demodulator
         if (~shifted && peak_found && phase + 2 >= offset) begin
             shifted <= 1;
             phase <= offset - phase;
-            sum <= 0; //the offset is calculated during the 8th bit
+            sum <= 0;
+            write <= 0; //the offset is calculated during the 8th bit
         end           //we will have a few cycles to reset the integrator
         else if (phase + 2 > WAVELENGTH) begin
             phase <= 0;
             //make our guess!
             if (sum >= 0) begin
-                guess = 0;
-                sum = 0;
+                guess <= 0;
+                sum <= 0;
             end else begin
-                guess = 1;
-                sum = 0;
+                guess <= 1;
+                sum <= 0;
             end
             //tell our recipient the data is ready!
             if (peak_found) begin
-                write = 1;
+                write <= 1;
             end
         end
         else begin
