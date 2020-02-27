@@ -7,8 +7,8 @@ module signal_modulator
         output reg next                 //flips when complete signal has been sent
     );
 
-    reg [DATA_WIDTH-1:0] index = 0;
-    reg [DATA_WIDTH-1:0] phase;
+    reg [31:0] index = 0;
+    reg [31:0] phase = 0;
 
     wave_table_sine sine_table(phase, signal);
     

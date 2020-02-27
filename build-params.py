@@ -16,19 +16,19 @@ try:
     input_bits = int(input("Wave size (in bits): ") or defaults[0])
     clock_speed = int(input("Base clock frequency (in MHz): ") or defaults[1])
     wavelength = int(math.ceil(1000 * clock_speed / (float(input("Wave frequency (in KHz): ") or defaults[2]))))
-    table_size = int(math.ceil(wavelength / 2))
+    table_size = wavelength
 except:
     print("Invalid arguments for command. Make sure your integers are formatted properly:")
     traceback.print_exc()
     exit()
 
-factor = math.pi / table_size
+factor = 2 * math.pi / table_size
 amplitude = 2 ** (input_bits-1) - 1
 
 sine_table = [0] * table_size
 
 for i in range(0, table_size):
-    sine_table[i] = int(math.sin(factor * i) * amplitude)
+    sine_table[i] = int((math.sin(factor * i) + 1) * amplitude) 
 
 sine_table_string = "{" +  ','.join(map(str,sine_table)) + "}"
 replacement_values = {"DATA_WIDTH":input_bits,
