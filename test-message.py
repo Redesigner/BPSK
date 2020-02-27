@@ -1,3 +1,8 @@
+import threading
 import serial
-ser = serial.Serial('COM4', 96000, serial.EIGHTBITS, serial.PARITY_EVEN)
-ser.write(b'This is a test message!')
+import time
+
+serial_port = serial.Serial('COM4', 96000, serial.EIGHTBITS, serial.PARITY_EVEN)
+
+print("sending message...")
+serial_port.write(b'This message should send back\n')

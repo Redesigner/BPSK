@@ -22,7 +22,7 @@ module uart_deserialize
             end
 
             9 : begin
-                if (^buffer == uart_stream) begin //check parity
+                if (^buffer != uart_stream) begin //check parity
                     index <= index + 1;
                     uart_word <= buffer;
                     ready <= 1; //tell the packet_buffer to copy this data, we have the whole byte

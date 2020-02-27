@@ -28,7 +28,7 @@ amplitude = 2 ** (input_bits-1) - 1
 sine_table = [0] * table_size
 
 for i in range(0, table_size):
-    sine_table[i] = int((math.sin(factor * i) * amplitude) + (amplitude))
+    sine_table[i] = int((math.sin(factor * i) + 1) * amplitude) 
 
 sine_table_string = "{" +  ','.join(map(str,sine_table)) + "}"
 replacement_values = {"DATA_WIDTH":input_bits,
