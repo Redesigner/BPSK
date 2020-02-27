@@ -1,18 +1,16 @@
 `include "../built-src/parameters.svh"
 
-module testbench
+module testbench;
 
 timeunit 10ns;
 timeprecision 100ps;
-
+reg clock;
 initial begin
   $display($time, " << Starting the Simulation >>");
-    rstn = 1'b0;
-    clk = 0;
-    #5 rstn = 1'b1;
+    clock = 0;
 end
 
-	always #PERIOD clk=~clk;
+	always #5 clock=~clock;
 	reg [PACKET_SIZE-1:0] packet = 192'hff5468697320697320612074657374206d65737361676521;
 	
 

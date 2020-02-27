@@ -9,9 +9,10 @@ parameter SHIFT = 32;*/
 `define parameters_h
 localparam DATA_WIDTH = $DATA_WIDTH;
 localparam SINE_RESOLUTION = $SINE_TABLE_SIZE;
+localparam AMPLITUDE = $AMPLITUDE;
 localparam WAVELENGTH = $WAVELENGTH;
 localparam SHIFT = $SHIFT;
 
-localparam THRESHOLD = 1000;
+localparam THRESHOLD = AMPLITUDE * 5 / 4;
 parameter PACKET_SIZE = 192;
 `endif

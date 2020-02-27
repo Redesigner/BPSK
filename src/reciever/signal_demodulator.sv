@@ -1,7 +1,7 @@
 module signal_demodulator
     (
         input clock,
-        input reg signed [DATA_WIDTH-1:0] signal,
+        input reg [DATA_WIDTH-1:0] signal,
         output reg guess,
         output reg write
     );
@@ -18,7 +18,7 @@ module signal_demodulator
 
 
     always @ (posedge clock) begin
-        if (~shifted && peak_found && phase >= offset-2) begin
+        if (~shifted && peak_found && phase + 2 >= offset) begin
             shifted <= 1;
             phase <= offset - phase;
             sum <= 0; //the offset is calculated during the 8th bit
@@ -39,7 +39,7 @@ module signal_demodulator
             end
         end
         else begin
-            sum <= sum + (signal * amp);
+            sum <= sum + ((signal - AMPLITUDE) * amp); //our signal is unsigned, so it has an offset of our max amplitude
             phase <= phase + 1;
             write <= 0;
         end

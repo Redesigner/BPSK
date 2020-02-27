@@ -2,13 +2,13 @@
 
 module peak_detection(
         input clk,
-        input reg signed [DATA_WIDTH-1:0] signal,
+        input reg [DATA_WIDTH-1:0] signal,
         input reg[15:0] phase,
         output reg[15:0] offset = 0,   //the offset between the demod and mod, in clock cycles, between 0 and WAVELENGTH
         output reg ready = 0
     );
 
-    reg signed[DATA_WIDTH-1:0] prev_max = 0;
+    reg [DATA_WIDTH-1:0] prev_max = 0;
     reg[15:0] maxima[7:0]; //we store 8 maxima! Right now, these are unused, but may be useful for more complex analysis
     reg[4:0] index = 0;
     reg[15:0] sum = 0; //up to 8 times our phase width, or 3 more bits - larger signal/clock frequency ratios may need larger numbers
@@ -26,7 +26,7 @@ module peak_detection(
             else if(signal > THRESHOLD) begin
                 maxima[index] <= (phase + WAVELENGTH - 1) % WAVELENGTH; //the maxima actually occured last cycle
                 sum <= sum + (phase + WAVELENGTH - 1) % WAVELENGTH; //prevent underflow, should we use a limiter instead? how slow is mod?
-                prev_max <= 0;
+                prev_max <= AMPLITUDE/2;
                 index <= index + 1;
             end
         end
