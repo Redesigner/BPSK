@@ -9,21 +9,10 @@ module signal_demodulator
     longint signed sum = 0;
     reg [15:0] phase = 0;
     reg signed [DATA_WIDTH-1:0] amp;
-
-
     wave_table_sine sine_table(phase, amp);
-    reg [15:0] offset;
-    peak_detection peak(clock, signal, phase, offset, peak_found);
-    reg shifted = 0;
-
 
     always @ (posedge clock) begin
-        if (~shifted && peak_found && phase >= offset-2) begin
-            shifted <= 1;
-            phase <= offset - phase;
-            sum <= 0; //the offset is calculated during the 8th bit
-        end           //we will have a few cycles to reset the integrator
-        else if (phase + 2 > WAVELENGTH) begin
+        if (phase + 2 > WAVELENGTH) begin
             phase <= 0;
             //make our guess!
             if (sum >= 0) begin
@@ -34,11 +23,8 @@ module signal_demodulator
                 sum = 0;
             end
             //tell our recipient the data is ready!
-            if (peak_found) begin
-                write = 1;
-            end
-        end
-        else begin
+            write = 1;
+        end else begin
             sum <= sum + (signal * amp);
             phase <= phase + 1;
             write <= 0;

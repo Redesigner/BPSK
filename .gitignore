@@ -1,2 +1,4 @@
 /project_files/*
 !/project_files/*.xpr
+*.log
+*.pb
