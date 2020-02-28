@@ -4,7 +4,7 @@ module transmitter
     (
         input wire clk,
         //input wire clk_baud,
-        input wire uart_txd_in,
+        input uart_txd_in,
         output pio1,
         output pio2,
         output pio3,
@@ -20,8 +20,13 @@ module transmitter
         output led0,
         output led1
     );
+<<<<<<< HEAD
     clock_divider # (2, 2) clock2(clk, clk_baud);
     uart_deserialize uart_rx(uart_txd_in, clk_baud, uart_packet, data_ready);
+=======
+    clock_divider # (32, 125) clock2(clk, clk_baud);
+    uart_deserialize uart_rx(~uart_txd_in, clk_baud, uart_packet, data_ready);
+>>>>>>> fc76e21d8d8ad044c34dcb8b7b2180ff921dfc0d
     uart_data_buffer buffer(data_ready, data_clear, clk_baud, uart_packet, sys_packet, buffer_send);
 	reg [DATA_WIDTH-1:0] signal_analog = 0;
 	signal_modulator modulator(clk, ser_signal, buffer_send, signal_analog, ser_next);
@@ -38,8 +43,14 @@ module transmitter
     assign pio9 = signal_analog[8];
     assign pio10 = signal_analog[9];
     assign pio11 = signal_analog[10];
+<<<<<<< HEAD
     assign pio12 = signal_analog[11];
     assign led1 = clk_baud;
+=======
+    assign pio12 = ser_signal;
+    assign led0 = data_ready;
+    assign led1 = buffer_send;
+>>>>>>> fc76e21d8d8ad044c34dcb8b7b2180ff921dfc0d
 
 
 endmodule
