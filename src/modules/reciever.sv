@@ -1,8 +1,11 @@
+`include "../built-src/parameters.svh"
+
 module reciever
     (
         input wire clk,
         input signed [DATA_WIDTH-1:0] signal,
-        output uart_stream
+        output uart_stream,
+        output demod_write
     );
 
     clock_divider # (2, 2) clock2(clk, clk_baud);

@@ -1,16 +1,21 @@
 `include "../built-src/parameters.svh"
 
-module testbench;
+module testbench
+	(
+		input clk,
+		output pio40,
+		output uart_rxd_out
+	);
 
-timeunit 10ns;
+/*timeunit 10ns;
 timeprecision 100ps;
 reg clock;
 initial begin
   $display($time, " << Starting the Simulation >>");
     clock = 0;
-end
+end*/
 
-	always #5 clock=~clock;
+	//always #5 clock=~clock;
 	reg [PACKET_SIZE-1:0] packet = 192'hff5468697320697320612074657374206d65737361676521;
 	
 
@@ -21,7 +26,10 @@ end
 	reg [DATA_WIDTH-1:0] signal_analog;
 	signal_modulator modulator(clock, ser_signal, mod_enable, signal_analog, ser_next);
 
-	reciever rx(clock, signal_analog, uart_stream);
+	reciever rx(clock, signal_analog, uart_stream, demod_write);
 	transmitter tx(clock, uart_stream);
+	
+	assign uart_rxd_out = uart_stream;
+	assign pio40 = demod_write;
 
 endmodule
