@@ -1,6 +1,6 @@
 module packet_serializer
     (
-        input reg [PACKET_SIZE-1:0] sys_packet,
+        input reg [PACKET_WIDTH-1:0] sys_packet,
         input wire clk,
         input wire next,
         output reg signal_stream,
@@ -17,12 +17,12 @@ module packet_serializer
                 sys_packet_old <= sys_packet;
                 index <= 0;
             end else begin
-                signal_stream <= sys_packet[PACKET_SIZE-index-1];
-                if (index + 2 > PACKET_SIZE) begin
+                signal_stream <= sys_packet[PACKET_WIDTH-index-1];
+                if (index + 2 > PACKET_WIDTH) begin
                     //end of packet
                     data_clear <= 1;
                 end
-                else if (index < PACKET_SIZE) begin
+                else if (index < PACKET_WIDTH) begin
                     index <= index + 1;
                     data_clear <= 0;
                 end

@@ -8,7 +8,7 @@ module clock_divider
     reg [WIDTH-1:0] index = 0;
 
     always @(posedge clk) begin
-        if (index >= (N-1)) begin
+        if (index >= ((N / 2) - 1)) begin
             clk_out <= ~clk_out;
             index <= 0;
         end
