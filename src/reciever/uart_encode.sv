@@ -1,37 +1,50 @@
 module uart_encode
     (
         input clk_baud,
-        input [PACKET_SIZE-1:0] sys_packet,
+        input [PACKET_WIDTH-1:0][7:0] sys_packet,
         input ready,
-        input next,
-        output reg done = 0,                //Finished encoding the packet, request a new one
-        output reg [10:0] uart_packet       //UART packet, in 11 bit LSB
+        output wire uart_stream      //UART stream, in serial
     );
     //outputs the data in parallel
-    reg [32:0] byte_index = 0;
-    reg open, parity, close;
-    reg [7:0] uart_word;
+    reg [32:0] index = 0;
 
-    //signal recieved to clear our current UART packet and grab the next one!
+    reg open = 0;
+    reg close = 1;
+    reg [10:0] uart_packet = 11'b11111111111;
+
+    reg transmit = 0;
+    reg clear = 0;
+
     always @ (posedge clk_baud) begin
-        if (ready == 1 && next == 1) begin
-            if ((byte_index * 8) >= PACKET_SIZE) begin
-                uart_word = 8'b00000000; //zero all bits
-                uart_word = sys_packet[(PACKET_SIZE - (byte_index * 8)) +:8]; //copy what we have left
-                done = 1;
-                byte_index = 0;
+       // clear <= next;
+        if (ready == 1) begin
+            if (index == 0 && transmit == 0) begin
+                //uart_packet <= {>>{close, ^sys_packet[index], sys_packet[index], open}};
+                transmit <= 1;
             end
-            else begin
-                byte_index = byte_index + 1;
-
-                open = 1'b1;
-                uart_word = sys_packet[(PACKET_SIZE - (byte_index * 8)) +:8];
-                parity = ^uart_word;
-                close = 1'b1;
-                done = 0;
-                uart_packet = {>>{close, parity, uart_word, open}}; //LSB first
+            else if (next == 1) begin
+                if (index < (PACKET_WIDTH - 1)) begin
+                    index <= index + 1;
+                    //uart_packet <= {>>{close, ^sys_packet[index + 1], sys_packet[index + 1], open}};
+                    transmit <= 1;
+                end
+                else if (index == PACKET_WIDTH - 1) begin
+                    transmit <= 0;
+                end
             end
         end
+        else begin
+            transmit <= 0;
+        end
     end
+
+    parallel_serial # (11, 4) uart_serialize
+    (
+        clk_baud, {>>{close, ^sys_packet[index], sys_packet[index], open}}, transmit, next,
+        uart_stream_internal, active, next  
+    );
+
+    assign uart_stream = (uart_stream_internal || ~transmit);
+
 endmodule
     

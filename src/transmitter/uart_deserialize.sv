@@ -11,7 +11,7 @@ module uart_deserialize
     always @ (posedge clk_baud) begin
         case (index) inside
             0: begin
-                if (uart_stream == 1) begin //the first bit *must* be 1
+                if (uart_stream == 0) begin //the first bit *must* be 0
                     index <= index + 1;
                 end
             end

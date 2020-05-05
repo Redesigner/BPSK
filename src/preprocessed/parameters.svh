@@ -1,7 +1,3 @@
-/*parameter DATA_WIDTH = 12;
-parameter SINE_RESOLUTION = 32;
-parameter WAVELENGTH = 64;
-parameter SHIFT = 32;*/
 //because the sin table is represented in integers,
 //the wavelength is always twice the SINE_RESOLUTION
 
@@ -12,7 +8,10 @@ localparam SINE_RESOLUTION = $SINE_TABLE_SIZE;
 localparam AMPLITUDE = $AMPLITUDE;
 localparam WAVELENGTH = $WAVELENGTH;
 localparam SHIFT = $SHIFT;
+localparam UART_WIDTH = 11;
+localparam NETWORK_WIDTH = 11;
+localparam INDEX_WIDTH = 3;
 
 localparam THRESHOLD = AMPLITUDE * 5 / 4;
-parameter PACKET_SIZE = 192;
+parameter PACKET_WIDTH = 16; //PACKET SIZE (IN BYTES)
 `endif

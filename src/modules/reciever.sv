@@ -5,7 +5,7 @@ module reciever
         input wire clk,
         input signed [DATA_WIDTH-1:0] signal,
         output uart_stream,
-        output demod_write
+        output demod_data
     );
 
     clock_divider # (2, 2) clock2(clk, clk_baud);
