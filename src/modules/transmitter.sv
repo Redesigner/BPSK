@@ -32,14 +32,14 @@ module transmitter
     reg [PACKET_WIDTH-1:0][7:0] sys_packet;
     reg [(PACKET_WIDTH * 8)-1:0] sorted_packet;
 
-    clock_divider # (5, 16) clock2(clk, clk_baud);
+    clock_divider # (5, 20) clock2(clk_1, clk_baud);
     //Base clock is 12MHz, we want to be at about 19200 Baud for now
-    clock_divider # (10, WAVELENGTH) clock3(clk, clk_wave);
+    clock_divider # (10, WAVELENGTH) clock3(clk_1, clk_wave);
 
     uart_byte_read uart_rx
     (
         //IN
-        clk_baud, uart_stream || ~active2,
+        clk_baud, uart_txd_in,
         //OUT
         uart_word, uart_write
     );
@@ -55,7 +55,7 @@ module transmitter
     sorter packet_sorter
     (
         //IN
-        clk, sys_packet, data_send,
+        clk_1, sys_packet, data_send,
         //OUT
         sorted_packet, modulator_ready
     );
@@ -71,7 +71,7 @@ module transmitter
 	signal_modulator modulator
     (
         //IN
-        clk, signal, active,
+        clk_1, signal, active,
         //OUT
         signal_analog, ser_next
     );
@@ -85,14 +85,14 @@ module transmitter
     );
     //uart_serialize debug_out(uart_packet_out, clk_baud, uart_stream_out);
 
-    reg [(PACKET_WIDTH * 11)-1:0] test_data = 88'b1000100001010001000010100010000101001101111010011011000100110110001001100101011011010000;
+    /*reg [(PACKET_WIDTH * 11)-1:0] test_data = 88'b1000100001010001000010100010000101001101111010011011000100110110001001100101011011010000;
     parallel_serial #((PACKET_WIDTH * 11), 32) debug_serial
     (
         //IN
         clk_baud, test_data, 1 ^ done2, 0,
         //OUT
         uart_stream, active2, done2
-    );
+    );*/
 
     //PIN ASSIGNMENTS
         //DAC
@@ -111,7 +111,20 @@ module transmitter
 
     assign  led0 =  data_send;
     assign  led1 =  data_send;
+    assign  pio39 = uart_txd_in;
     assign  pio40 = uart_stream2;
     assign  uart_rxd_out = uart_stream2;
+
+
+//----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
+    
+    clk_base instance_name
+    (
+        // Clock out ports
+        .clk_1(clk_1),     // output clk_1
+        // Status and control signals
+        // Clock in ports
+        .clk(clk)
+    );      // input clk
 
 endmodule

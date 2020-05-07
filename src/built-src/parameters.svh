@@ -10,7 +10,7 @@ localparam WAVELENGTH = 12;
 localparam SHIFT = 6;
 localparam UART_WIDTH = 11;
 localparam NETWORK_WIDTH = 11;
-localparam INDEX_WIDTH = 3;
+localparam INDEX_WIDTH = 5;
 
 localparam THRESHOLD = AMPLITUDE * 5 / 4;
 parameter PACKET_WIDTH = 8; //PACKET SIZE (IN BYTES)
