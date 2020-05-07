@@ -17,25 +17,6 @@ module comparison_size_x #(parameter SIZE = 4, parameter DEPTH = 2, parameter UP
     //genvar i, j;
     generate
         if(SIZE != 2) begin
-            /*for(i = 0; i < SIZE / 4; i++) begin
-                //compare every pair of wires
-                comparison_size_x #(SIZE / 2, DEPTH - 1, ~UP) comparators_up
-                (
-                    data_in[2 * i +: SIZE / 2],
-                    index_in[2 * i +: SIZE / 2],
-                    data_internal[2 * i +: SIZE / 2],
-                    index_internal[2 * i +: SIZE / 2]
-                );
-
-                //every other pair is flipped
-                comparison_size_x #(SIZE / 2, DEPTH - 1, UP) comparators_down
-                (
-                    data_in[SIZE - 1 - (2 * i) -: SIZE / 2],
-                    index_in[SIZE - 1 - (2 * i) -: SIZE / 2],
-                    data_internal[SIZE - 1 - (2 * i) -: SIZE / 2],
-                    index_internal[SIZE - 1 - (2 * i) -: SIZE / 2]
-                );
-            end*/
             comparison_size_x #(SIZE / 2, DEPTH - 1, UP) sort_top
             (
                 data_in[SIZE-1:SIZE/2],

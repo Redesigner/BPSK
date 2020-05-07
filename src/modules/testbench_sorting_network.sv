@@ -20,5 +20,15 @@ module sorting_test
         data_out, index_out
     );
 
+    wire [31:0][NETWORK_WIDTH-1:0] data_out;
+    wire [31:0][INDEX_WIDTH-1:0] index_out;
+
+    unsort #(32) unsorter
+    (
+        clk,
+        data_out, index_out,
+        data_final
+    );
+
 
 endmodule

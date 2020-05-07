@@ -9,6 +9,8 @@ localparam AMPLITUDE = $AMPLITUDE;
 localparam WAVELENGTH = $WAVELENGTH;
 localparam SHIFT = $SHIFT;
 localparam UART_WIDTH = 11;
+
+//SEPARATE INTO DIFFERENT PARAM FILE?
 localparam NETWORK_WIDTH = 11;
 localparam INDEX_WIDTH = 5;
 

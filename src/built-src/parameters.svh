@@ -9,6 +9,8 @@ localparam AMPLITUDE = 2047;
 localparam WAVELENGTH = 12;
 localparam SHIFT = 6;
 localparam UART_WIDTH = 11;
+
+//SEPARATE INTO DIFFERENT PARAM FILE?
 localparam NETWORK_WIDTH = 11;
 localparam INDEX_WIDTH = 5;
 
