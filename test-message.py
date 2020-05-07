@@ -3,7 +3,7 @@ import serial
 import time
 import binascii
 
-serial_port = serial.Serial('COM4', 19200, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
+serial_port = serial.Serial('COM4', 2500000, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
 
 message = b'hello!!!'
 print("sending message: " + bin(int.from_bytes(message, "little")))

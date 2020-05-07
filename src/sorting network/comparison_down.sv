@@ -1,4 +1,6 @@
-module comparison_base
+`include "../built-src/parameters.svh"
+
+module comparison_down
     (
         input wire [NETWORK_WIDTH-1:0] in_a,
         input wire [NETWORK_WIDTH-1:0] in_b,
