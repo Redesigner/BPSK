@@ -13,12 +13,7 @@ module byte_packet_buffer
 
     always @ (posedge clk) begin
         if (index >= PACKET_WIDTH) begin
-            if (clear == 1) begin
-                index <= 0;
-            end
-            else begin
-                index <= PACKET_WIDTH + 1;
-            end
+            index <= 0;
         end
         else if (index <= PACKET_WIDTH - 1) begin
             if (write == 1) begin

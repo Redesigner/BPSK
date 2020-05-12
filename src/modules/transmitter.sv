@@ -32,9 +32,9 @@ module transmitter
     reg [PACKET_WIDTH-1:0][7:0] sys_packet;
     reg [(PACKET_WIDTH * 8)-1:0] sorted_packet;
 
-    clock_divider # (5, 20) clock2(clk_1, clk_baud);
+    clock_divider # (5, 12) clock2(clk, clk_baud);
     //Base clock is 12MHz, we want to be at about 19200 Baud for now
-    clock_divider # (10, WAVELENGTH) clock3(clk_1, clk_wave);
+    clock_divider # (10, WAVELENGTH) clock3(clk, clk_wave);
 
     uart_byte_read uart_rx
     (
@@ -81,17 +81,17 @@ module transmitter
     uart_encode debug_out_encoder
     (
         clk_baud, sys_packet, modulator_ready,
-        uart_stream2
+        uart_stream2, done2
     );
-    //uart_serialize debug_out(uart_packet_out, clk_baud, uart_stream_out);
 
-    /*reg [(PACKET_WIDTH * 11)-1:0] test_data = 88'b1000100001010001000010100010000101001101111010011011000100110110001001100101011011010000;
-    parallel_serial #((PACKET_WIDTH * 11), 32) debug_serial
+    //SIMULATION INPUT DATA
+    /*reg [175:0] test_data = 176'b10001000010100010000101000100001010011011110100110110001001101100010011001010110110100001000100001010001000010100010000101001101111010011011000100110110001001100101011011010000;
+    parallel_serial #((176), 32) debug_serial
     (
         //IN
         clk_baud, test_data, 1 ^ done2, 0,
         //OUT
-        uart_stream, active2, done2
+        uart_txd_in, active2, done2
     );*/
 
     //PIN ASSIGNMENTS

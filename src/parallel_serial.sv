@@ -25,7 +25,9 @@ module parallel_serial
     end
 
     assign active = start && ~done;
-    assign serial_signal = start && parallel_data[counter];
+    assign serial_signal = counter >= WIDTH - 1 ?
+    parallel_data[WIDTH-1] :
+    start && parallel_data[counter];
     assign done = (counter >= (WIDTH - 1));
 
 endmodule
