@@ -42,8 +42,8 @@ module uart_encode
 
     parallel_serial # (11, 4) uart_serialize
     (
-        clk_baud, {>>{close, ^sys_packet[index], sys_packet[index], open}}, transmit, next,
-        uart_stream_internal, active, next  
+        clk_baud, {>>{close, ^sys_packet[index], sys_packet[index], open}}, transmit,
+        uart_stream_internal, next  
     );
 
     assign uart_stream = (uart_stream_internal || ~transmit);

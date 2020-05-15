@@ -3,7 +3,6 @@ module byte_packet_buffer
         input wire clk,
         input wire [7:0] word,                       //the data frame from the uart_signal
         input write,                                //copies word when set high
-        input clear,
 
         output wire [PACKET_WIDTH-1:0][7:0] sys_packet,//PACKET_WIDTH in bits
         output wire send                             //the sys_packet is ready to be sent
@@ -24,6 +23,6 @@ module byte_packet_buffer
     end
 
     assign sys_packet = buffer;
-    assign send = index == PACKET_WIDTH;
+    assign send = index == (PACKET_WIDTH - 1);
 
 endmodule
