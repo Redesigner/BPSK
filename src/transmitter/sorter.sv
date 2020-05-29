@@ -1,24 +1,45 @@
 `include "../built-src/parameters.svh"
+`timescale 1ns/10ps
+
 module sorter
     (   
         input wire clk,
         input reg [PACKET_WIDTH-1:0][7:0] sys_packet,
-        input wire packet_ready,
+        input wire copy,
 
-        output reg [(PACKET_WIDTH * 8) - 1:0] sorted_packet = 0,
-        output reg ready = 0
+        output wire [(PACKET_WIDTH * (8 + INDEX_WIDTH)) + PREAMBLE_LENGTH - 1:0] sorted_packet_out,
+        output reg data_sorted = 0
     );
 
-    reg [31:0] index = 0;
-    always @(posedge clk) begin
-        if (packet_ready == 1) begin
-            if (index >= PACKET_WIDTH) begin
-                ready <= 1;
-            end
-            else begin
-                sorted_packet[index * 8 +:8] <= sys_packet[index];
-                index <= index + 1;
-            end
+    reg [PACKET_WIDTH - 1:0][INDEX_WIDTH - 1:0] index_in = '0;
+    parameter INITIAL_DEPTH = $clog2(PACKET_WIDTH);
+
+
+    generate
+    genvar i;
+    for (i = 0; i < PACKET_WIDTH; i++) begin
+        initial begin
+            index_in[i] = i;
         end
+    end
+    endgenerate
+
+    wire [PACKET_WIDTH * 8 - 1:0] data;
+    wire [PACKET_WIDTH * INDEX_WIDTH - 1:0] indices;
+    //wire [(PACKET_WIDTH * (8 + INDEX_WIDTH)) + PREAMBLE_LENGTH - 1:0] sorted_packet;
+
+    comparison_size_x #(PACKET_WIDTH, INITIAL_DEPTH, 1'b1) comparator
+    (
+        sys_packet, index_in,
+        data, indices
+    );
+
+    assign sorted_packet_out = {>>{
+        indices,
+        data,
+        PREAMBLE
+    }};
+    always @(posedge clk) begin
+        data_sorted <= copy;
     end
 endmodule

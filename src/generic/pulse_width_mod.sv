@@ -1,3 +1,6 @@
+`include "../built-src/parameters.svh"
+`timescale 1ns/10ps
+
 module pulse_width_mod
     (
         input wire clock,

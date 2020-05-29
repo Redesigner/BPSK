@@ -1,7 +1,10 @@
+`include "../built-src/parameters.svh"
+`timescale 1ns/10ps
+
 module clock_divider
     (    
         input wire clk,
-        output reg clk_out = 0
+        output reg create_clock clk_out = 0
     );
     parameter WIDTH = 4;
     parameter N = 10;
