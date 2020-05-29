@@ -7,8 +7,8 @@ module signal_modulator
         input clk,                              //clock speed should be signal_freq * DATA_WIDTH / 2
         input wire data_stream,                 //current bit to modulate
         input wire enable,                      //generates signal on high, silent on low
-        output reg [DATA_WIDTH-1:0] signal_out,//parallel signal to be sent to DAC
-        output reg next                        //flips when complete signal has been sent
+        output reg [DATA_WIDTH-1:0] signal_out = '0,//parallel signal to be sent to DAC
+        output reg next = 0                       //flips when complete signal has been sent
     );
 
     reg [$clog2(SINE_RESOLUTION):0] index = 0;

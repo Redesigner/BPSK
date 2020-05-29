@@ -2,7 +2,7 @@
 `timescale 1ns/10ps
 module transmitter
     (
-        (* CLOCK_BUFFER_TYPE = "bufg" *) input wire sysclk,
+        input wire sysclk,
         (* IO_BUFFER_TYPE = "IBUF" *) input wire uart_txd_in,
 
         output wire [DATA_WIDTH:1] pio,
@@ -21,7 +21,7 @@ module transmitter
 
     //BUFFERS
     //IBUF instantiation
-    //IBUF UART_IBUF (.I(uart_txd_in), .O(UART));
+    IBUF UART_IBUF (.I(uart_txd_in), .O(UART));
 
     //OBUF instantiation
     wire [DATA_WIDTH-1:0] ANALOGWAVE_PO;
@@ -29,13 +29,14 @@ module transmitter
     generate
         for (i = 0; i < DATA_WIDTH; i++ ) begin
             OBUF ANALOGWAVE_OBUF (.I(ANALOGWAVE[i]), .O(ANALOGWAVE_PO[i]));
+            defparam ANALOGWAVE_OBUF.SLEW = "FAST";
             assign pio[i + 1] = ANALOGWAVE_PO[i];      
         end
     endgenerate
-    OBUF LED_OBUF (.I(done), .O(led1));    
+    OBUF LED_OBUF (.I(data_sorted), .O(led1));    
 
 //~~~~~~~~~~~~~~~~MODULES~~~~~~~~~~~~~~~~~~~
-    (* keep_hierarchy = "yes" *)
+    //(* keep_hierarchy = "yes" *)
     uart_fast_read uart_rx
     (
         .clk(clk_baud),
@@ -43,34 +44,47 @@ module transmitter
         .word(uart_word), .write(uart_write)
     );
 
-    (* keep_hierarchy = "yes" *)
+    //(* keep_hierarchy = "yes" *)
     byte_packet_buffer buffer
     (   
         //IN
-        .clk(clk_baud),
+        .clk(clk_out_base),
         .word(uart_word), .write(uart_write),
         //OUT
         .sys_packet(sys_packet), .send(data_send)
     );
 	
-    (* keep_hierarchy = "yes" *)
+    //(* keep_hierarchy = "yes" *)
     sorter packet_sorter
     (
         //IN
         .clk(clk_out_base),
-        .sys_packet(sys_packet), .copy(data_send),
+        .ready(data_send),
+        .sys_packet(sys_packet),
         //OUT
-        .sorted_packet_out(sorted_packet), .data_sorted(data_sorted)
+        .sorted_packet_out(sorted_packet),
+        .done(data_sorted)
     );
-
+    
+    /*
     (* keep_hierarchy = "yes" *)
-    parallel_serial # (PACKET_WIDTH * (8 + INDEX_WIDTH) + PREAMBLE_LENGTH) modulator_data 
+    sorter_async packet_sorter_async
+    (
+        //IN
+        .sys_packet(sys_packet),
+        //OUT
+        .sorted_packet_out(sorted_packet)
+    );*/
+
+    //(* keep_hierarchy = "yes" *)
+    PISO_buffer # (PACKET_WIDTH * (8 + INDEX_WIDTH) + PREAMBLE_LENGTH) modulator_stream 
     (
         //IN
         .clk(clk_out_base),
-        .parallel_data(sorted_packet), .next(ser_next),
+        .active(ser_next), .reset(data_sorted),
+        .parallel(sorted_packet),
         //OUT
-        .serial_signal(signal), .done(done)
+        .serial_signal(signal)
     );
 
 	signal_modulator modulator
@@ -83,7 +97,7 @@ module transmitter
     );
 
 //~~~~~~~~~~~~~~~~~CLOCKS~~~~~~~~~~~~~~~~~~~~~~
-  clk_base instance_name
+  clk_base clk_MCMM
    (
     // Clock out ports
     .clk_out_base(clk_out_base),     // output clk_out_base
@@ -105,7 +119,7 @@ module transmitter
     );*/
     
     //SIMULATION INPUT DATA
-    
+    /*
     reg [176:0] test_data = 177'b100010000101000100001010001000010100110111101001101100010011011000100110010101101101000010001000010100010000101000100001010011011110100110110001001101100010011001010110110100001;
     parallel_serial #(177) debug_serial
     (
@@ -114,5 +128,5 @@ module transmitter
         //OUT
         UART, done2
     );
-    
+    */
 endmodule

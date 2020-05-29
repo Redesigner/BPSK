@@ -1,7 +1,7 @@
 `include "../built-src/parameters.svh"
 `timescale 1ns/10ps
 
-module ring_buffer
+module ring_buffer#(SIZE = 16, WIDTH = 4)
     (
         input wire clk,
         input wire data_in,
@@ -9,8 +9,6 @@ module ring_buffer
 
         output wire [WIDTH - 1:0] data_out
     );
-    parameter SIZE = 16;
-    parameter WIDTH = 4;
 
     reg[SIZE - 1:0] buffer = '0;
 
