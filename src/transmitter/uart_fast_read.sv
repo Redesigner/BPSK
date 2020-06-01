@@ -18,6 +18,8 @@ module uart_fast_read
     .data_out(uart_data));
 
     always @(posedge clk) begin
+
+        //sleep for 11 cycles once we recieve a valid word
         if(write) begin
             counter <= 0;
         end

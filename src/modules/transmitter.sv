@@ -12,7 +12,7 @@ module transmitter
     );
     //WIRE DECLARATIONS
     wire UART;
-    wire [7:0] uart_word;
+    wire [7:0] uart_word, uart_word_slow;
     wire [PACKET_WIDTH * 8 - 1:0] sys_packet;
     wire [(PACKET_WIDTH * (8 + INDEX_WIDTH)) + PREAMBLE_LENGTH - 1:0] sorted_packet;
     wire [DATA_WIDTH - 1:0] ANALOGWAVE;
@@ -36,47 +36,49 @@ module transmitter
     OBUF LED_OBUF (.I(data_sorted), .O(led1));    
 
 //~~~~~~~~~~~~~~~~MODULES~~~~~~~~~~~~~~~~~~~
-    //(* keep_hierarchy = "yes" *)
     uart_fast_read uart_rx
     (
         .clk(clk_baud),
         .uart_stream(UART),
-        .word(uart_word), .write(uart_write)
+        .word(uart_word_slow), .write(uart_write_slow)
     );
 
-    //(* keep_hierarchy = "yes" *)
+    CDC_sync#(8) buffer_sync
+    (
+        .fast_clk(clk_out_base),
+        .I(uart_word_slow),
+        .O(uart_word)
+    );
+
+    CDC_sync#(1) write_sync
+    (
+        .fast_clk(clk_out_base),
+        .I(uart_write_slow),
+        .O(uart_write)
+    );
+
     byte_packet_buffer buffer
     (   
         //IN
         .clk(clk_out_base),
+        .reset(reset),
         .word(uart_word), .write(uart_write),
         //OUT
         .sys_packet(sys_packet), .send(data_send)
     );
-	
-    //(* keep_hierarchy = "yes" *)
+
     sorter packet_sorter
     (
         //IN
         .clk(clk_out_base),
+        .reset(reset),
         .ready(data_send),
         .sys_packet(sys_packet),
         //OUT
         .sorted_packet_out(sorted_packet),
         .done(data_sorted)
     );
-    
-    /*
-    (* keep_hierarchy = "yes" *)
-    sorter_async packet_sorter_async
-    (
-        //IN
-        .sys_packet(sys_packet),
-        //OUT
-        .sorted_packet_out(sorted_packet)
-    );*/
 
-    //(* keep_hierarchy = "yes" *)
     PISO_buffer # (PACKET_WIDTH * (8 + INDEX_WIDTH) + PREAMBLE_LENGTH) modulator_stream 
     (
         //IN
@@ -93,20 +95,20 @@ module transmitter
        .clk(clk_out_base),
        .data_stream(signal), .enable(data_sorted),
         //OUT
-        .signal_out(ANALOGWAVE), .next(ser_next)
+        .signal_out(ANALOGWAVE), .next(ser_next), .done(reset)
     );
 
 //~~~~~~~~~~~~~~~~~CLOCKS~~~~~~~~~~~~~~~~~~~~~~
   clk_base clk_MCMM
    (
     // Clock out ports
-    .clk_out_base(clk_out_base),     // output clk_out_base
+    .clk_out_base(clk_out_base),
+    .clk_baud(clk_baud),
    // Clock in ports
     .clk_in1(sysclk));
     
     
     //OUR UART CHIP ONLY SUPPORTS 12MBPS in standard mode, so the system clock works here
-    assign clk_baud = sysclk;
     
     
     
@@ -120,7 +122,7 @@ module transmitter
     
     //SIMULATION INPUT DATA
     /*
-    reg [176:0] test_data = 177'b100010000101000100001010001000010100110111101001101100010011011000100110010101101101000010001000010100010000101000100001010011011110100110110001001101100010011001010110110100001;
+    reg [176:0] test_data = 177'b100010000101000100001010011011110100010000101001101100010011011000100110010101101101000010001000010100010000101000100001010011011110100110110001001101100010011001010110110100001;
     parallel_serial #(177) debug_serial
     (
         //IN

@@ -2,7 +2,9 @@
 `timescale 1ns/10ps
 
 module sorter
-    (   input wire clk,
+    (
+        input wire clk,
+        input wire reset,
         input wire ready,
         input wire [PACKET_WIDTH-1:0][7:0] sys_packet,
         output wire [(PACKET_WIDTH * (8 + INDEX_WIDTH)) + PREAMBLE_LENGTH - 1:0] sorted_packet_out,
@@ -29,9 +31,10 @@ module sorter
     comparison_merge_r #(PACKET_WIDTH, 1'b1) comparison
     (
         clk,
+        reset,
         ready,
         sys_packet, index_in,
-        data, indices, done
+        data, indices, sorted
     );
 
     assign sorted_packet_out = {>>{
@@ -39,4 +42,6 @@ module sorter
         data,
         PREAMBLE
     }};
+
+    edge_pulse sorter_edge(.clk(clk), .I(sorted), .O(done));
 endmodule

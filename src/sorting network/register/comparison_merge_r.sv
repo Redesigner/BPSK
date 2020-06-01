@@ -3,6 +3,7 @@
 module comparison_merge_r #(parameter SIZE = 4, UP = 1)
     (
         input wire clk,
+        input wire reset,
         input wire ready,
         input wire [SIZE-1:0][NETWORK_WIDTH-1:0] data_in,
         input wire [SIZE-1:0][INDEX_WIDTH-1:0] index_in,
@@ -24,10 +25,10 @@ module comparison_merge_r #(parameter SIZE = 4, UP = 1)
             reg [SIZE - 1:0][NETWORK_WIDTH-1:0] sort_data_buffer = '0;
             wire [SIZE - 1:0][INDEX_WIDTH-1:0] sort_index_out;
             reg [SIZE - 1:0][INDEX_WIDTH-1:0] sort_index_buffer = '0;
-            (* keep_hierarchy = "yes" *)
             comparison_merge_r #(SIZE / 2, UP) sort_top
             (
                 clk,
+                reset,
                 sorter_ready,
                 data_in_buffer[SIZE-1:SIZE/2],
                 index_in_buffer[SIZE-1:SIZE/2],
@@ -35,10 +36,10 @@ module comparison_merge_r #(parameter SIZE = 4, UP = 1)
                 sort_index_out[SIZE-1:SIZE/2],
                 sort_top_done
             );
-            (* keep_hierarchy = "yes" *)
             comparison_merge_r #(SIZE / 2, ~UP) sort_bottom
             (
                 clk,
+                reset,
                 sorter_ready,
                 data_in_buffer[SIZE/2-1:0],
                 index_in_buffer[SIZE/2-1:0],
@@ -58,6 +59,7 @@ module comparison_merge_r #(parameter SIZE = 4, UP = 1)
                 comparison_base_r #(UP) merge_surface_i
                 (
                     clk,
+                    reset,
                     sort_done, //Only execute this step once the initial sort is done
                     sort_data_buffer[i], sort_data_buffer[i + (SIZE / 2)],
                     sort_index_buffer[i], sort_index_buffer[i + (SIZE / 2)],
@@ -71,10 +73,10 @@ module comparison_merge_r #(parameter SIZE = 4, UP = 1)
             wire merge_top_done, merge_bottom_done;
             wire [SIZE - 1:0][NETWORK_WIDTH-1:0] merge_data_out;
             wire [SIZE - 1:0][INDEX_WIDTH-1:0] merge_index_out;
-            (* keep_hierarchy = "yes" *)
             comparison_merge_r #(SIZE / 2, UP) merge_top
             (
                 clk,
+                reset,
                 merge_surface_done,
                 surface_data_buffer[SIZE-1:SIZE/2],
                 surface_index_buffer[SIZE-1:SIZE/2],
@@ -82,10 +84,10 @@ module comparison_merge_r #(parameter SIZE = 4, UP = 1)
                 merge_index_out[SIZE-1:SIZE/2],
                 merge_top_done
             );
-            (* keep_hierarchy = "yes" *)
             comparison_merge_r #(SIZE / 2, UP) merge_bottom
             (
                 clk,
+                reset,
                 merge_surface_done,
                 surface_data_buffer[SIZE/2-1:0],
                 surface_index_buffer[SIZE/2-1:0],
@@ -96,25 +98,41 @@ module comparison_merge_r #(parameter SIZE = 4, UP = 1)
 
             //ONLY UPDATE ON CLOCK
             always @(posedge clk) begin
-                if(ready) begin
-                    sorter_ready <= 1;
-                    data_in_buffer <= data_in;
-                    index_in_buffer <= index_in;
+                if(reset) begin
+                    sorter_ready <= 0;
+
+                    sort_done <= 0;
+
+                    merge_surface_done <= 0;
+
+
+                    done <= '0;
+
+                    index_out <= '0;
+                    data_out <= '0;
                 end
-                if(sort_top_done && sort_bottom_done) begin
-                    sort_done <= 1;
-                    sort_data_buffer <=  sort_data_out;
-                    sort_index_buffer <= sort_index_out;
-                end
-                if(&merge_surface_done_i) begin
-                    merge_surface_done <= 1;
-                    surface_data_buffer <= surface_data_out;
-                    surface_index_buffer <= surface_index_out;
-                end
-                if(merge_top_done && merge_bottom_done) begin
-                   done <= 1;
-                   data_out <= merge_data_out;
-                   index_out <= merge_index_out;
+
+                else begin
+                    if(ready) begin
+                        sorter_ready <= 1;
+                        data_in_buffer <= data_in;
+                        index_in_buffer <= index_in;
+                    end
+                    if(sort_top_done && sort_bottom_done) begin
+                        sort_done <= 1;
+                        sort_data_buffer <=  sort_data_out;
+                        sort_index_buffer <= sort_index_out;
+                    end
+                    if(&merge_surface_done_i) begin
+                        merge_surface_done <= 1;
+                        surface_data_buffer <= surface_data_out;
+                        surface_index_buffer <= surface_index_out;
+                    end
+                    if(merge_top_done && merge_bottom_done) begin
+                        done <= 1;
+                        data_out <= merge_data_out;
+                        index_out <= merge_index_out;
+                    end
                 end
             end
 
@@ -125,6 +143,7 @@ module comparison_merge_r #(parameter SIZE = 4, UP = 1)
             comparison_base_r#(UP) comparator_base 
             (
                 clk,
+                reset,
                 ready,
                 data_in[0], data_in[1],
                 index_in[0], index_in[1],

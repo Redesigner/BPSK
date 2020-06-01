@@ -4,6 +4,7 @@
 module comparison_base_r #(parameter UP = 1'b1)
     (
         input wire clk,
+        input wire reset,
         input wire ready,
 
         input wire [NETWORK_WIDTH-1:0] in_a,
@@ -25,7 +26,10 @@ module comparison_base_r #(parameter UP = 1'b1)
     generate
         if(~UP) begin
             always @(posedge clk) begin
-                if(ready) begin
+                if(reset) begin
+                    done <= 0;
+                end
+                else if(ready) begin
                     case(in_a >= in_b)
                         1'b0 : begin
                             out_a <= in_a;
@@ -46,7 +50,10 @@ module comparison_base_r #(parameter UP = 1'b1)
         end
         if(UP) begin
             always @(posedge clk) begin
-                if(ready) begin
+                if(reset) begin
+                    done <= 0;
+                end
+                else if(ready) begin
                     case(in_a >= in_b)
                         1'b1 : begin
                             out_a <= in_a;

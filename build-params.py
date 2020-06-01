@@ -2,7 +2,7 @@
 from string import Template
 import fileinput, os, sys, math, traceback
 
-defaults = [12, 12, 1000]
+defaults = [12, 30, 1500]
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 src = os.path.join(dir_path,"src\\preprocessed")
@@ -28,15 +28,16 @@ amplitude = 2 ** (input_bits-1) - 1
 sine_table = [0] * table_size
 
 for i in range(0, table_size):
-    sine_table[i] = int((math.sin(factor * i) + 1) * amplitude) 
+    sine_table[i] =  str(i) + " : begin\n signal <=" + str(int(((math.sin(factor * i)) + 1) * amplitude)) + ";\n end\n"
 
-sine_table_string = "{" +  ','.join(map(str,sine_table)) + "}"
+sine_table_string = ''.join(map(str,sine_table))
 replacement_values = {"DATA_WIDTH":input_bits,
 "SINE_TABLE_SIZE": table_size,
 "WAVELENGTH": wavelength,
 "SHIFT": int(wavelength/2),
 "sine_table": sine_table_string,
-"AMPLITUDE": amplitude
+"AMPLITUDE": amplitude,
+"clog2": "clog2"
 }
 
 for root, dirs, files in os.walk(src):
