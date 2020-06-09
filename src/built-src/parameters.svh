@@ -4,10 +4,10 @@
 `ifndef parameters_h
 `define parameters_h
 localparam DATA_WIDTH = 12;
-localparam SINE_RESOLUTION = 27;
+localparam SINE_RESOLUTION = 10;
 localparam AMPLITUDE = 2047;
-localparam WAVELENGTH = 27;
-localparam SHIFT = 13;
+localparam WAVELENGTH = 130;
+localparam SHIFT = 5;
 localparam UART_WIDTH = 11;
 
 //SEPARATE INTO DIFFERENT PARAM FILE?

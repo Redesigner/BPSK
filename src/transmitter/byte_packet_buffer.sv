@@ -15,21 +15,16 @@ module byte_packet_buffer
 
 
     always @ (posedge clk) begin
-        if(reset) begin
-            //buffer_stable_1 <= buffer_stable_0;
+        if (index >= PACKET_WIDTH) begin
+            index <= 0;
+            send_r <= 1;
+            buffer_stable_0 <= buffer;
         end
-        else begin
-            if (index >= PACKET_WIDTH) begin
-                index <= 0;
-                send_r <= 1;
-                buffer_stable_0 <= buffer;
-            end
-            else if (index <= PACKET_WIDTH - 1) begin
-                if (write) begin
-                    buffer[index] <= word;
-                    index <= index + 1;
-                    send_r <= 0;
-                end
+        else if (index <= PACKET_WIDTH - 1) begin
+            if (write) begin
+                buffer[index] <= word;
+                index <= index + 1;
+                send_r <= 0;
             end
         end
     end

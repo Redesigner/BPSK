@@ -10,7 +10,7 @@ module uart_fast_read
     reg [11:0] base = 12'b10000000001;
     reg data_started = 0;
     reg counter_start = 0;
-    reg [4:0] counter = 11;
+    reg [3:0] counter = 11;
     wire [11:0] uart_data;
     ring_buffer #(12, 12) buffer (
     .clk(clk),

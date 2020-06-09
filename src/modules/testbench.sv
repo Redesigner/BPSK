@@ -2,36 +2,56 @@
 
 module testbench
 	(
+	    input wire uart_txd_in,
 		input wire clk,
-		output wire pio1,pio2,pio3,pio4,pio5,pio6,pio7,pio8,pio9,pio10,pio11,pio12
+		output wire led0,
+		output wire uart_rxd_out
 	);
-
-    /*transmitter tx
-	(
-		clk,
-		uart_txd_in,
-		p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12
-	);
-    reciever rx
-	(
-		clk,
-		p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12,
-		uart_rxd_out
-	);*/
-	wire [11:0] ANALOGWAVE;
-	assign {>>{pio1,pio2,pio3,pio4,pio5,pio6,pio7,pio8,pio9,pio10,pio11,pio12}} = ANALOGWAVE;
-    signal_modulator modulator
+    reg led = 0;
+    wire [7:0] uart_word;
+    (* keep_hierarchy = "yes" *)
+    uart_fast_read uart_read
     (
-        //IN
-       .clk(clk_1),
-       .data_stream(1'b1), .enable(1'b1),
-        //OUT
-        .signal_out(ANALOGWAVE), .next(blank)
+        .clk(clk),
+        .uart_stream(uart_txd_in),
+        .word(uart_word),
+        .write(write)
     );
+    
+    (* keep_hierarchy = "yes" *)
+    uart_fast_write uart_write
+    (
+        .clk(clk),
+        .ready(write),
+        .word(uart_word),
+        .rxd(uart_rxd_out)
+    );
+    always @(posedge clk) begin
+        if(write) begin
+            led <= 1;
+        end
+    end
+    /*
     clk_wiz_0 instance_name
     (
     // Clock out ports
     .clk_1(clk_1),     // output clk_1
    // Clock in ports
     .clk(clk));      // input clk
+    */
+    assign led0 = led;
+    /*
+    //~~~~~~~~~~~~~~SIMULATION ONLY~~~~~~~~~~~~~~
+    localparam PERIOD = 4;
+    reg clk = 0;
+    always #(PERIOD/2) clk=~clk;
+    reg [176:0] test_data = 177'b100010000101000100001010011011110100010000101001101100010011011000100110010101101101000010001000010100010000101000100001010011011110100110110001001101100010011001010110110100001;
+    parallel_serial #(177) debug_serial
+    (
+        //IN
+        clk, test_data, 1'b1 ^ done2,
+        //OUT
+        uart_txd_in, done2
+    );
+    */
 endmodule

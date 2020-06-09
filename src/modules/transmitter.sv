@@ -6,9 +6,10 @@ module transmitter
         (* IO_BUFFER_TYPE = "IBUF" *) input wire uart_txd_in,
 
         output wire [DATA_WIDTH:1] pio,
-        output wire led1
+        output wire led0,
+        output wire led1,
       
-        //output uart_rxd_out
+        output wire uart_rxd_out
     );
     //WIRE DECLARATIONS
     wire UART;
@@ -23,17 +24,17 @@ module transmitter
     //IBUF instantiation
     IBUF UART_IBUF (.I(uart_txd_in), .O(UART));
 
-    //OBUF instantiation
-    wire [DATA_WIDTH-1:0] ANALOGWAVE_PO;
-    genvar i;
+    /*genvar i;
     generate
         for (i = 0; i < DATA_WIDTH; i++ ) begin
-            OBUF ANALOGWAVE_OBUF (.I(ANALOGWAVE[i]), .O(ANALOGWAVE_PO[i]));
-            defparam ANALOGWAVE_OBUF.SLEW = "FAST";
-            assign pio[i + 1] = ANALOGWAVE_PO[i];      
+            assign pio[i + 1] = ANALOGWAVE[i];      
         end
     endgenerate
-    OBUF LED_OBUF (.I(data_sorted), .O(led1));    
+    */
+    
+    assign pio[DATA_WIDTH:1] = ANALOGWAVE;
+    (*IOB="TRUE"*)reg led_data = 0;
+    (*IOB="TRUE"*)reg led_data_2 = 0;
 
 //~~~~~~~~~~~~~~~~MODULES~~~~~~~~~~~~~~~~~~~
     uart_fast_read uart_rx
@@ -45,6 +46,7 @@ module transmitter
 
     CDC_sync#(8) buffer_sync
     (
+        .slow_clk(clk_baud),
         .fast_clk(clk_out_base),
         .I(uart_word_slow),
         .O(uart_word)
@@ -52,11 +54,13 @@ module transmitter
 
     CDC_sync#(1) write_sync
     (
+        .slow_clk(clk_baud),
         .fast_clk(clk_out_base),
         .I(uart_write_slow),
         .O(uart_write)
     );
 
+    (* keep_hierarchy = "yes" *)
     byte_packet_buffer buffer
     (   
         //IN
@@ -67,6 +71,7 @@ module transmitter
         .sys_packet(sys_packet), .send(data_send)
     );
 
+    (* keep_hierarchy = "yes" *)
     sorter packet_sorter
     (
         //IN
@@ -79,6 +84,7 @@ module transmitter
         .done(data_sorted)
     );
 
+    (* keep_hierarchy = "yes" *)
     PISO_buffer # (PACKET_WIDTH * (8 + INDEX_WIDTH) + PREAMBLE_LENGTH) modulator_stream 
     (
         //IN
@@ -89,6 +95,7 @@ module transmitter
         .serial_signal(signal)
     );
 
+    (* keep_hierarchy = "yes" *)
 	signal_modulator modulator
     (
         //IN
@@ -97,28 +104,37 @@ module transmitter
         //OUT
         .signal_out(ANALOGWAVE), .next(ser_next), .done(reset)
     );
+always @(posedge clk_out_base) begin
+    if(reset) begin
+        led_data <= 1;
+    end
+    if(uart_write) begin
+        led_data_2 <= 1;
+    end
+end
+
 
 //~~~~~~~~~~~~~~~~~CLOCKS~~~~~~~~~~~~~~~~~~~~~~
   clk_base clk_MCMM
    (
     // Clock out ports
-    .clk_out_base(clk_out_base),
-    .clk_baud(clk_baud),
+    .clk_out_base(clk_out_base),     // output clk_out_base
+    .clk_baud(clk_baud_in),     // output clk_baud
    // Clock in ports
-    .clk_in1(sysclk));
-    
-    
+    .clk_in1(sysclk)
+   );      // input clk_in1
     //OUR UART CHIP ONLY SUPPORTS 12MBPS in standard mode, so the system clock works here
-    
+    clock_divider#(27) clk_divider(clk_baud_in, clk_baud);
     
     
 //~~~~~~~~~~~~~~~~DEBUG~~~~~~~~~~~~~~~~~~~~
-    /*
-    uart_encode debug_out_encoder
+    uart_fast_write uart_tx
     (
-        clk_baud, sys_packet, modulator_ready,
-        uart_stream2, done2
-    );*/
+        .clk(clk_baud),
+        .ready(data_sorted),
+        .word(sys_packet[15:8]),
+        .rxd(uart_rxd_out)
+    );
     
     //SIMULATION INPUT DATA
     /*

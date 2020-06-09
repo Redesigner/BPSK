@@ -13,10 +13,13 @@ create_generated_clock -name base_clk -master_clock [get_clocks sysclk] [get_pin
 create_generated_clock -name baud_clk -master_clock [get_clocks sysclk] [get_pins clk_MCMM/inst/mmcm_adv_inst/CLKOUT1];
 
 
+
 ## LEDs
-#set_property -dict { PACKAGE_PIN A17   IOSTANDARD LVCMOS33 } [get_ports { led0   }];
+set_property -dict { PACKAGE_PIN A17   IOSTANDARD LVCMOS33 } [get_ports { led0   }];
 set_property -dict { PACKAGE_PIN C16   IOSTANDARD LVCMOS33 } [get_ports { led1   }]; #IO_L13P_T2_MRCC_16 Sch=led[2]
-set_output_delay 0.1 -clock [get_clocks base_clk] [get_ports { led1 }];
+set_output_delay 0.0 -clock [get_clocks base_clk] [get_ports { led0 }];
+set_output_delay 0.0 -clock [get_clocks base_clk] [get_ports { led1 }];
+
 
 
 ## RGB LED
@@ -95,9 +98,9 @@ set_output_delay 0.0 -clock [get_clocks base_clk] [get_ports { pio[1] pio[2] pio
 
 
 ## UART
-#set_property -dict { PACKAGE_PIN J18   IOSTANDARD LVCMOS33 } [get_ports { uart_rxd_out }]; #IO_L7N_T1_D10_14 Sch=uart_rxd_out
+set_property -dict { PACKAGE_PIN J18   IOSTANDARD LVCMOS33 } [get_ports { uart_rxd_out }]; #IO_L7N_T1_D10_14 Sch=uart_rxd_out
 set_property -dict { PACKAGE_PIN J17   IOSTANDARD LVCMOS33 } [get_ports { uart_txd_in  }]; #IO_L7P_T1_D09_14 Sch=uart_txd_in
-set_input_delay 0.0 -clock [get_clocks baud_clk] [get_ports { uart_txd_in }];
+set_input_delay 1.0 -clock [get_clocks base_clk] [get_ports { uart_txd_in }];
 
 ## Crypto 1 Wire Interface
 #set_property -dict { PACKAGE_PIN D17   IOSTANDARD LVCMOS33 } [get_ports { crypto_sda }]; #IO_0_14 Sch=crypto_sda
@@ -141,7 +144,7 @@ set_input_delay 0.0 -clock [get_clocks baud_clk] [get_ports { uart_txd_in }];
 #set_property -dict { PACKAGE_PIN R19   IOSTANDARD LVCMOS33 } [get_ports { RamWEn     }]; #IO_L10N_T1_D15_14 Sch=sram-we
 #set_property -dict { PACKAGE_PIN N19   IOSTANDARD LVCMOS33 } [get_ports { RamCEn     }]; #IO_L9N_T1_DQS_D13_14 Sch=sram-ce
 
-set_false_path -from [get_clocks baud_clk] -to [get_clocks base_clk];
+#set_false_path -from [get_clocks baud_clk] -to [get_clocks base_clk];
 
 
 set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]

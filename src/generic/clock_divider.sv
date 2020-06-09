@@ -4,10 +4,10 @@
 module clock_divider
     (    
         input wire clk,
-        output reg create_clock clk_out = 0
+        output reg clk_out = 0
     );
-    parameter WIDTH = 4;
     parameter N = 10;
+    parameter WIDTH = $clog2(N);
     reg [WIDTH-1:0] index = 0;
 
     always @(posedge clk) begin
