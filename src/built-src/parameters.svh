@@ -17,7 +17,8 @@ localparam INDEX_WIDTH = 3;
 localparam THRESHOLD = AMPLITUDE * 10 / 4;
 parameter PACKET_WIDTH = 8; //PACKET SIZE (IN BYTES)
 localparam PREAMBLE_LENGTH = 8;
-localparam PREAMBLE = 8'b11111111;
+localparam PREAMBLE = 8'b00000000;
 parameter PACKET_WIDTH_OVERHEAD = (PACKET_WIDTH * (INDEX_WIDTH + 8)) + PREAMBLE_LENGTH;
 
+localparam PREAMBLE_THRESHOLD = 1029;
 `endif

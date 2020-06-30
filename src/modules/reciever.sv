@@ -2,59 +2,78 @@
 
 module reciever
     (
-        input wire clk,
-        input wire pio1,
-        input wire pio2,
-        input wire pio3,
-        input wire pio4,
-        input wire pio5,
-        input wire pio6,
-        input wire pio7,
-        input wire pio8,
-        input wire pio9,
-        input wire pio10,
-        input wire pio11,
-        input wire pio12,
+        input wire sysclk,
+        input wire clk_carrier,
+        input wire [DATA_WIDTH:1] pio,
 
-        output wire uart_rxd_out,
-        output wire led0,
-        output wire led1
+        output wire uart_rxd_out
     );
 
-    wire [DATA_WIDTH - 1:0] signal_analog = {<<{pio1, pio2, pio3, pio4, pio5, pio6, pio7, pio8, pio9, pio10, pio11, pio12}};
     wire [PACKET_WIDTH * 8 - 1: 0] sys_packet;
-
-    clock_divider #(5, 20) clock2(clk_1, clk_baud);
+    wire [PACKET_WIDTH * 8 - 1: 0] sys_packet_o;
+    wire [7:0] uart_word;
+    wire [DATA_WIDTH - 1:0] wave;
+    assign wave = pio[DATA_WIDTH:1];
+    clock_divider #(12) clock2(sysclk, clk_baud);
     
     signal_demodulator demod
     (
-        clk_1,
-        signal_analog,
-        data_demod, write
+        //IN
+        .clk(clk_carrier),
+        .signal(wave),
+        //OUT
+        .guess(data_guess),
+        .write(write)
     );
 
-    data_buffer_demodulator buffer
+    reciever_buffer buffer
     (
-        clk_1,
-        write, 0, data_demod,
-        sys_packet, done
+        //IN
+        .clk(clk_carrier),
+        .read(write),
+        .clear('b0),
+        .data_stream(data_guess),
+        //OUT
+        .sys_packet(sys_packet),
+        .send(done)
     );
 
-    uart_encode uart_out
+    CDC_sync #(PACKET_WIDTH * 8) sync
     (
-        clk_baud,
-        sys_packet, done && !message_sent,
-        uart_rxd_out, message_sent
+        //IN
+        .slow_clk(clk_carrier),
+        .fast_clk(clk_baud),
+        .I(sys_packet),
+        //OUT
+        .O(sys_packet_o)
     );
 
-    assign led1 = data_demod;
-    assign led0 = message_sent;
+    PIPO_buffer #(PACKET_WIDTH * 8, 8) buffer2
+    (
+        //IN
+        .clk(clk_baud),
+        .data_in(sys_packet),
+        .write(done),
+        .read(read),
+        //OUT
+        .data_out(uart_word)
+    );
 
-  clk_wiz_0 clock_step
+    uart_fast_write uart_out
+    (
+        //IN
+        .clk(clk_baud),
+        .ready(done),
+        .word(uart_word),
+        //OUT
+        .next(read),
+        .rxd(uart_rxd_out)
+    );
+
+  /*MMCM reciever_MMCM
    (
     // Clock out ports
-    .clk_out1(clk_1),     // output clk_out1
+    .clk_carrier(clk_carrier),     // output clk_carrier
    // Clock in ports
-    .clk_in1(clk));      // input clk_in1
-
+    .clk_in_sys(sysclk)); */
 endmodule

@@ -30,10 +30,21 @@ print("Raw data rate is " + str(((clock_speed/data_frame * 1000)) / (96.0/64.0))
 print("The maximum Baud rate for a continous data stream is " + str(math.floor((clock_speed/data_frame * 1000000) / (96.0/88.0))) + " Baud\n")
 factor = math.pi / table_size * 2
 amplitude = 2 ** (input_bits-1) - 1
+preamble = [0,0]*4
+
+
 
 sine_table = [0] * table_size
 for i in range(0, table_size):
     sine_table[i] =  str(i) + " : begin\n signal <=" + str(int(((math.sin(factor * i)) + 1) * amplitude)) + ";\n end\n"
+
+reference_table = [0] * (data_frame * len(preamble))
+for j in preamble:
+    for i in range(0, len(reference_table)):
+        if(j == 0):
+            reference_table[i] = int(math.sin(factor * (i % table_size)) * amplitude)
+        else:
+            reference_table[i] = int(math.sin(factor * (i % table_size)) * -amplitude)
 
 phase_table_on = [0] * data_frame
 for i in range(0, data_frame):
@@ -41,6 +52,8 @@ for i in range(0, data_frame):
 phase_table_off = [0] * data_frame
 for i in range(0, data_frame):
     phase_table_off[i] = str(i) + " : begin\n phase <=" + str((i + int(wavelength/2)) % wavelength) + ";\n end\n"
+
+max_value = int((2**4) * data_frame/2)
 
 sine_table_string = ''.join(map(str,sine_table))
 replacement_values = {"DATA_WIDTH":input_bits,
@@ -51,7 +64,11 @@ replacement_values = {"DATA_WIDTH":input_bits,
 "phase_table_on": ''.join(map(str,phase_table_on)),
 "phase_table_off": ''.join(map(str,phase_table_off)),
 "AMPLITUDE": amplitude,
-"clog2": "clog2"
+"clog2": "clog2",
+"threshold": str(int(max_value * .99)), #because the values are int, the max value is the wave squared, times the number of samples
+"comparison_table": '{' + ','.join(map(str,reference_table)) + '}',
+"preamble": str(len(preamble)) + '\'b' + ''.join(map(str,preamble)),
+"preamble_length" : str(len(preamble))
 }
 
 for root, dirs, files in os.walk(src):

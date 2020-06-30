@@ -3,6 +3,7 @@ module uart_fast_write
         input wire clk,
         input wire ready,
         input wire [7:0] word,
+        output wire next,
         output wire rxd
     );
     //reg [7:0] buffer = '0;
@@ -28,8 +29,9 @@ module uart_fast_write
     (
         .clk(clk),
         .active(~sleep),
-        .reset(ready),
+        .reset(~sleep),
         .parallel(reversed),
         .serial_signal(rxd)
     );
+    assign next = sleep;
 endmodule

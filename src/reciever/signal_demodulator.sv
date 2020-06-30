@@ -1,22 +1,23 @@
 module signal_demodulator
     (
-        input clock,
+        input clk,
         input reg [DATA_WIDTH-1:0] signal,
         output wire guess,
         output wire write
     );
-    longint signed sum = 0;
-    reg [15:0] phase = 0;
-    reg signed [DATA_WIDTH-1:0] amp;
+    reg [DATA_WIDTH * 2 + $clog2(WAVELENGTH) - 1:0] sum = 0;
+    reg [$clog2(WAVELENGTH):0] phase = 0;
+    wire signed [DATA_WIDTH-1:0] amp;
+    wire [DATA_WIDTH-1:0] phase2;
 
-
-    wave_table_sine sine_table(phase, amp);
-    reg [15:0] offset;
-    peak_detection peak(clock, signal, phase, offset, peak_found);
+    reg [$clog2(WAVELENGTH):0] offset;
+    peak_detection peak(clk, signal, phase, offset, peak_found);
     reg shifted = 0;
 
+    wave_table_sine sine_table(clk, phase2, amp);
+    phase_table phase_shifter(clk, 1'b1, phase, phase2);
 
-    always @ (posedge clock) begin
+    always @ (posedge clk) begin
         if (~shifted && peak_found && phase == offset) begin
             shifted <= 1;
             phase <= ((3 * WAVELENGTH / 4) + 1);
