@@ -6,6 +6,7 @@ module reciever
         input wire clk_carrier,
         input wire [DATA_WIDTH:1] pio,
 
+        output wire debug,
         output wire uart_rxd_out
     );
 
@@ -20,10 +21,20 @@ module reciever
     (
         //IN
         .clk(clk_carrier),
+        .reset(peak_ready),
         .signal(wave),
         //OUT
         .guess(data_guess),
         .write(write)
+    );
+
+    peak_detection_v2 peak_detection
+    (
+        //IN
+        .clk(clk_carrier),
+        .signal(wave),
+        //OUT
+        .done(peak_ready)
     );
 
     reciever_buffer buffer
@@ -48,7 +59,7 @@ module reciever
         .O(sys_packet_o)
     );
 
-    PIPO_buffer #(PACKET_WIDTH * 8, 8) buffer2
+    PIPO_buffer #(PACKET_WIDTH * 8, 8) PIPO
     (
         //IN
         .clk(clk_baud),
@@ -69,7 +80,7 @@ module reciever
         .next(read),
         .rxd(uart_rxd_out)
     );
-
+assign debug = data_guess;
   /*MMCM reciever_MMCM
    (
     // Clock out ports

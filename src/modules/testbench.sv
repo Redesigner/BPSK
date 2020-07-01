@@ -4,8 +4,12 @@ module testbench
 	(
 		input wire sysclk,
 		input wire uart_txd_in,
+		output wire led0,
 		output wire uart_rxd_out
 	);
+	reg sysclk = 0;
+	always #100 sysclk=~sysclk;
+
     wire [DATA_WIDTH - 1:0] signal;
 
 	(* keep_hierarchy = "yes" *)
@@ -17,7 +21,8 @@ module testbench
 	);
 
 	(* keep_hierarchy = "yes" *)
-	reciever rx(
+	reciever rx
+	(
 		.sysclk(sysclk),
 		.clk_carrier(clk_carrier),
 		.pio(signal),
@@ -31,10 +36,10 @@ module testbench
        // Clock in ports
         .clk_in_sys(sysclk));
 
-	/*
+	assign led0 = signal[1];
 	test_data data(
-		.clk(clk),
+		.clk(sysclk),
 		.uart_rxd_out(uart_txd_in)
-	);*/
+	);
 
 endmodule

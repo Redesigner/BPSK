@@ -3,7 +3,7 @@ import serial
 import time
 import binascii
 
-datarate = 500000
+datarate = 1000000
 
 serial_port_tx = serial.Serial('COM4', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
 #serial_port_rx = serial.Serial('COM4', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=10)

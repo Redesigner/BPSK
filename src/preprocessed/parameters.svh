@@ -13,8 +13,9 @@ localparam UART_WIDTH = 11;
 //SEPARATE INTO DIFFERENT PARAM FILE?
 localparam NETWORK_WIDTH = 8;
 localparam INDEX_WIDTH = 3;
+localparam DEMOD_THRESHOLD = 1000;
 
-localparam THRESHOLD = AMPLITUDE * 10 / 4;
+localparam signed THRESHOLD = AMPLITUDE * 10 / 4;
 parameter PACKET_WIDTH = 8; //PACKET SIZE (IN BYTES)
 localparam PREAMBLE_LENGTH = $preamble_length;
 localparam PREAMBLE = $preamble;

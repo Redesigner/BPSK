@@ -2,7 +2,7 @@
 from string import Template
 import fileinput, os, sys, math, traceback
 
-defaults = [12, 135, 13500, 1000]
+defaults = [12, 135, 13500, 10000]
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 src = os.path.join(dir_path,"src\\preprocessed")
@@ -30,7 +30,7 @@ print("Raw data rate is " + str(((clock_speed/data_frame * 1000)) / (96.0/64.0))
 print("The maximum Baud rate for a continous data stream is " + str(math.floor((clock_speed/data_frame * 1000000) / (96.0/88.0))) + " Baud\n")
 factor = math.pi / table_size * 2
 amplitude = 2 ** (input_bits-1) - 1
-preamble = [0,0]*4
+preamble = [1,0]*2
 
 
 

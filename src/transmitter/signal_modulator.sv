@@ -7,7 +7,7 @@ module signal_modulator #(DATA_SIZE = 16)
         input wire [DATA_SIZE - 1:0]
         data,                                   //current bit to modulate
         input wire enable,                      //generates signal on high, silent on low
-        (*IOB="TRUE"*) output reg [DATA_WIDTH-1:0] signal_out = '0,//parallel signal to be sent to DAC
+        output reg [DATA_WIDTH-1:0] signal_out = AMPLITUDE,//parallel signal to be sent to DAC
         //output reg next = 0,                       //flips when complete signal has been sent
         output wire done
     );

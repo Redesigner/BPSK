@@ -9,7 +9,7 @@ module reciever_buffer
         output wire [PACKET_WIDTH * 8 - 1:0] sys_packet,  //completed packet
         output wire send                            //high when packet is ready to send
     );
-    reg [32:0] index = 0;
+    reg [$clog2(PACKET_WIDTH_OVERHEAD) - 1:0] index = '0;
     reg [PACKET_WIDTH_OVERHEAD - PREAMBLE_LENGTH - 1:0] buffer = '0;
     reg [PACKET_WIDTH_OVERHEAD - PREAMBLE_LENGTH - 1:0] sys_packet_in = '0;
     reg send_in = 0;

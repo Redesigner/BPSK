@@ -28,7 +28,7 @@ module unsort #(parameter SIZE = 4)
             buffer[index_in[i]] <= data_in[i];
             i <= i + 1;
         end
-        else begin
+        else if(i >= SIZE) begin
             done <= 1;
         end
     end
