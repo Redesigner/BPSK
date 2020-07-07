@@ -1,8 +1,10 @@
+`include "../build/core_params.svh"
+
 module byte_packet_buffer
     (
         input wire clk,
         input wire reset,
-        input wire [7:0] word,                       //the data frame from the uart_signal
+        input wire [7:0] word,                           //the data frame from the uart_signal
         input wire write,                                //copies word when set high
 
         output wire [PACKET_WIDTH - 1:0][7:0] sys_packet,//PACKET_WIDTH in bits
