@@ -11,10 +11,12 @@ module transmitter
 
         output wire [DATA_WIDTH:1] pio
     );
+    localparam WIDTH = SORTING_WIDTH + PREAMBLE_LENGTH + PACKET_WIDTH_BITS;
     //WIRE DECLARATIONS
     wire [7:0] uart_word, uart_word_slow;
-    wire [PACKET_WIDTH * 8 - 1:0] sys_packet;
-    wire [SORTING_WIDTH + PREAMBLE_LENGTH + PACKET_WIDTH_BITS - 1:0] sorted_packet;
+    //we already know what the first and last byte are going to be
+    wire [(PACKET_WIDTH - 2) * 8 - 1:0] sys_packet;
+    wire [WIDTH - 1:0] sorted_packet;
     wire [DATA_WIDTH - 1:0] ANALOGWAVE;
     
     assign pio[DATA_WIDTH:1] = ANALOGWAVE;
@@ -68,7 +70,7 @@ module transmitter
     );
 
     (* keep_hierarchy = "yes" *)
-	signal_modulator #(SORTING_WIDTH + PREAMBLE_LENGTH + PACKET_WIDTH_BITS) modulator
+	signal_modulator #(WIDTH) modulator
     (
         //IN
        .clk(clk_carrier),

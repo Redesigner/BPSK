@@ -34,7 +34,7 @@ module signal_demodulator
         end
     end
 
-    assign guess = sum > 0;
+    assign guess = sum < 0;
     assign write = (phase >= WAVELENGTH - 1) && (sum > DEMOD_THRESHOLD || sum < -DEMOD_THRESHOLD);
 
 endmodule

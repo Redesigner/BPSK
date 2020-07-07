@@ -7,20 +7,27 @@ module reciever_buffer
         input read,                                 //flips when data should be added to the buffer
         input clear,                                //flips when buffer should be emptied
         input data_stream,                          //data coming from the demodulator
-        output wire [PACKET_WIDTH_BITS - 1:0] sys_packet,  //completed packet
+        output wire [PACKET_WIDTH_BITS - 16 - 1:0] sys_packet,  //completed packet
         output wire send                            //high when packet is ready to send
     );
     localparam WIDTH = PACKET_WIDTH_BITS + SORTING_WIDTH;
 
     reg [$clog2(WIDTH):0] index = '0;
-    reg [WIDTH - 1:0] buffer = '0;
-    reg [WIDTH - 1:0] sys_packet_in = '0;
+    wire [WIDTH - 1:0] buffer_out;
+    reg [WIDTH - 16 - 1:0] sys_packet_in = '0;
     reg send_in = 0;
+
+    ring_buffer #(WIDTH, WIDTH) buffer(
+        .clk(clk),
+        .data_in(data_stream),
+        .write(read),
+        .data_out(buffer_out)
+    );
 
     unsort #(NETWORK_SLICES) unsorter(
         .clk(clk),
-        .data_in(buffer[PACKET_WIDTH_BITS - 1:0]),
-        .index_in(buffer[SORTING_WIDTH + PACKET_WIDTH_BITS - 1:PACKET_WIDTH_BITS]),
+        .data_in(sys_packet_in[PACKET_WIDTH_BITS - 16 - 1:0]),
+        .index_in(sys_packet_in[WIDTH - 1:PACKET_WIDTH_BITS - 16]),
         .reset(send_in),
         .data_out(sys_packet),
         .done(send)
@@ -28,23 +35,14 @@ module reciever_buffer
 
     //the demodulator has guessed our most recent bit, add it to the buffer
     always @ (posedge clk) begin
-        if (clear == 1) begin
-            index <= 0;
+        if(valid) begin
+            sys_packet_in <= buffer_out[WIDTH - 8:8];
+            send_in <= 1;
+        end
+        else begin
             send_in <= 0;
         end
-        else if (read == 1) begin
-            if (index < PACKET_WIDTH_BITS) begin
-                buffer[index] <= data_stream;
-                index <= index + 1;
-                send_in <= 0;
-            end else begin
-                //the buffer is full, so copy the buffer to a new packet
-                //add our last bit though
-                buffer[index] <= data_stream;
-                sys_packet_in <= buffer;
-                send_in <= 1;
-                //tell the uart modules to begin sending the full packet
-            end
-        end
     end
+    wire valid;
+    assign valid = (buffer_out[7:0] == START_CHAR) && (buffer_out[WIDTH - 1:WIDTH - 8] == END_CHAR);
 endmodule

@@ -1,4 +1,5 @@
 `include "../build/core_params.svh"
+`include "../build/network_params.svh"
 
 module unsort #(parameter SIZE = 4)
     (
