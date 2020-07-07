@@ -1,30 +1,30 @@
-`include "../built-src/parameters.svh"
+`include "../../build/core_params.svh"
 
 
 module signal_modulator #(DATA_SIZE = 16)
     (
         input clk,                              //clock speed should be signal_freq * DATA_WIDTH / 2
-        input wire [DATA_SIZE - 1:0]
-        data,                                   //current bit to modulate
+        input wire [DATA_SIZE - 1:0] data,      //current bit to modulate
         input wire enable,                      //generates signal on high, silent on low
-        output reg [DATA_WIDTH-1:0] signal_out = AMPLITUDE,//parallel signal to be sent to DAC
-        //output reg next = 0,                       //flips when complete signal has been sent
+        output reg [DATA_WIDTH-1:0] signal_out = AMPLITUDE,//parallel signal to be sent to DAC                     //flips when complete signal has been sent
         output wire done
     );
 
-    reg next = 0;
-    reg [$clog2(WAVELENGTH):0] index = 0;
-    reg [$clog2(PACKET_WIDTH_OVERHEAD):0] counter = 0;
-    wire [$clog2(SINE_RESOLUTION):0] phase;
-    reg enabled = 0;
-    reg done_i = 0;
+    reg [$clog2(WAVELENGTH):0] index = '0;
+    reg [$clog2(PACKET_WIDTH_OVERHEAD):0] counter = '0;
+    reg enabled = '0;
+    reg done_i = '0;
+    reg next = '0;
+
     wire [DATA_WIDTH-1:0] signal;
+    wire [$clog2(SINE_RESOLUTION):0] phase;
 
     PISO_buffer #(DATA_SIZE) modulator_stream 
     (
         //IN
         .clk(clk),
-        .active(next), .reset(enable),
+        .active(next),
+        .reset(enable),
         .parallel(data),
         //OUT
         .serial_signal(serial)

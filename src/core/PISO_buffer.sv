@@ -1,6 +1,3 @@
-`include "../built-src/parameters.svh"
-`timescale 1ns/10ps
-
 module PISO_buffer #(WIDTH = 32)
     (
         input wire clk,

@@ -1,4 +1,5 @@
-`include "../../built-src/parameters.svh"
+`include "../../build/core_params.svh"
+`include "../../build/network_params.svh"
 
 
 module comparison_base_r #(parameter UP = 1'b1)

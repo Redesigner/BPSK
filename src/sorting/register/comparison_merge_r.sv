@@ -1,4 +1,5 @@
-`include "../../built-src/parameters.svh"
+`include "../../build/core_params.svh"
+`include "../../build/network_params.svh"
 
 module comparison_merge_r #(parameter SIZE = 4, UP = 1)
     (
@@ -27,14 +28,14 @@ module comparison_merge_r #(parameter SIZE = 4, UP = 1)
             reg [SIZE - 1:0][INDEX_WIDTH-1:0] sort_index_buffer = '0;
             comparison_merge_r #(SIZE / 2, UP) sort_top
             (
-                clk,
-                reset,
-                sorter_ready,
-                data_in_buffer[SIZE-1:SIZE/2],
-                index_in_buffer[SIZE-1:SIZE/2],
-                sort_data_out[SIZE-1:SIZE/2],
-                sort_index_out[SIZE-1:SIZE/2],
-                sort_top_done
+                .clk(clk),
+                .reset(reset),
+                .ready(sorter_ready),
+                .data_in(data_in_buffer[SIZE-1:SIZE/2]),
+                .index_in(index_in_buffer[SIZE-1:SIZE/2]),
+                .data_out(sort_data_out[SIZE-1:SIZE/2]),
+                .index_out(sort_index_out[SIZE-1:SIZE/2]),
+                .done(sort_top_done)
             );
             comparison_merge_r #(SIZE / 2, ~UP) sort_bottom
             (

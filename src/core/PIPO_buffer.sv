@@ -1,6 +1,3 @@
-`include "../built-src/parameters.svh"
-`timescale 1ns/10ps
-
 module PIPO_buffer#(SIZE = 16, WIDTH = 4)
     (
         input wire clk,

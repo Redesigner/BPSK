@@ -1,3 +1,5 @@
+`include "../../build/core_params.svh"
+
 module signal_demodulator
     (
         input wire clk,
@@ -7,14 +9,14 @@ module signal_demodulator
         output wire write
     );
     reg signed [DATA_WIDTH * 2 + $clog2(WAVELENGTH) - 1:0] sum = 0;
-    reg [$clog2(WAVELENGTH):0] phase = 0;
-    wire signed [DATA_WIDTH-1:0] amp;
-    wire [DATA_WIDTH-1:0] phase2;
+    reg [$clog2(SINE_RESOLUTION):0] phase = 0;
+    wire signed [DATA_WIDTH-1:0] ref_signal;
+    wire [$clog2(WAVELENGTH):0] phase_o;
 
-    reg started = 0;
+    reg started = 1'b0;
 
-    wave_table_sine sine_table(clk, phase2, amp);
-    phase_table phase_shifter(clk, 1'b1, phase, phase2);
+    wave_table_sine sine_table(clk, phase_o, ref_signal);
+    phase_table phase_shifter(clk, 1'b1, phase, phase_o);
 
     always @ (posedge clk) begin
         if(reset) begin
@@ -27,7 +29,7 @@ module signal_demodulator
             end
             else begin
                 phase <= phase + 1;
-                sum <= sum + ((signal - AMPLITUDE) * (amp - AMPLITUDE)) ; //our signal is unsigned, so it has an offset of our max amplitude
+                sum <= sum + ((signal - AMPLITUDE) * (ref_signal - AMPLITUDE)) ; //our signal is unsigned, so it has an offset of our max amplitude
             end
         end
     end
