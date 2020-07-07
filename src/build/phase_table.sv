@@ -1,4 +1,4 @@
-`include "parameters.svh"
+`include "../build/core_params.svh"
 
 module phase_table
     (

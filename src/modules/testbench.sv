@@ -1,4 +1,4 @@
-`include "../built-src/parameters.svh"
+`include "../build/core_params.svh"
 
 module testbench
 	(
@@ -29,7 +29,7 @@ module testbench
 		.uart_rxd_out(uart_rxd_out)
 	);
 	(* keep_hierarchy = "yes" *)
-    MMCM clk_MMCM
+    clk_wiz_0 clk_MMCM
        (
         // Clock out ports
         .clk_carrier(clk_carrier),     // output clk_carrier

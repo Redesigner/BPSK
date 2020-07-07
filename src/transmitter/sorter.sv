@@ -1,5 +1,7 @@
-`include "../../build/core_params.svh"
-`include "../../build/network_params.svh"
+`include "../build/core_params.svh"
+`include "../build/network_params.svh"
+`include "../build/preamble_params.svh"
+
 `timescale 1ns/10ps
 
 module sorter
@@ -8,7 +10,7 @@ module sorter
         input wire reset,
         input wire ready,
         input wire [PACKET_WIDTH-1:0][7:0] sys_packet,
-        output wire [ + PREAMBLE_LENGTH - 1:0] sorted_packet_out,
+        output wire [SORTING_WIDTH + PREAMBLE_LENGTH + PACKET_WIDTH_BITS - 1:0] sorted_packet_out,
         output wire done
     );
 

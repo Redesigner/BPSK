@@ -1,4 +1,7 @@
-`include "../built-src/parameters.svh"
+`include "../build/core_params.svh"
+`include "../build/network_params.svh"
+`include "../build/preamble_params.svh"
+
 `timescale 1ns/10ps
 module transmitter
     (
@@ -11,7 +14,7 @@ module transmitter
     //WIRE DECLARATIONS
     wire [7:0] uart_word, uart_word_slow;
     wire [PACKET_WIDTH * 8 - 1:0] sys_packet;
-    wire [(PACKET_WIDTH * (8 + INDEX_WIDTH)) + PREAMBLE_LENGTH - 1:0] sorted_packet;
+    wire [SORTING_WIDTH + PREAMBLE_LENGTH + PACKET_WIDTH_BITS - 1:0] sorted_packet;
     wire [DATA_WIDTH - 1:0] ANALOGWAVE;
     
     assign pio[DATA_WIDTH:1] = ANALOGWAVE;
@@ -65,7 +68,7 @@ module transmitter
     );
 
     (* keep_hierarchy = "yes" *)
-	signal_modulator #(PACKET_WIDTH_OVERHEAD) modulator
+	signal_modulator #(SORTING_WIDTH + PREAMBLE_LENGTH + PACKET_WIDTH_BITS) modulator
     (
         //IN
        .clk(clk_carrier),

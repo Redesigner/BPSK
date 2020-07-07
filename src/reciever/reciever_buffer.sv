@@ -1,5 +1,5 @@
-`include "../../build/core_params.svh"
-`include "../../build/network_params.svh"
+`include "../build/core_params.svh"
+`include "../build/network_params.svh"
 
 module reciever_buffer
     (
@@ -10,7 +10,7 @@ module reciever_buffer
         output wire [PACKET_WIDTH_BITS - 1:0] sys_packet,  //completed packet
         output wire send                            //high when packet is ready to send
     );
-    localparam WIDTH = PACKET_WIDTH * 8 + SORTING_WIDTH;
+    localparam WIDTH = PACKET_WIDTH_BITS + SORTING_WIDTH;
 
     reg [$clog2(WIDTH):0] index = '0;
     reg [WIDTH - 1:0] buffer = '0;
@@ -20,7 +20,7 @@ module reciever_buffer
     unsort #(NETWORK_SLICES) unsorter(
         .clk(clk),
         .data_in(buffer[PACKET_WIDTH_BITS - 1:0]),
-        .index_in(buffer[SORTING_WIDTH - 1:PACKET_WIDTH_BITS]),
+        .index_in(buffer[SORTING_WIDTH + PACKET_WIDTH_BITS - 1:PACKET_WIDTH_BITS]),
         .reset(send_in),
         .data_out(sys_packet),
         .done(send)
@@ -33,7 +33,7 @@ module reciever_buffer
             send_in <= 0;
         end
         else if (read == 1) begin
-            if (index < ) begin
+            if (index < PACKET_WIDTH_BITS) begin
                 buffer[index] <= data_stream;
                 index <= index + 1;
                 send_in <= 0;

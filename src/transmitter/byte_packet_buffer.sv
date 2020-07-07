@@ -1,4 +1,4 @@
-`include "../../build/core_params.svh"
+`include "../build/core_params.svh"
 
 module byte_packet_buffer
     (

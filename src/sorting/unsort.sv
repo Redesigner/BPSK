@@ -1,4 +1,4 @@
-`include "../built-src/parameters.svh"
+`include "../build/core_params.svh"
 
 module unsort #(parameter SIZE = 4)
     (

@@ -1,4 +1,7 @@
-`include "../../build/core_params.svh"
+`include "../build/core_params.svh"
+`include "../build/preamble_params.svh"
+`include "../build/network_params.svh"
+
 
 
 module signal_modulator #(DATA_SIZE = 16)
@@ -11,7 +14,7 @@ module signal_modulator #(DATA_SIZE = 16)
     );
 
     reg [$clog2(WAVELENGTH):0] index = '0;
-    reg [$clog2(PACKET_WIDTH_OVERHEAD):0] counter = '0;
+    reg [$clog2(SORTING_WIDTH + PACKET_WIDTH_BITS + PREAMBLE_LENGTH):0] counter = '0;
     reg enabled = '0;
     reg done_i = '0;
     reg next = '0;

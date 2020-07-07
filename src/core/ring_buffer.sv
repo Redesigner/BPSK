@@ -1,4 +1,4 @@
-Smodule ring_buffer#(SIZE = 16, WIDTH = 4)
+module ring_buffer#(SIZE = 16, WIDTH = 4)
     (
         input wire clk,
         input wire data_in,

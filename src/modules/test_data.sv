@@ -1,4 +1,4 @@
-`include "../built-src/parameters.svh"
+`include "../build/core_params.svh"
 //THIS MODULE PROVIDES A DEFAULT SET OF DATA FOR THE UART MODULE TO KICK EVERYTHING ELSE OFF
 //IT SHOULD ONLY BE USED WHEN AN APPROPRIATE UART CONNECTION IS NOT AVAILABLE
 module test_data
