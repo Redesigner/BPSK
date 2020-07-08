@@ -29,7 +29,7 @@ module testbench
 		.uart_rxd_out(uart_rxd_out)
 	);
 	(* keep_hierarchy = "yes" *)
-    clk_wiz_0 clk_MMCM
+    MMCM clk_MMCM
        (
         // Clock out ports
         .clk_carrier(clk_carrier),     // output clk_carrier

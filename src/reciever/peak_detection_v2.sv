@@ -15,9 +15,9 @@ module peak_detection_v2(
     localparam SAMPLE_COUNT = WAVELENGTH * PREAMBLE_LENGTH;
     localparam WIDTH = $clog2(PREAMBLE_THRESHOLD);
 
-    wire signed [WIDTH:0] samples_dif [0:SAMPLE_COUNT - 1];
-    wire signed [$clog2(PREAMBLE_THRESHOLD * SAMPLE_COUNT):0] samples_sum [0:SAMPLE_COUNT - 1];
-    reg  signed [$clog2(PREAMBLE_THRESHOLD * SAMPLE_COUNT):0] sum = '0;
+    wire unsigned [WIDTH:0] samples_dif [0:SAMPLE_COUNT - 1];
+    wire unsigned [$clog2(PREAMBLE_THRESHOLD * SAMPLE_COUNT):0] samples_sum [0:SAMPLE_COUNT - 1];
+    reg unsigned [$clog2(PREAMBLE_THRESHOLD * SAMPLE_COUNT):0] sum = '0;
     wire signed [DATA_WIDTH-1:0] sample_out;
 
     reg signed [WIDTH:0] min = '0;
@@ -36,6 +36,15 @@ module peak_detection_v2(
         .signal_out(sample_out),
         .done(done2)
     );
+
+    FIFO_buffer#(DATA_WIDTH, WAVELENGTH) signal_FIFO
+    (
+        .clk(clk),
+        .data_in(signal),
+        .rw(1'b1),
+        .data_out(signal_buf)
+    );
+    wire [DATA_WIDTH - 1:0] signal_buf;
 
     always @(posedge clk) begin
         if(shifted_spaces < SAMPLE_COUNT - 1 + PROP_DELAY) begin

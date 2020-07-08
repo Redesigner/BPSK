@@ -27,7 +27,7 @@ module reciever_buffer
     unsort #(NETWORK_SLICES) unsorter(
         .clk(clk),
         .data_in(sys_packet_in[PACKET_WIDTH_BITS - 16 - 1:0]),
-        .index_in(sys_packet_in[WIDTH - 1:PACKET_WIDTH_BITS - 16]),
+        .index_in(sys_packet_in[WIDTH - 16 - 1:PACKET_WIDTH_BITS - 16]),
         .reset(send_in),
         .data_out(sys_packet),
         .done(send)
