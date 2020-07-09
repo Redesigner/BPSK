@@ -37,13 +37,6 @@ module peak_detection_v2(
         .done(done2)
     );
 
-    FIFO_buffer#(DATA_WIDTH, WAVELENGTH) signal_FIFO
-    (
-        .clk(clk),
-        .data_in(signal),
-        .rw(1'b1),
-        .data_out(signal_buf)
-    );
     wire [DATA_WIDTH - 1:0] signal_buf;
 
     always @(posedge clk) begin
