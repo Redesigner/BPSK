@@ -8,7 +8,7 @@ localparam SHIFT = 5;
 localparam UART_WIDTH = 11;
 
 localparam DEMOD_THRESHOLD = 1000;
-localparam PACKET_WIDTH = 34; //PACKET SIZE (IN BYTES)
+localparam PACKET_WIDTH = 10; //PACKET SIZE (IN BYTES)
 localparam PACKET_WIDTH_BITS = PACKET_WIDTH * 8;
 
 `endif

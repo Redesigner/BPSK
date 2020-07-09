@@ -30,7 +30,7 @@ print("Raw data rate is " + str(((clock_speed/data_frame * 1000)) / (96.0/64.0))
 print("The maximum Baud rate for a continous data stream is " + str(math.floor((clock_speed/data_frame * 1000000) / (96.0/88.0))) + " Baud\n")
 factor = math.pi / table_size * 2
 amplitude = 2 ** (input_bits-1) - 1
-preamble = [1,0]*4
+preamble = [1,0]*8
 
 
 

@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Tue Jul  7 16:16:27 2020
-# Process ID: 17032
+# Start of session at: Thu Jul  9 18:03:23 2020
+# Process ID: 9200
 # Current directory: C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/testbench/testbench.runs/synth_1
 # Command line: vivado.exe -log testbench.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source testbench.tcl
 # Log file: C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/testbench/testbench.runs/synth_1/testbench.vds
@@ -25,11 +25,13 @@ WARNING: [Synth 8-6901] identifier 'valid' is used before its declaration [C:/Us
 WARNING: [Synth 8-6901] identifier 'PACKET_WIDTH_RAW' is used before its declaration [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/byte_packet_buffer.sv:10]
 WARNING: [Synth 8-2507] parameter declaration becomes local in clock_divider with formal parameter declaration list [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/clock_divider.sv:6]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 706.082 ; gain = 182.453
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 705.418 ; gain = 181.133
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'testbench' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:3]
+WARNING: [Synth 8-6104] Input port 'sysclk' has an internal driver [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:11]
+WARNING: [Synth 8-85] always block has no event control specified [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:11]
 INFO: [Synth 8-6157] synthesizing module 'transmitter' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/transmitter.sv:6]
-	Parameter WIDTH bound to: 304 - type: integer 
+	Parameter WIDTH bound to: 120 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'uart_fast_read' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/uart_fast_read.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'ring_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/ring_buffer.sv:1]
 	Parameter SIZE bound to: 12 - type: integer 
@@ -43,13 +45,13 @@ INFO: [Synth 8-6157] synthesizing module 'CDC_sync__parameterized0' [C:/Users/St
 	Parameter WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'CDC_sync__parameterized0' (3#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/CDC_sync.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'byte_packet_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/byte_packet_buffer.sv:3]
-	Parameter PACKET_WIDTH_RAW bound to: 32 - type: integer 
+	Parameter PACKET_WIDTH_RAW bound to: 8 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'edge_pulse' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/edge_pulse.sv:1]
 INFO: [Synth 8-6155] done synthesizing module 'edge_pulse' (4#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/edge_pulse.sv:1]
 INFO: [Synth 8-6155] done synthesizing module 'byte_packet_buffer' (5#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/byte_packet_buffer.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'sorter' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/sorter.sv:7]
-	Parameter INITIAL_DEPTH bound to: 6 - type: integer 
-	Parameter PACKET_WIDTH_RAW bound to: 32 - type: integer 
+	Parameter INITIAL_DEPTH bound to: 4 - type: integer 
+	Parameter PACKET_WIDTH_RAW bound to: 8 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'comparison_merge_r' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_merge_r.sv:4]
 	Parameter SIZE bound to: 8 - type: integer 
 	Parameter UP bound to: 1'b1 
@@ -78,9 +80,9 @@ INFO: [Synth 8-6155] done synthesizing module 'comparison_merge_r__parameterized
 INFO: [Synth 8-6155] done synthesizing module 'comparison_merge_r' (7#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_merge_r.sv:4]
 INFO: [Synth 8-6155] done synthesizing module 'sorter' (8#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/sorter.sv:7]
 INFO: [Synth 8-6157] synthesizing module 'signal_modulator' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/signal_modulator.sv:7]
-	Parameter DATA_SIZE bound to: 304 - type: integer 
+	Parameter DATA_SIZE bound to: 120 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'PISO_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
-	Parameter WIDTH bound to: 304 - type: integer 
+	Parameter WIDTH bound to: 120 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'PISO_buffer' (9#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'wave_table_sine' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/build/wave_table_sine.sv:3]
 INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/build/wave_table_sine.sv:11]
@@ -97,55 +99,69 @@ INFO: [Synth 8-6155] done synthesizing module 'clock_divider' (13#1) [C:/Users/S
 INFO: [Synth 8-6155] done synthesizing module 'transmitter' (14#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/transmitter.sv:6]
 INFO: [Synth 8-6157] synthesizing module 'reciever' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'signal_demodulator' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/signal_demodulator.sv:3]
-INFO: [Synth 8-6155] done synthesizing module 'signal_demodulator' (15#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/signal_demodulator.sv:3]
+	Parameter DELAY bound to: 10 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'FIFO_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/FIFO_buffer.sv:1]
+	Parameter WIDTH bound to: 12 - type: integer 
+	Parameter COUNT bound to: 10 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'FIFO_buffer' (15#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/FIFO_buffer.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'signal_demodulator' (16#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/signal_demodulator.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'peak_detection_v2' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:8]
 	Parameter PROP_DELAY bound to: 4 - type: integer 
-	Parameter SAMPLE_COUNT bound to: 80 - type: integer 
-	Parameter WIDTH bound to: 7 - type: integer 
+	Parameter SAMPLE_COUNT bound to: 160 - type: integer 
+	Parameter WIDTH bound to: 11 - type: integer 
+	Parameter SUM_COUNT bound to: 10 - type: integer 
+	Parameter SUM_TIME bound to: 16 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'signal_modulator__parameterized0' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/signal_modulator.sv:7]
-	Parameter DATA_SIZE bound to: 8 - type: integer 
+	Parameter DATA_SIZE bound to: 16 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'PISO_buffer__parameterized0' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
-	Parameter WIDTH bound to: 8 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'PISO_buffer__parameterized0' (15#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'signal_modulator__parameterized0' (15#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/signal_modulator.sv:7]
-WARNING: [Synth 8-6014] Unused sequential element min_reg was removed.  [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:58]
-INFO: [Synth 8-6155] done synthesizing module 'peak_detection_v2' (16#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:8]
+	Parameter WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'PISO_buffer__parameterized0' (16#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'signal_modulator__parameterized0' (16#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/signal_modulator.sv:7]
+WARNING: [Synth 8-324] index 159 out of range [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+WARNING: [Synth 8-6014] Unused sequential element genblk1[158].samples_reg[159] was removed.  [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:85]
+WARNING: [Synth 8-6014] Unused sequential element genblk1[158].ref_samples_reg[159] was removed.  [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:88]
+WARNING: [Synth 8-6014] Unused sequential element genblk2[159].samples_dif_reg[159] was removed.  [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:95]
+WARNING: [Synth 8-6014] Unused sequential element min_reg was removed.  [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:62]
+INFO: [Synth 8-6155] done synthesizing module 'peak_detection_v2' (17#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:8]
 INFO: [Synth 8-6157] synthesizing module 'reciever_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/reciever_buffer.sv:4]
-	Parameter WIDTH bound to: 296 - type: integer 
+	Parameter WIDTH bound to: 104 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'ring_buffer__parameterized0' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/ring_buffer.sv:1]
-	Parameter SIZE bound to: 296 - type: integer 
-	Parameter WIDTH bound to: 296 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'ring_buffer__parameterized0' (16#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/ring_buffer.sv:1]
+	Parameter SIZE bound to: 104 - type: integer 
+	Parameter WIDTH bound to: 104 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_buffer__parameterized0' (17#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/ring_buffer.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'unsort' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/unsort.sv:4]
 	Parameter SIZE bound to: 8 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'unsort' (17#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/unsort.sv:4]
-INFO: [Synth 8-6155] done synthesizing module 'reciever_buffer' (18#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/reciever_buffer.sv:4]
-WARNING: [Synth 8-689] width (272) of port connection 'sys_packet' does not match port width (256) of module 'reciever_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:48]
+INFO: [Synth 8-6155] done synthesizing module 'unsort' (18#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/unsort.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'reciever_buffer' (19#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/reciever_buffer.sv:4]
+WARNING: [Synth 8-689] width (80) of port connection 'sys_packet' does not match port width (64) of module 'reciever_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:48]
 INFO: [Synth 8-6157] synthesizing module 'CDC_sync__parameterized1' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/CDC_sync.sv:1]
-	Parameter WIDTH bound to: 272 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'CDC_sync__parameterized1' (18#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/CDC_sync.sv:1]
+	Parameter WIDTH bound to: 80 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'CDC_sync__parameterized1' (19#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/CDC_sync.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'PIPO_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PIPO_buffer.sv:1]
-	Parameter SIZE bound to: 272 - type: integer 
+	Parameter SIZE bound to: 80 - type: integer 
 	Parameter WIDTH bound to: 8 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'PIPO_buffer' (19#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PIPO_buffer.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'PIPO_buffer' (20#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PIPO_buffer.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'uart_fast_write' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/uart_fast_write.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'PISO_buffer__parameterized1' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
 	Parameter WIDTH bound to: 11 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'PISO_buffer__parameterized1' (19#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'uart_fast_write' (20#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/uart_fast_write.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'reciever' (21#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'PISO_buffer__parameterized1' (20#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'uart_fast_write' (21#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/uart_fast_write.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'reciever' (22#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:3]
 WARNING: [Synth 8-7023] instance 'rx' of module 'reciever' has 5 connections declared, but only 4 given [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:24]
-INFO: [Synth 8-6157] synthesizing module 'MMCM' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/testbench/testbench.runs/synth_1/.Xil/Vivado-17032-DESKTOP-SN1TKTU/realtime/MMCM_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'MMCM' (22#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/testbench/testbench.runs/synth_1/.Xil/Vivado-17032-DESKTOP-SN1TKTU/realtime/MMCM_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'testbench' (23#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'MMCM' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/testbench/testbench.runs/synth_1/.Xil/Vivado-9200-DESKTOP-SN1TKTU/realtime/MMCM_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'MMCM' (23#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/testbench/testbench.runs/synth_1/.Xil/Vivado-9200-DESKTOP-SN1TKTU/realtime/MMCM_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'test_data' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/test_data.sv:4]
+	Parameter TEST_MESSAGE_LENGTH bound to: 177 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'PISO_buffer__parameterized2' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
+	Parameter WIDTH bound to: 177 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'PISO_buffer__parameterized2' (23#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'test_data' (24#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/test_data.sv:4]
+WARNING: [Synth 8-6104] Input port 'uart_txd_in' has an internal driver [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:42]
+INFO: [Synth 8-6155] done synthesizing module 'testbench' (25#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:3]
 WARNING: [Synth 8-3331] design reciever_buffer has unconnected port clear
-WARNING: [Synth 8-3331] design peak_detection_v2 has unconnected port signal[11]
-WARNING: [Synth 8-3331] design peak_detection_v2 has unconnected port signal[10]
-WARNING: [Synth 8-3331] design peak_detection_v2 has unconnected port signal[9]
-WARNING: [Synth 8-3331] design peak_detection_v2 has unconnected port signal[8]
 WARNING: [Synth 8-3331] design byte_packet_buffer has unconnected port reset
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 778.777 ; gain = 255.148
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 793.453 ; gain = 269.168
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -158,10 +174,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 778.777 ; gain = 255.148
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 793.453 ; gain = 269.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 778.777 ; gain = 255.148
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 793.453 ; gain = 269.168
 ---------------------------------------------------------------------------------
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -175,20 +191,20 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/testbench_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 946.102 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 953.863 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.131 . Memory (MB): peak = 946.102 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.079 . Memory (MB): peak = 953.863 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 946.102 ; gain = 422.473
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 953.863 ; gain = 429.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 946.102 ; gain = 422.473
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 953.863 ; gain = 429.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -197,13 +213,13 @@ Applied set_property IO_BUFFER_TYPE = NONE for sysclk. (constraint file  c:/User
 Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk. (constraint file  c:/Users/Steph/Documents/Dev/Verilog/BPSK/project_files/testbench/testbench.srcs/sources_1/ip/MMCM/MMCM/MMCM_in_context.xdc, line 4).
 Applied set_property DONT_TOUCH = true for clk_MMCM. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 946.102 ; gain = 422.473
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 953.863 ; gain = 429.578
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "signal" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "phase" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/signal_demodulator.sv:32]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/signal_demodulator.sv:52]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 946.102 ; gain = 422.473
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 953.863 ; gain = 429.578
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -218,46 +234,43 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input     28 Bit       Adders := 2     
 	   3 Input     28 Bit       Adders := 1     
-	  80 Input     14 Bit       Adders := 1     
-	   2 Input     10 Bit       Adders := 2     
-	   2 Input      8 Bit       Adders := 82    
-	   3 Input      8 Bit       Adders := 80    
-	   2 Input      7 Bit       Adders := 1     
-	   2 Input      6 Bit       Adders := 1     
+	   2 Input     15 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 161   
+	   3 Input     12 Bit       Adders := 159   
+	  10 Input     12 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 3     
 	   2 Input      5 Bit       Adders := 2     
-	   2 Input      4 Bit       Adders := 6     
+	   2 Input      4 Bit       Adders := 10    
 +---XORs : 
 	                8 Bit    Wide XORs := 2     
 +---Registers : 
-	              304 Bit    Registers := 1     
-	              280 Bit    Registers := 1     
-	              272 Bit    Registers := 4     
-	               32 Bit    Registers := 160   
+	              177 Bit    Registers := 1     
+	              120 Bit    Registers := 2     
+	               88 Bit    Registers := 1     
+	               80 Bit    Registers := 4     
 	               28 Bit    Registers := 1     
-	               14 Bit    Registers := 1     
-	               12 Bit    Registers := 6     
+	               16 Bit    Registers := 1     
+	               12 Bit    Registers := 483   
 	               11 Bit    Registers := 1     
-	               10 Bit    Registers := 2     
-	                8 Bit    Registers := 228   
-	                7 Bit    Registers := 1     
-	                6 Bit    Registers := 1     
+	                8 Bit    Registers := 182   
 	                5 Bit    Registers := 4     
-	                4 Bit    Registers := 6     
+	                4 Bit    Registers := 10    
 	                3 Bit    Registers := 152   
-	                1 Bit    Registers := 77    
+	                1 Bit    Registers := 81    
 +---Muxes : 
-	   2 Input    304 Bit        Muxes := 1     
-	   2 Input    272 Bit        Muxes := 2     
-	   2 Input     32 Bit        Muxes := 56    
-	   2 Input     12 Bit        Muxes := 3     
+	   2 Input    177 Bit        Muxes := 1     
+	   2 Input    120 Bit        Muxes := 1     
+	   2 Input     80 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 321   
 	  11 Input     12 Bit        Muxes := 3     
 	   2 Input     11 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 57    
 	  12 Input      5 Bit        Muxes := 3     
 	   2 Input      5 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 4     
 	   2 Input      3 Bit        Muxes := 56    
-	   2 Input      1 Bit        Muxes := 52    
+	   2 Input      1 Bit        Muxes := 29    
 	  11 Input      1 Bit        Muxes := 6     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -295,56 +308,56 @@ Detailed RTL Component Info :
 Module byte_packet_buffer 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input      6 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
 +---Registers : 
-	                8 Bit    Registers := 64    
-	                6 Bit    Registers := 1     
+	                8 Bit    Registers := 16    
+	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input      1 Bit        Muxes := 32    
+	   2 Input      1 Bit        Muxes := 8     
 Module comparison_base_r 
 Detailed RTL Component Info : 
 +---Registers : 
-	               32 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
 	                3 Bit    Registers := 2     
 	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 2     
 Module comparison_base_r__parameterized0 
 Detailed RTL Component Info : 
 +---Registers : 
-	               32 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
 	                3 Bit    Registers := 2     
 	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 2     
 Module comparison_merge_r__parameterized0 
 Detailed RTL Component Info : 
 +---Registers : 
-	               32 Bit    Registers := 16    
+	                8 Bit    Registers := 16    
 	                3 Bit    Registers := 16    
 	                1 Bit    Registers := 4     
 Module comparison_merge_r__parameterized3 
 Detailed RTL Component Info : 
 +---Registers : 
-	               32 Bit    Registers := 16    
+	                8 Bit    Registers := 16    
 	                3 Bit    Registers := 16    
 	                1 Bit    Registers := 4     
 Module comparison_merge_r 
 Detailed RTL Component Info : 
 +---Registers : 
-	               32 Bit    Registers := 32    
+	                8 Bit    Registers := 32    
 	                3 Bit    Registers := 32    
 	                1 Bit    Registers := 4     
 Module PISO_buffer 
 Detailed RTL Component Info : 
 +---Registers : 
-	              304 Bit    Registers := 1     
+	              120 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input    304 Bit        Muxes := 1     
+	   2 Input    120 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 1     
 Module wave_table_sine 
 Detailed RTL Component Info : 
@@ -366,11 +379,11 @@ Detailed RTL Component Info :
 Module signal_modulator 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     10 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
 	   2 Input      4 Bit       Adders := 1     
 +---Registers : 
 	               12 Bit    Registers := 1     
-	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
 	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 3     
 +---Muxes : 
@@ -383,34 +396,40 @@ Detailed RTL Component Info :
 +---Registers : 
 	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
+Module FIFO_buffer 
+Detailed RTL Component Info : 
++---Registers : 
+	              120 Bit    Registers := 1     
 Module signal_demodulator 
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     28 Bit       Adders := 2     
 	   3 Input     28 Bit       Adders := 1     
 	   2 Input      5 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 1     
 +---Registers : 
 	               28 Bit    Registers := 1     
 	                5 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input      5 Bit        Muxes := 1     
 Module PISO_buffer__parameterized0 
 Detailed RTL Component Info : 
 +---Registers : 
-	                8 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input      8 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 1     
 Module signal_modulator__parameterized0 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     10 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
 	   2 Input      4 Bit       Adders := 1     
 +---Registers : 
 	               12 Bit    Registers := 1     
-	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
 	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 3     
 +---Muxes : 
@@ -419,39 +438,43 @@ Detailed RTL Component Info :
 Module peak_detection_v2 
 Detailed RTL Component Info : 
 +---Adders : 
-	  80 Input     14 Bit       Adders := 1     
-	   2 Input      8 Bit       Adders := 82    
-	   3 Input      8 Bit       Adders := 80    
-	   2 Input      7 Bit       Adders := 1     
+	   2 Input     15 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 161   
+	   3 Input     12 Bit       Adders := 159   
+	  10 Input     12 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
 +---Registers : 
-	               14 Bit    Registers := 1     
-	                8 Bit    Registers := 160   
-	                7 Bit    Registers := 1     
+	               12 Bit    Registers := 477   
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 318   
 Module unsort 
 Detailed RTL Component Info : 
 +---Registers : 
-	               32 Bit    Registers := 8     
+	                8 Bit    Registers := 8     
 	                1 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input      1 Bit        Muxes := 8     
 Module reciever_buffer 
 Detailed RTL Component Info : 
 +---Registers : 
-	              280 Bit    Registers := 1     
+	               88 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 Module CDC_sync__parameterized1 
 Detailed RTL Component Info : 
 +---Registers : 
-	              272 Bit    Registers := 3     
+	               80 Bit    Registers := 3     
 +---Muxes : 
-	   2 Input    272 Bit        Muxes := 1     
+	   2 Input     80 Bit        Muxes := 1     
 Module PIPO_buffer 
 Detailed RTL Component Info : 
 +---Registers : 
-	              272 Bit    Registers := 1     
+	               80 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input    272 Bit        Muxes := 1     
+	   2 Input     80 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 1     
 Module PISO_buffer__parameterized1 
 Detailed RTL Component Info : 
@@ -470,6 +493,14 @@ Detailed RTL Component Info :
 +---Registers : 
 	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
+Module PISO_buffer__parameterized2 
+Detailed RTL Component Info : 
++---Registers : 
+	              177 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input    177 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -486,28 +517,36 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-4471] merging register 'sort_bottom/comparator_base/done_reg' into 'sort_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
-INFO: [Synth 8-4471] merging register 'merge_bottom/comparator_base/done_reg' into 'merge_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
-INFO: [Synth 8-4471] merging register '(null)[1].merge_surface_i/done_reg' into '(null)[0].merge_surface_i/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
-INFO: [Synth 8-4471] merging register 'sort_bottom/comparator_base/done_reg' into 'sort_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
-INFO: [Synth 8-4471] merging register 'merge_bottom/comparator_base/done_reg' into 'merge_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
-INFO: [Synth 8-4471] merging register '(null)[1].merge_surface_i/done_reg' into '(null)[0].merge_surface_i/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
+INFO: [Synth 8-4471] merging register 'comparison/sort_top/sort_bottom/comparator_base/done_reg' into 'comparison/sort_top/sort_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
+INFO: [Synth 8-4471] merging register 'comparison/sort_top/merge_bottom/comparator_base/done_reg' into 'comparison/sort_top/merge_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/sort_top/(null)[1].merge_surface_i/done_reg' into 'comparison/sort_top/(null)[0].merge_surface_i/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/sort_bottom/sort_bottom/comparator_base/done_reg' into 'comparison/sort_bottom/sort_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/sort_bottom/merge_bottom/comparator_base/done_reg' into 'comparison/sort_bottom/merge_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
+INFO: [Synth 8-4471] merging register 'comparison/sort_bottom/(null)[1].merge_surface_i/done_reg' into 'comparison/sort_bottom/(null)[0].merge_surface_i/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
+INFO: [Synth 8-4471] merging register 'comparison/sort_bottom/sorter_ready_reg' into 'comparison/sort_top/sorter_ready_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_merge_r.sv:33]
+INFO: [Synth 8-4471] merging register 'comparison/merge_top/sort_bottom/comparator_base/done_reg' into 'comparison/merge_top/sort_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
+INFO: [Synth 8-4471] merging register 'comparison/merge_top/merge_bottom/comparator_base/done_reg' into 'comparison/merge_top/merge_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/merge_top/(null)[1].merge_surface_i/done_reg' into 'comparison/merge_top/(null)[0].merge_surface_i/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/merge_bottom/sort_bottom/comparator_base/done_reg' into 'comparison/merge_bottom/sort_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
+INFO: [Synth 8-4471] merging register 'comparison/merge_bottom/merge_bottom/comparator_base/done_reg' into 'comparison/merge_bottom/merge_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/merge_bottom/(null)[1].merge_surface_i/done_reg' into 'comparison/merge_bottom/(null)[0].merge_surface_i/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/merge_bottom/sorter_ready_reg' into 'comparison/merge_top/sorter_ready_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_merge_r.sv:33]
+INFO: [Synth 8-4471] merging register 'comparison/(null)[1].merge_surface_i/done_reg' into 'comparison/(null)[0].merge_surface_i/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/(null)[2].merge_surface_i/done_reg' into 'comparison/(null)[0].merge_surface_i/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/(null)[3].merge_surface_i/done_reg' into 'comparison/(null)[0].merge_surface_i/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:54]
+INFO: [Synth 8-4471] merging register 'comparison/sort_bottom/sort_top/comparator_base/done_reg' into 'comparison/sort_top/sort_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
+INFO: [Synth 8-4471] merging register 'comparison/merge_bottom/sort_top/comparator_base/done_reg' into 'comparison/merge_top/sort_top/comparator_base/done_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv:30]
 INFO: [Synth 8-4471] merging register 'edge_pulser2/old_reg' into 'modulator_stream/reset_old_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/edge_pulse.sv:10]
-DSP Report: Generating DSP sum1, operation Mode is: A*B.
-DSP Report: operator sum1 is absorbed into DSP sum1.
-DSP Report: operator sum1 is absorbed into DSP sum1.
-DSP Report: Generating DSP sum1, operation Mode is: A*B.
-DSP Report: operator sum1 is absorbed into DSP sum1.
-DSP Report: operator sum1 is absorbed into DSP sum1.
-DSP Report: Generating DSP sum1, operation Mode is: (PCIN>>17)+A*B.
-DSP Report: operator sum1 is absorbed into DSP sum1.
-DSP Report: operator sum1 is absorbed into DSP sum1.
 INFO: [Synth 8-4471] merging register 'edge_pulser2/old_reg' into 'modulator_stream/reset_old_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/edge_pulse.sv:10]
-WARNING: [Synth 8-3331] design reciever_buffer has unconnected port clear
-WARNING: [Synth 8-3331] design peak_detection_v2 has unconnected port signal[11]
-WARNING: [Synth 8-3331] design peak_detection_v2 has unconnected port signal[10]
-WARNING: [Synth 8-3331] design peak_detection_v2 has unconnected port signal[9]
-WARNING: [Synth 8-3331] design peak_detection_v2 has unconnected port signal[8]
+DSP Report: Generating DSP demod/sum1, operation Mode is: A*B.
+DSP Report: operator demod/sum1 is absorbed into DSP demod/sum1.
+DSP Report: operator demod/sum1 is absorbed into DSP demod/sum1.
+DSP Report: Generating DSP demod/sum1, operation Mode is: A*B.
+DSP Report: operator demod/sum1 is absorbed into DSP demod/sum1.
+DSP Report: operator demod/sum1 is absorbed into DSP demod/sum1.
+DSP Report: Generating DSP demod/sum1, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator demod/sum1 is absorbed into DSP demod/sum1.
+DSP Report: operator demod/sum1 is absorbed into DSP demod/sum1.
 WARNING: [Synth 8-3331] design byte_packet_buffer has unconnected port reset
 INFO: [Synth 8-3886] merging instance 'tx/uart_rx/buffer/buffer_reg[10]' (FD) to 'tx/buffer_sync/meta_stable_reg[0]'
 INFO: [Synth 8-3886] merging instance 'tx/uart_rx/buffer/buffer_reg[3]' (FD) to 'tx/buffer_sync/meta_stable_reg[7]'
@@ -517,119 +556,164 @@ INFO: [Synth 8-3886] merging instance 'tx/uart_rx/buffer/buffer_reg[7]' (FD) to 
 INFO: [Synth 8-3886] merging instance 'tx/uart_rx/buffer/buffer_reg[6]' (FD) to 'tx/buffer_sync/meta_stable_reg[4]'
 INFO: [Synth 8-3886] merging instance 'tx/uart_rx/buffer/buffer_reg[5]' (FD) to 'tx/buffer_sync/meta_stable_reg[5]'
 INFO: [Synth 8-3886] merging instance 'tx/uart_rx/buffer/buffer_reg[4]' (FD) to 'tx/buffer_sync/meta_stable_reg[6]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[1][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[0][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[2][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[3][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[1][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[0][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[2][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[3][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[3][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[4][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[4][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[5][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[4][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[5][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[5][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[5][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[5][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[6][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[5][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[6][1]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/\index_in_buffer_reg[6][0] )
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[6][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[6][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[6][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[7][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[7][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[7][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[7][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[7][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[1][0]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[0][0]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][0]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[4][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][0]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[5][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[7][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[6][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][0]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[3][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[2][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[0][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[1][0]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[4][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[5][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[7][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[6][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[3][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[2][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[6][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[0][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[1][1]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[4][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[6][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[5][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[6][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[7][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[6][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[3][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[0][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/index_in_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/index_in_buffer_reg[1][2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/index_in_buffer_reg[1][2] )
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[0][0]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][0]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[1][0]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[3][0]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][0]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[0][1]'
 INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[3][0]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[1][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][0]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[0][0]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[1][0]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[0][1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[1][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[3][1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[3][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][1]'
 INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[0][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[3][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[3][2]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_bottom/\index_in_buffer_reg[3][2] )
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[1][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[3][2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[3][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[0][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/index_in_buffer_reg[1][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_done_reg' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/sort_done_reg'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/(null)[0].merge_surface_i/done_reg' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/(null)[0].merge_surface_i/done_reg'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/merge_surface_done_reg' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/merge_surface_done_reg'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/merge_top/comparator_base/done_reg' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/merge_top/comparator_base/done_reg'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/done_reg' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/done_reg'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/merge_top/sort_done_reg' (FDRE) to 'tx/packet_sorter/comparison/merge_bottom/sort_done_reg'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/merge_top/(null)[0].merge_surface_i/done_reg' (FDRE) to 'tx/packet_sorter/comparison/merge_bottom/(null)[0].merge_surface_i/done_reg'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/merge_top/merge_surface_done_reg' (FDRE) to 'tx/packet_sorter/comparison/merge_bottom/merge_surface_done_reg'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/merge_top/merge_top/comparator_base/done_reg' (FDRE) to 'tx/packet_sorter/comparison/merge_bottom/merge_top/comparator_base/done_reg'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/merge_top/done_reg' (FDRE) to 'tx/packet_sorter/comparison/merge_bottom/done_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_top/index_in_buffer_reg[1][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_bottom/index_in_buffer_reg[1][2] )
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_bottom/comparator_base/out_a_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_bottom/comparator_base/out_b_index_reg[1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_top/comparator_base/out_a_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_top/comparator_base/out_a_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_top/comparator_base/out_b_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_top/comparator_base/out_a_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_top/comparator_base/out_b_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_top/comparator_base/out_a_index_reg[1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_b_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_a_index_reg[1]'
 INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_a_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_a_index_reg[2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_top/comparator_base/out_a_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_top/comparator_base/out_b_index_reg[1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_b_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_a_index_reg[2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_a_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_b_index_reg[2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_top/comparator_base/out_a_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_top/comparator_base/out_b_index_reg[2]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_bottom/\sort_bottom/comparator_base/out_b_index_reg[2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_bottom/\sort_top/comparator_base/out_b_index_reg[2] )
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[0][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[3][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[2][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[3][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[1][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[3][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[3][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[3][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[3][2]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_bottom/\sort_index_buffer_reg[3][2] )
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/(null)[0].merge_surface_i/out_a_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/(null)[0].merge_surface_i/out_b_index_reg[2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/(null)[1].merge_surface_i/out_a_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/(null)[1].merge_surface_i/out_b_index_reg[2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[2][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[3][2]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_bottom/\(null)[0].merge_surface_i/out_b_index_reg[2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_bottom/\(null)[1].merge_surface_i/out_b_index_reg[2] )
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[3][2]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_bottom/\surface_index_buffer_reg[3][2] )
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/merge_bottom/comparator_base/out_a_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/merge_bottom/comparator_base/out_b_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_bottom/comparator_base/out_a_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_bottom/comparator_base/out_b_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_top/comparator_base/out_a_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_top/comparator_base/out_b_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_top/comparator_base/out_b_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_top/comparator_base/out_a_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_b_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_bottom/comparator_base/out_a_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[0][1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[1][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[2][1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[3][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[3][1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[3][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[3][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[1][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[1][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[0][1]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[1][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[1][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_index_buffer_reg[3][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[3][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[0][2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_top/sort_bottom/comparator_base/out_b_index_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_bottom/sort_top/comparator_base/out_a_index_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_bottom/sort_bottom/comparator_base/out_a_index_reg[2] )
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/sort_index_buffer_reg[0][2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_top/sort_index_buffer_reg[1][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_bottom/sort_index_buffer_reg[0][2] )
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/(null)[0].merge_surface_i/out_b_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/(null)[0].merge_surface_i/out_a_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/(null)[1].merge_surface_i/out_b_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/(null)[1].merge_surface_i/out_a_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[0][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[3][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[1][2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_bottom/(null)[1].merge_surface_i/out_a_index_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_bottom/(null)[0].merge_surface_i/out_a_index_reg[2] )
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/surface_index_buffer_reg[0][2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_bottom/surface_index_buffer_reg[0][2] )
 INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/merge_top/comparator_base/out_a_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/merge_top/comparator_base/out_b_index_reg[2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[0][2]' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[1][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/merge_bottom/comparator_base/out_b_index_reg[2]' (FDE) to 'tx/packet_sorter/comparison/sort_bottom/merge_bottom/comparator_base/out_a_index_reg[2]'
 INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[2][2]' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[3][2]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_bottom/\merge_bottom/comparator_base/out_b_index_reg[2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_bottom/\merge_top/comparator_base/out_b_index_reg[2] )
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[1][2]' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[3][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_index_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/sort_index_buffer_reg[1][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[1][2]' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[0][2]'
 INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_index_buffer_reg[2][2]' (FDE) to 'tx/packet_sorter/comparison/sort_index_buffer_reg[3][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_index_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/sort_index_buffer_reg[3][2]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/\sort_index_buffer_reg[3][2] )
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_index_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/sort_index_buffer_reg[0][2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_bottom/merge_top/comparator_base/out_b_index_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_bottom/merge_bottom/comparator_base/out_a_index_reg[2] )
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[3][2]' (FDRE) to 'tx/packet_sorter/comparison/sort_bottom/index_out_reg[0][2]'
+INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_index_buffer_reg[3][2]' (FDE) to 'tx/packet_sorter/comparison/sort_index_buffer_reg[0][2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/\comparison/sort_index_buffer_reg[0][2] )
 INFO: [Synth 8-3886] merging instance 'wave_table_sine:/signal_reg[0]' (FDE) to 'wave_table_sine:/signal_reg[3]'
 INFO: [Synth 8-3886] merging instance 'wave_table_sine:/signal_reg[7]' (FDE) to 'wave_table_sine:/signal_reg[10]'
 INFO: [Synth 8-3886] merging instance 'wave_table_sine:/signal_reg[8]' (FDE) to 'wave_table_sine:/signal_reg[10]'
 INFO: [Synth 8-3886] merging instance 'wave_table_sine:/signal_reg[9]' (FDE) to 'wave_table_sine:/signal_reg[10]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (wave_table_sine:/\signal_reg[11] )
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[271]' (FDE) to 'rx/PIPO/buffer_reg[270]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[270]' (FDE) to 'rx/PIPO/buffer_reg[269]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[269]' (FDE) to 'rx/PIPO/buffer_reg[268]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[268]' (FDE) to 'rx/PIPO/buffer_reg[267]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[267]' (FDE) to 'rx/PIPO/buffer_reg[266]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[266]' (FDE) to 'rx/PIPO/buffer_reg[265]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[265]' (FDE) to 'rx/PIPO/buffer_reg[264]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (rx/PIPO/\buffer_reg[264] )
-INFO: [Synth 8-3886] merging instance 'rx/demod/sine_table/signal_reg[0]' (FDE) to 'rx/demod/sine_table/signal_reg[3]'
-INFO: [Synth 8-3886] merging instance 'rx/demod/sine_table/signal_reg[7]' (FDE) to 'rx/demod/sine_table/signal_reg[10]'
-INFO: [Synth 8-3886] merging instance 'rx/demod/sine_table/signal_reg[8]' (FDE) to 'rx/demod/sine_table/signal_reg[10]'
-INFO: [Synth 8-3886] merging instance 'rx/demod/sine_table/signal_reg[9]' (FDE) to 'rx/demod/sine_table/signal_reg[10]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (rx/demod/\sine_table/signal_reg[11] )
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[264]' (FDE) to 'rx/PIPO/buffer_reg[263]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[263]' (FDE) to 'rx/PIPO/buffer_reg[262]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[262]' (FDE) to 'rx/PIPO/buffer_reg[261]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[261]' (FDE) to 'rx/PIPO/buffer_reg[260]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[260]' (FDE) to 'rx/PIPO/buffer_reg[259]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[259]' (FDE) to 'rx/PIPO/buffer_reg[258]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[258]' (FDE) to 'rx/PIPO/buffer_reg[257]'
-INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[257]' (FDE) to 'rx/PIPO/buffer_reg[256]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (rx/PIPO/\buffer_reg[256] )
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[0][0]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][0]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[1][0]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[3][0]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][0]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[0][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[0][1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[1][1]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_top/\index_in_buffer_reg[1][1] )
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[3][1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[0][2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[1][2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[3][2]' (FDE) to 'tx/packet_sorter/comparison/sort_top/index_in_buffer_reg[2][2]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_bottom/comparator_base/out_a_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_bottom/comparator_base/out_b_index_reg[1]'
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_top/comparator_base/out_a_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_bottom/comparator_base/out_b_index_reg[2]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_top/\sort_bottom/comparator_base/out_b_index_reg[1] )
-INFO: [Synth 8-3886] merging instance 'tx/packet_sorter/comparison/sort_top/sort_top/comparator_base/out_b_index_reg[1]' (FDE) to 'tx/packet_sorter/comparison/sort_top/sort_bottom/comparator_base/out_b_index_reg[2]'
+INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[79]' (FDE) to 'rx/PIPO/buffer_reg[78]'
+INFO: [Synth 8-3886] merging instance 'rx/PIPO/buffer_reg[78]' (FDE) to 'rx/PIPO/buffer_reg[77]'
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (tx/packet_sorter/comparison/sort_top/\sort_index_buffer_reg[1][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rx/\PIPO/buffer_reg[72] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rx/\demod/sine_table/signal_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (rx/\PIPO/buffer_reg[64] )
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[14]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[13]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[12]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[11]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[10]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[9]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[8]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[7]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[6]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[5]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[4]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[3]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[2]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[1]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'rx/peak_detection/sum_reg[0]__0/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/peak_detection_v2.sv:61]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:45 . Memory (MB): peak = 946.102 ; gain = 422.473
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 953.863 ; gain = 429.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -660,13 +744,14 @@ Start Applying XDC Timing Constraints
 INFO: [Synth 8-5578] Moved timing constraint from pin 'clk_MMCM/clk_carrier' to pin 'clk_MMCM/bbstub_clk_carrier/O'
 INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:01:03 . Memory (MB): peak = 946.102 ; gain = 422.473
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:00:51 . Memory (MB): peak = 953.863 ; gain = 429.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-326] inferred exception to break timing loop: 'set_false_path -through i_1/i_0/O'
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:01:07 . Memory (MB): peak = 964.734 ; gain = 441.105
+Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:54 . Memory (MB): peak = 961.199 ; gain = 436.914
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -678,7 +763,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:59 ; elapsed = 00:01:15 . Memory (MB): peak = 994.070 ; gain = 470.441
+Finished Technology Mapping : Time (s): cpu = 00:00:50 ; elapsed = 00:00:56 . Memory (MB): peak = 963.414 ; gain = 439.129
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -702,20 +787,24 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:02 ; elapsed = 00:01:19 . Memory (MB): peak = 997.855 ; gain = 474.227
+Finished IO Insertion : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 967.219 ; gain = 442.934
 ---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin sysclk with 1st driver pin 'sysclk' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:3]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin sysclk with 2nd driver pin 'i_0/O' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:11]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin uart_txd_in with 1st driver pin 'uart_txd_in_IBUF_inst/O' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/testbench.sv:3]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin uart_txd_in with 2nd driver pin 'data/debug_serial/data_reg[0]/Q' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:17]
 
 Report Check Netlist: 
 +------+------------------+-------+---------+-------+------------------+
 |      |Item              |Errors |Warnings |Status |Description       |
 +------+------------------+-------+---------+-------+------------------+
-|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
+|1     |multi_driven_nets |      0|        2|Failed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:02 ; elapsed = 00:01:19 . Memory (MB): peak = 997.855 ; gain = 474.227
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 967.219 ; gain = 442.934
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -727,25 +816,40 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:03 ; elapsed = 00:01:21 . Memory (MB): peak = 997.855 ; gain = 474.227
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 967.219 ; gain = 442.934
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:03 ; elapsed = 00:01:21 . Memory (MB): peak = 997.855 ; gain = 474.227
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 967.219 ; gain = 442.934
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:04 ; elapsed = 00:01:21 . Memory (MB): peak = 997.855 ; gain = 474.227
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 967.219 ; gain = 442.934
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:04 ; elapsed = 00:01:21 . Memory (MB): peak = 997.855 ; gain = 474.227
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 967.219 ; gain = 442.934
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+-----------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                          | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+-----------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|reciever    | demod/signal_FIFO/buffer_reg[119] | 10     | 12    | NO           | NO                 | YES               | 12     | 0       | 
+|testbench   | data/debug_serial/data_reg[175]   | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
++------------+-----------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -763,133 +867,139 @@ Report Cell Usage:
 |      |Cell    |Count |
 +------+--------+------+
 |1     |MMCM    |     1|
-|2     |BUFG    |     1|
-|3     |CARRY4  |   426|
+|2     |BUFG    |     2|
+|3     |CARRY4  |    61|
 |4     |DSP48E1 |     3|
-|5     |LUT1    |    25|
-|6     |LUT2    |   809|
-|7     |LUT3    |  2659|
-|8     |LUT4    |  1260|
-|9     |LUT5    |    44|
-|10    |LUT6    |   401|
-|11    |MUXF7   |    35|
-|12    |FDRE    |  8683|
-|13    |FDSE    |     6|
-|14    |IBUF    |     1|
-|15    |OBUF    |     2|
+|5     |LUT1    |    34|
+|6     |LUT2    |   150|
+|7     |LUT3    |   615|
+|8     |LUT4    |   455|
+|9     |LUT5    |    34|
+|10    |LUT6    |    63|
+|11    |MUXF7   |    11|
+|12    |SRL16E  |    20|
+|13    |FDRE    |  2500|
+|14    |FDSE    |    83|
+|15    |IBUF    |     1|
+|16    |OBUF    |     2|
 +------+--------+------+
 
 Report Instance Areas: 
 +------+--------------------------------------+--------------------------------------+------+
 |      |Instance                              |Module                                |Cells |
 +------+--------------------------------------+--------------------------------------+------+
-|1     |top                                   |                                      | 14356|
-|2     |  tx                                  |transmitter                           |  9549|
-|3     |    buffer                            |byte_packet_buffer                    |   561|
-|4     |      buffer_edge                     |edge_pulse_46                         |     2|
-|5     |    packet_sorter                     |sorter                                |  8232|
-|6     |      comparison                      |comparison_merge_r                    |  8231|
-|7     |        \(null)[0].merge_surface_i    |comparison_base_r                     |   447|
-|8     |        \(null)[1].merge_surface_i    |comparison_base_r_4                   |   446|
-|9     |        \(null)[2].merge_surface_i    |comparison_base_r_5                   |   177|
-|10    |        \(null)[3].merge_surface_i    |comparison_base_r_6                   |   179|
-|11    |        merge_bottom                  |comparison_merge_r__parameterized0    |  1491|
-|12    |          \(null)[0].merge_surface_i  |comparison_base_r_36                  |   111|
-|13    |          \(null)[1].merge_surface_i  |comparison_base_r_37                  |   106|
-|14    |          merge_bottom                |comparison_merge_r__parameterized1_38 |   176|
-|15    |            comparator_base           |comparison_base_r_45                  |   176|
-|16    |          merge_top                   |comparison_merge_r__parameterized1_39 |   179|
-|17    |            comparator_base           |comparison_base_r_44                  |   179|
-|18    |          sort_bottom                 |comparison_merge_r__parameterized2_40 |   175|
-|19    |            comparator_base           |comparison_base_r__parameterized0_43  |   175|
-|20    |          sort_top                    |comparison_merge_r__parameterized1_41 |   178|
-|21    |            comparator_base           |comparison_base_r_42                  |   178|
-|22    |        merge_top                     |comparison_merge_r__parameterized0_7  |  1492|
-|23    |          \(null)[0].merge_surface_i  |comparison_base_r_26                  |   111|
-|24    |          \(null)[1].merge_surface_i  |comparison_base_r_27                  |   106|
-|25    |          merge_bottom                |comparison_merge_r__parameterized1_28 |   176|
-|26    |            comparator_base           |comparison_base_r_35                  |   176|
-|27    |          merge_top                   |comparison_merge_r__parameterized1_29 |   179|
-|28    |            comparator_base           |comparison_base_r_34                  |   179|
-|29    |          sort_bottom                 |comparison_merge_r__parameterized2_30 |   176|
-|30    |            comparator_base           |comparison_base_r__parameterized0_33  |   176|
-|31    |          sort_top                    |comparison_merge_r__parameterized1_31 |   178|
-|32    |            comparator_base           |comparison_base_r_32                  |   178|
-|33    |        sort_bottom                   |comparison_merge_r__parameterized3    |  1445|
-|34    |          \(null)[0].merge_surface_i  |comparison_base_r__parameterized0_16  |   109|
-|35    |          \(null)[1].merge_surface_i  |comparison_base_r__parameterized0_17  |   106|
-|36    |          merge_bottom                |comparison_merge_r__parameterized2_18 |   175|
-|37    |            comparator_base           |comparison_base_r__parameterized0_25  |   175|
-|38    |          merge_top                   |comparison_merge_r__parameterized2_19 |   175|
-|39    |            comparator_base           |comparison_base_r__parameterized0_24  |   175|
-|40    |          sort_bottom                 |comparison_merge_r__parameterized1_20 |   168|
-|41    |            comparator_base           |comparison_base_r_23                  |   168|
-|42    |          sort_top                    |comparison_merge_r__parameterized2_21 |   172|
-|43    |            comparator_base           |comparison_base_r__parameterized0_22  |   172|
-|44    |        sort_top                      |comparison_merge_r__parameterized0_8  |  1457|
-|45    |          \(null)[0].merge_surface_i  |comparison_base_r_9                   |   111|
-|46    |          \(null)[1].merge_surface_i  |comparison_base_r_10                  |   110|
-|47    |          merge_bottom                |comparison_merge_r__parameterized1    |   176|
-|48    |            comparator_base           |comparison_base_r_15                  |   176|
-|49    |          merge_top                   |comparison_merge_r__parameterized1_11 |   176|
-|50    |            comparator_base           |comparison_base_r_14                  |   176|
-|51    |          sort_bottom                 |comparison_merge_r__parameterized2    |   169|
-|52    |            comparator_base           |comparison_base_r__parameterized0     |   169|
-|53    |          sort_top                    |comparison_merge_r__parameterized1_12 |   173|
-|54    |            comparator_base           |comparison_base_r_13                  |   173|
-|55    |      sorter_edge                     |edge_pulse_3                          |     1|
-|56    |    modulator                         |signal_modulator                      |   689|
+|1     |top                                   |                                      |  4035|
+|2     |  tx                                  |transmitter                           |  2971|
+|3     |    buffer                            |byte_packet_buffer                    |   148|
+|4     |      buffer_edge                     |edge_pulse_48                         |     2|
+|5     |    packet_sorter                     |sorter                                |  2441|
+|6     |      comparison                      |comparison_merge_r                    |  2440|
+|7     |        \(null)[0].merge_surface_i    |comparison_base_r                     |    56|
+|8     |        \(null)[1].merge_surface_i    |comparison_base_r_6                   |    53|
+|9     |        \(null)[2].merge_surface_i    |comparison_base_r_7                   |    53|
+|10    |        \(null)[3].merge_surface_i    |comparison_base_r_8                   |    52|
+|11    |        merge_bottom                  |comparison_merge_r__parameterized0    |   505|
+|12    |          \(null)[0].merge_surface_i  |comparison_base_r_38                  |    58|
+|13    |          \(null)[1].merge_surface_i  |comparison_base_r_39                  |    53|
+|14    |          merge_bottom                |comparison_merge_r__parameterized1_40 |    53|
+|15    |            comparator_base           |comparison_base_r_47                  |    53|
+|16    |          merge_top                   |comparison_merge_r__parameterized1_41 |    56|
+|17    |            comparator_base           |comparison_base_r_46                  |    56|
+|18    |          sort_bottom                 |comparison_merge_r__parameterized2_42 |    53|
+|19    |            comparator_base           |comparison_base_r__parameterized0_45  |    53|
+|20    |          sort_top                    |comparison_merge_r__parameterized1_43 |    53|
+|21    |            comparator_base           |comparison_base_r_44                  |    53|
+|22    |        merge_top                     |comparison_merge_r__parameterized0_9  |   502|
+|23    |          \(null)[0].merge_surface_i  |comparison_base_r_28                  |    53|
+|24    |          \(null)[1].merge_surface_i  |comparison_base_r_29                  |    53|
+|25    |          merge_bottom                |comparison_merge_r__parameterized1_30 |    53|
+|26    |            comparator_base           |comparison_base_r_37                  |    53|
+|27    |          merge_top                   |comparison_merge_r__parameterized1_31 |    53|
+|28    |            comparator_base           |comparison_base_r_36                  |    53|
+|29    |          sort_bottom                 |comparison_merge_r__parameterized2_32 |    54|
+|30    |            comparator_base           |comparison_base_r__parameterized0_35  |    54|
+|31    |          sort_top                    |comparison_merge_r__parameterized1_33 |    57|
+|32    |            comparator_base           |comparison_base_r_34                  |    57|
+|33    |        sort_bottom                   |comparison_merge_r__parameterized3    |   444|
+|34    |          \(null)[0].merge_surface_i  |comparison_base_r__parameterized0_18  |    52|
+|35    |          \(null)[1].merge_surface_i  |comparison_base_r__parameterized0_19  |    50|
+|36    |          merge_bottom                |comparison_merge_r__parameterized2_20 |    50|
+|37    |            comparator_base           |comparison_base_r__parameterized0_27  |    50|
+|38    |          merge_top                   |comparison_merge_r__parameterized2_21 |    51|
+|39    |            comparator_base           |comparison_base_r__parameterized0_26  |    51|
+|40    |          sort_bottom                 |comparison_merge_r__parameterized1_22 |    44|
+|41    |            comparator_base           |comparison_base_r_25                  |    44|
+|42    |          sort_top                    |comparison_merge_r__parameterized2_23 |    44|
+|43    |            comparator_base           |comparison_base_r__parameterized0_24  |    44|
+|44    |        sort_top                      |comparison_merge_r__parameterized0_10 |   446|
+|45    |          \(null)[0].merge_surface_i  |comparison_base_r_11                  |    48|
+|46    |          \(null)[1].merge_surface_i  |comparison_base_r_12                  |    49|
+|47    |          merge_bottom                |comparison_merge_r__parameterized1    |    50|
+|48    |            comparator_base           |comparison_base_r_17                  |    50|
+|49    |          merge_top                   |comparison_merge_r__parameterized1_13 |    49|
+|50    |            comparator_base           |comparison_base_r_16                  |    49|
+|51    |          sort_bottom                 |comparison_merge_r__parameterized2    |    45|
+|52    |            comparator_base           |comparison_base_r__parameterized0     |    45|
+|53    |          sort_top                    |comparison_merge_r__parameterized1_14 |    50|
+|54    |            comparator_base           |comparison_base_r_15                  |    50|
+|55    |      sorter_edge                     |edge_pulse_5                          |     1|
+|56    |    modulator                         |signal_modulator                      |   315|
 |57    |      sine_table                      |wave_table_sine__2                    |    14|
 |58    |      phase_shifter                   |phase_table__2                        |     9|
-|59    |      edge_pulser                     |edge_pulse_2                          |     2|
-|60    |      modulator_stream                |PISO_buffer                           |   617|
+|59    |      edge_pulser                     |edge_pulse_4                          |     2|
+|60    |      modulator_stream                |PISO_buffer                           |   247|
 |61    |    buffer_sync                       |CDC_sync                              |    38|
-|62    |    clk_divider                       |clock_divider_1                       |    11|
+|62    |    clk_divider                       |clock_divider_3                       |    11|
 |63    |    uart_rx                           |uart_fast_read                        |    14|
 |64    |      buffer                          |ring_buffer                           |     5|
 |65    |    write_sync                        |CDC_sync__parameterized0              |     4|
-|66    |  rx                                  |reciever                              |  4803|
-|67    |    PIPO                              |PIPO_buffer                           |   261|
-|68    |      reset_p                         |edge_pulse_0                          |     2|
-|69    |    buffer                            |reciever_buffer                       |  1269|
-|70    |      buffer__0                       |ring_buffer__parameterized0           |   299|
-|71    |      unsorter                        |unsort                                |   689|
-|72    |        reset_edge                    |edge_pulse                            |    13|
-|73    |    clock2                            |clock_divider                         |    11|
-|74    |    demod                             |signal_demodulator                    |   176|
+|66    |  rx                                  |reciever                              |   862|
+|67    |    PIPO                              |PIPO_buffer                           |    69|
+|68    |      reset_p                         |edge_pulse_2                          |     2|
+|69    |    buffer                            |reciever_buffer                       |   425|
+|70    |      buffer                          |ring_buffer__parameterized0           |   107|
+|71    |      unsorter                        |unsort                                |   229|
+|72    |        reset_edge                    |edge_pulse_1                          |    12|
+|73    |    clock2                            |clock_divider_0                       |    11|
+|74    |    demod                             |signal_demodulator                    |   211|
 |75    |      phase_shifter                   |phase_table__3                        |    12|
-|76    |      sine_table                      |wave_table_sine__3                    |     8|
-|77    |    peak_detection                    |peak_detection_v2                     |  3050|
-|78    |      ref_signal                      |signal_modulator__parameterized0      |    81|
-|79    |        sine_table                    |wave_table_sine                       |    14|
-|80    |        phase_shifter                 |phase_table                           |     9|
-|81    |        modulator_stream              |PISO_buffer__parameterized0           |    15|
-|82    |    uart_out                          |uart_fast_write                       |    35|
-|83    |      PISO                            |PISO_buffer__parameterized1           |    24|
+|76    |      signal_FIFO                     |FIFO_buffer                           |    24|
+|77    |      sine_table                      |wave_table_sine__3                    |     8|
+|78    |    peak_detection                    |peak_detection_v2                     |   109|
+|79    |      ref_signal                      |signal_modulator__parameterized0      |    78|
+|80    |        sine_table                    |wave_table_sine                       |    14|
+|81    |        phase_shifter                 |phase_table                           |     9|
+|82    |        modulator_stream              |PISO_buffer__parameterized0           |    25|
+|83    |    uart_out                          |uart_fast_write                       |    36|
+|84    |      PISO                            |PISO_buffer__parameterized1           |    24|
+|85    |  data                                |test_data                             |   196|
+|86    |    debug_serial                      |PISO_buffer__parameterized2           |   181|
+|87    |    divider1                          |clock_divider                         |    11|
+|88    |    pulser                            |edge_pulse                            |     4|
 +------+--------------------------------------+--------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:04 ; elapsed = 00:01:21 . Memory (MB): peak = 997.855 ; gain = 474.227
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 967.219 ; gain = 442.934
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:52 ; elapsed = 00:01:14 . Memory (MB): peak = 997.855 ; gain = 306.902
-Synthesis Optimization Complete : Time (s): cpu = 00:01:04 ; elapsed = 00:01:21 . Memory (MB): peak = 997.855 ; gain = 474.227
+Synthesis finished with 0 errors, 49 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:40 ; elapsed = 00:00:54 . Memory (MB): peak = 967.219 ; gain = 282.523
+Synthesis Optimization Complete : Time (s): cpu = 00:00:53 ; elapsed = 00:00:59 . Memory (MB): peak = 967.219 ; gain = 442.934
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 464 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 75 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 997.855 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 967.219 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-217 Infos, 21 Warnings, 0 Critical Warnings and 0 Errors encountered.
+236 Infos, 20 Warnings, 49 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:12 ; elapsed = 00:01:33 . Memory (MB): peak = 997.855 ; gain = 705.754
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 997.855 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:59 ; elapsed = 00:01:07 . Memory (MB): peak = 967.219 ; gain = 675.988
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 967.219 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/testbench/testbench.runs/synth_1/testbench.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file testbench_utilization_synth.rpt -pb testbench_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Jul  7 16:18:09 2020...
+INFO: [Common 17-206] Exiting Vivado at Thu Jul  9 18:04:37 2020...

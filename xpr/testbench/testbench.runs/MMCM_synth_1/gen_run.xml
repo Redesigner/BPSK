@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="MMCM_synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1594152606">
+<GenRun Id="MMCM_synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1594331019">
   <File Type="PA-TCL" Name="MMCM.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="MMCM_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="MMCM_reports.tcl"/>
   <File Type="RDS-RDS" Name="MMCM.vds"/>
+  <File Type="RDS-UTIL" Name="MMCM_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="MMCM_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="MMCM.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="MMCM_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="MMCM_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/MMCM">
     <File Path="$PPRDIR/../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM/MMCM.xci">
       <FileInfo>
