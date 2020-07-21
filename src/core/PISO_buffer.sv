@@ -17,7 +17,7 @@ module PISO_buffer #(WIDTH = 32)
             data <= {<<{parallel}};
         end
         else if(active) begin
-            data <= data[WIDTH - 1] | (data << 1);
+            data <= (data << WIDTH - 1) | (data >> 1);
         end
     end
 

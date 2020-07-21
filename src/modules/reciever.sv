@@ -3,38 +3,39 @@
 module reciever
     (
         input wire sysclk,
-        input wire clk_carrier,
         input wire [DATA_WIDTH:1] pio,
-
-        output wire debug,
-        output wire uart_rxd_out
+        output wire uart_rxd_out,
+        output wire led0,
+        output wire led1,
+        output wire pio2
     );
 
     wire [PACKET_WIDTH * 8 - 1: 0] sys_packet;
     wire [PACKET_WIDTH * 8 - 1: 0] sys_packet_o;
     wire [7:0] uart_word;
     wire [DATA_WIDTH - 1:0] wave;
+    wire valid_out;
     assign wave = pio[DATA_WIDTH:1];
     clock_divider #(12) clock2(sysclk, clk_baud);
-    
+    reg led0_reg = 1'b0;
+    reg led1_reg = 1'b0;
+    reg pio_reg = 1'b0;
     signal_demodulator demod
     (
         //IN
         .clk(clk_carrier),
-        .reset(peak_ready),
+        .reset(done_out_cross),
         .signal(wave),
         //OUT
         .guess(data_guess),
         .write(write)
     );
 
-    peak_detection_v2 peak_detection
+    cross_correlation_binary cross_binary
     (
-        //IN
         .clk(clk_carrier),
-        .signal(wave),
-        //OUT
-        .done(peak_ready)
+        .signal(wave >> (DATA_WIDTH - 1)),
+        .done(done_out_cross)
     );
 
     reciever_buffer buffer
@@ -46,7 +47,8 @@ module reciever
         .data_stream(data_guess),
         //OUT
         .sys_packet(sys_packet),
-        .send(done)
+        .send(done),
+        .valid(valid_out)
     );
 
     CDC_sync #(PACKET_WIDTH * 8) sync
@@ -80,11 +82,25 @@ module reciever
         .next(read),
         .rxd(uart_rxd_out)
     );
-assign debug = data_guess;
-  /*MMCM reciever_MMCM
-   (
+    always @(posedge clk_carrier) begin
+        if(write) begin
+            pio_reg <= data_guess;
+        end
+        if(done_out_cross) begin
+            led0_reg <= 1'b1;
+        end
+        if(valid_out) begin
+            led1_reg <= 1'b1;
+        end
+    end
+    
+    assign led0 = led0_reg;
+    assign led1 = led1_reg;
+    assign pio2 = pio_reg;
+    MMCM reciever_MMCM
+    (
     // Clock out ports
     .clk_carrier(clk_carrier),     // output clk_carrier
-   // Clock in ports
-    .clk_in_sys(sysclk)); */
+    // Clock in ports
+    .clk_in_sys(sysclk));
 endmodule

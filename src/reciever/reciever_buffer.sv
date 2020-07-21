@@ -8,7 +8,8 @@ module reciever_buffer
         input clear,                                //flips when buffer should be emptied
         input data_stream,                          //data coming from the demodulator
         output wire [PACKET_WIDTH_BITS - 16 - 1:0] sys_packet,  //completed packet
-        output wire send                            //high when packet is ready to send
+        output wire send, //high when packet is ready to send
+        output wire valid                           
     );
     localparam WIDTH = PACKET_WIDTH_BITS + SORTING_WIDTH;
 
@@ -43,6 +44,5 @@ module reciever_buffer
             send_in <= 0;
         end
     end
-    wire valid;
     assign valid = (buffer_out[7:0] == START_CHAR) && (buffer_out[WIDTH - 1:WIDTH - 8] == END_CHAR);
 endmodule

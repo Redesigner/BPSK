@@ -21,7 +21,7 @@ module PIPO_buffer#(SIZE = 16, WIDTH = 4)
             buffer <= data_in;
         end
         else if(read) begin
-            buffer <= buffer >> WIDTH;
+            buffer <= (buffer >> WIDTH) | (buffer << SIZE - WIDTH);
         end
     end
 

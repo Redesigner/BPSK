@@ -17,12 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 1
-set_param synth.incrementalSynthesisCache C:/Users/Steph/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-13224-DESKTOP-SN1TKTU/incrSyn
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -64,17 +58,21 @@ read_verilog -library xil_defaultlib -sv {
   C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/ring_buffer.sv
   C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/edge_pulse.sv
   C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PIPO_buffer.sv
-  C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/build/phase_table.sv
-  C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/build/wave_table_sine.sv
   C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/unsort.sv
   C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_merge_r.sv
   C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/register/comparison_base_r.sv
   C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/FIFO_buffer.sv
+  C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/cross_correlation_binary.sv
+  C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv
+  C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/modulator_v2.sv
 }
 read_ip -quiet C:/Users/Steph/Documents/Dev/Verilog/BPSK/project_files/testbench/testbench.srcs/sources_1/ip/MMCM/MMCM.xci
 set_property used_in_implementation false [get_files -all c:/Users/Steph/Documents/Dev/Verilog/BPSK/project_files/testbench/testbench.srcs/sources_1/ip/MMCM/MMCM_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/Steph/Documents/Dev/Verilog/BPSK/project_files/testbench/testbench.srcs/sources_1/ip/MMCM/MMCM.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/Steph/Documents/Dev/Verilog/BPSK/project_files/testbench/testbench.srcs/sources_1/ip/MMCM/MMCM_ooc.xdc]
+
+read_ip -quiet C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/demod_mult/demod_mult.xci
+set_property used_in_implementation false [get_files -all c:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/demod_mult/demod_mult_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -87,6 +85,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc {{C:/Users/Steph/Documents/Dev/Verilog/BPSK/xdc/cmod35t testbench.xdc}}
 set_property used_in_implementation false [get_files {{C:/Users/Steph/Documents/Dev/Verilog/BPSK/xdc/cmod35t testbench.xdc}}]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

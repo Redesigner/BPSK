@@ -3,14 +3,14 @@ import serial
 import time
 import binascii
 
-datarate = 1350000
+datarate = 1000000
 
-serial_port_tx = serial.Serial('COM4', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
-#serial_port_rx = serial.Serial('COM4', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=10)
+serial_port_tx = serial.Serial('COM6', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
+#serial_port_rx = serial.Serial('COM6', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
 
 message = b'hello there! this is a test message, it can now be of any length! isn\'t that great? try saying something here if you want to see how well it sends a message'
 serial_port_tx.write(message)
-message2 = serial_port_tx.read(3000)
+message2 = serial_port_tx.read(10000)
 
 message_b = hex(int.from_bytes(message, "little"))
 print("sending message: \n" + message_b)

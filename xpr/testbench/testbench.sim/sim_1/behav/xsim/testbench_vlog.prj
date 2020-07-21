@@ -1,6 +1,6 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  --include "../../../../../../src/build" --include "../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM" \
-"../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM/MMCM_sim_netlist.v" \
+"../../../../../../src/ip/demod_mult/demod_mult_sim_netlist.v" \
 
 sv xil_defaultlib  --include "../../../../../../src/build" --include "../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM" \
 "../../../../../../src/modules/testbench.sv" \
@@ -21,12 +21,18 @@ sv xil_defaultlib  --include "../../../../../../src/build" --include "../../../.
 "../../../../../../src/core/ring_buffer.sv" \
 "../../../../../../src/core/edge_pulse.sv" \
 "../../../../../../src/core/PIPO_buffer.sv" \
-"../../../../../../src/build/phase_table.sv" \
-"../../../../../../src/build/wave_table_sine.sv" \
 "../../../../../../src/sorting/unsort.sv" \
 "../../../../../../src/sorting/register/comparison_merge_r.sv" \
 "../../../../../../src/sorting/register/comparison_base_r.sv" \
 "../../../../../../src/core/FIFO_buffer.sv" \
+
+verilog xil_defaultlib  --include "../../../../../../src/build" --include "../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM" \
+"../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM/MMCM_sim_netlist.v" \
+
+sv xil_defaultlib  --include "../../../../../../src/build" --include "../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM" \
+"../../../../../../src/reciever/cross_correlation_binary.sv" \
+"../../../../../../src/core/tree_adder.sv" \
+"../../../../../../src/transmitter/modulator_v2.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

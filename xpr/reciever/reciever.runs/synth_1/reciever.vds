@@ -1,0 +1,652 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Tue Jul 21 17:16:01 2020
+# Process ID: 6460
+# Current directory: C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1
+# Command line: vivado.exe -log reciever.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source reciever.tcl
+# Log file: C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1/reciever.vds
+# Journal file: C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source reciever.tcl -notrace
+Command: synth_design -top reciever -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 3152 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 702.090 ; gain = 176.770
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'reciever' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'clock_divider' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/clock_divider.sv:1]
+	Parameter N bound to: 12 - type: integer 
+	Parameter WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clock_divider' (1#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/clock_divider.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'signal_demodulator' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/signal_demodulator.sv:4]
+	Parameter DELAY bound to: 10 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'demod_mult' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1/.Xil/Vivado-6460-DESKTOP-SN1TKTU/realtime/demod_mult_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'demod_mult' (2#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1/.Xil/Vivado-6460-DESKTOP-SN1TKTU/realtime/demod_mult_stub.v:6]
+WARNING: [Synth 8-689] width (32) of port connection 'A' does not match port width (12) of module 'demod_mult' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/signal_demodulator.sv:29]
+WARNING: [Synth 8-689] width (32) of port connection 'B' does not match port width (12) of module 'demod_mult' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/signal_demodulator.sv:30]
+INFO: [Synth 8-6157] synthesizing module 'PIPO_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PIPO_buffer.sv:1]
+	Parameter SIZE bound to: 120 - type: integer 
+	Parameter WIDTH bound to: 12 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'edge_pulse' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/edge_pulse.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'edge_pulse' (3#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/edge_pulse.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'PIPO_buffer' (4#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PIPO_buffer.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'FIFO_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/FIFO_buffer.sv:1]
+	Parameter WIDTH bound to: 12 - type: integer 
+	Parameter COUNT bound to: 10 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'FIFO_buffer' (5#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/FIFO_buffer.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'signal_demodulator' (6#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/signal_demodulator.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'cross_correlation_binary' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/cross_correlation_binary.sv:5]
+	Parameter SAMPLE_COUNT bound to: 40 - type: integer 
+	Parameter THRESHOLD bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'modulator_v2' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/modulator_v2.sv:4]
+	Parameter BITS bound to: 4 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'PISO_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
+	Parameter WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'PISO_buffer' (7#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
+WARNING: [Synth 8-6014] Unused sequential element data_reg_reg was removed.  [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/modulator_v2.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'modulator_v2' (8#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/transmitter/modulator_v2.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'tree_adder' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+	Parameter N bound to: 40 - type: integer 
+	Parameter WIDTH_IN bound to: 1 - type: integer 
+	Parameter WIDTH_OUT bound to: 6 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'tree_adder__parameterized0' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+	Parameter N bound to: 20 - type: integer 
+	Parameter WIDTH_IN bound to: 1 - type: integer 
+	Parameter WIDTH_OUT bound to: 5 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'tree_adder__parameterized1' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+	Parameter N bound to: 10 - type: integer 
+	Parameter WIDTH_IN bound to: 1 - type: integer 
+	Parameter WIDTH_OUT bound to: 4 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'tree_adder__parameterized2' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+	Parameter N bound to: 5 - type: integer 
+	Parameter WIDTH_IN bound to: 1 - type: integer 
+	Parameter WIDTH_OUT bound to: 3 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'tree_adder__parameterized3' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+	Parameter N bound to: 2 - type: integer 
+	Parameter WIDTH_IN bound to: 1 - type: integer 
+	Parameter WIDTH_OUT bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tree_adder__parameterized3' (9#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'tree_adder__parameterized2' (9#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'tree_adder__parameterized1' (9#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'tree_adder__parameterized0' (9#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'tree_adder' (9#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/tree_adder.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'cross_correlation_binary' (10#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/cross_correlation_binary.sv:5]
+WARNING: [Synth 8-689] width (12) of port connection 'signal' does not match port width (1) of module 'cross_correlation_binary' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:37]
+WARNING: [Synth 8-7023] instance 'cross_binary' of module 'cross_correlation_binary' has 4 connections declared, but only 3 given [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:34]
+INFO: [Synth 8-6157] synthesizing module 'reciever_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/reciever_buffer.sv:4]
+	Parameter WIDTH bound to: 104 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'ring_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/ring_buffer.sv:1]
+	Parameter SIZE bound to: 104 - type: integer 
+	Parameter WIDTH bound to: 104 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_buffer' (11#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/ring_buffer.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'unsort' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/unsort.sv:4]
+	Parameter SIZE bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'unsort' (12#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/sorting/unsort.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'reciever_buffer' (13#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/reciever_buffer.sv:4]
+WARNING: [Synth 8-689] width (80) of port connection 'sys_packet' does not match port width (64) of module 'reciever_buffer' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:49]
+INFO: [Synth 8-6157] synthesizing module 'CDC_sync' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/CDC_sync.sv:1]
+	Parameter WIDTH bound to: 80 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'CDC_sync' (14#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/CDC_sync.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'PIPO_buffer__parameterized0' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PIPO_buffer.sv:1]
+	Parameter SIZE bound to: 80 - type: integer 
+	Parameter WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'PIPO_buffer__parameterized0' (14#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PIPO_buffer.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'uart_fast_write' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/uart_fast_write.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'PISO_buffer__parameterized0' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
+	Parameter WIDTH bound to: 11 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'PISO_buffer__parameterized0' (14#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/core/PISO_buffer.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'uart_fast_write' (15#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/reciever/uart_fast_write.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'MMCM' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1/.Xil/Vivado-6460-DESKTOP-SN1TKTU/realtime/MMCM_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'MMCM' (16#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1/.Xil/Vivado-6460-DESKTOP-SN1TKTU/realtime/MMCM_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'reciever' (17#1) [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:3]
+WARNING: [Synth 8-3331] design reciever_buffer has unconnected port clear
+WARNING: [Synth 8-3331] design tree_adder__parameterized3 has unconnected port clk
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[9][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[8][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[7][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[6][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[5][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[4][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[3][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[2][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[1][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized1 has unconnected port data_in[0][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[19][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[18][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[17][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[16][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[15][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[14][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[13][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[12][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[11][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[10][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[9][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[8][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[7][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[6][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[5][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[4][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[3][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[2][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[1][0]
+WARNING: [Synth 8-3331] design tree_adder__parameterized0 has unconnected port data_in[0][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[39][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[38][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[37][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[36][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[35][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[34][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[33][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[32][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[31][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[30][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[29][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[28][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[27][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[26][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[25][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[24][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[23][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[22][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[21][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[20][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[19][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[18][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[17][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[16][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[15][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[14][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[13][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[12][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[11][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[10][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[9][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[8][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[7][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[6][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[5][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[4][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[3][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[2][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[1][0]
+WARNING: [Synth 8-3331] design tree_adder has unconnected port data_in[0][0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 766.863 ; gain = 241.543
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 766.863 ; gain = 241.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 766.863 ; gain = 241.543
+---------------------------------------------------------------------------------
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/MMCM/MMCM/MMCM_in_context.xdc] for cell 'reciever_MMCM'
+Finished Parsing XDC File [c:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/MMCM/MMCM/MMCM_in_context.xdc] for cell 'reciever_MMCM'
+Parsing XDC File [c:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/demod_mult/demod_mult/demod_mult_in_context.xdc] for cell 'demod/demod_slice'
+Finished Parsing XDC File [c:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/demod_mult/demod_mult/demod_mult_in_context.xdc] for cell 'demod/demod_slice'
+Parsing XDC File [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xdc/cmod35t reciever.xdc]
+Finished Parsing XDC File [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xdc/cmod35t reciever.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xdc/cmod35t reciever.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/reciever_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/reciever_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 902.406 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 902.406 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'demod/demod_slice' at clock pin 'CLK' is different from the actual clock period '7.407', this can lead to different synthesis results.
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for sysclk. (constraint file  c:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/MMCM/MMCM/MMCM_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk. (constraint file  c:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/MMCM/MMCM/MMCM_in_context.xdc, line 4).
+Applied set_property DONT_TOUCH = true for reciever_MMCM. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for demod/demod_slice. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+INFO: [Synth 8-223] decloning instance 'cross_binary/adder/left' (tree_adder__parameterized0) to 'cross_binary/adder/right'
+INFO: [Synth 8-223] decloning instance 'cross_binary/adder/left/left' (tree_adder__parameterized1) to 'cross_binary/adder/left/right'
+INFO: [Synth 8-223] decloning instance 'cross_binary/adder/left/left/left' (tree_adder__parameterized2) to 'cross_binary/adder/left/left/right'
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     13 Bit       Adders := 2     
+	   2 Input      6 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 6     
+	   2 Input      3 Bit       Adders := 1     
+	   3 Input      3 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 2     
++---XORs : 
+	   2 Input     40 Bit         XORs := 1     
++---XORs : 
+	                8 Bit    Wide XORs := 1     
++---Registers : 
+	              120 Bit    Registers := 4     
+	               88 Bit    Registers := 1     
+	               80 Bit    Registers := 4     
+	               40 Bit    Registers := 2     
+	               32 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
+	               11 Bit    Registers := 1     
+	                8 Bit    Registers := 8     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 6     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 20    
++---Muxes : 
+	   2 Input    120 Bit        Muxes := 3     
+	   2 Input     80 Bit        Muxes := 2     
+	   2 Input     12 Bit        Muxes := 2     
+	   2 Input     11 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 18    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module reciever 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 3     
+Module clock_divider 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module edge_pulse 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module PIPO_buffer 
+Detailed RTL Component Info : 
++---Registers : 
+	              120 Bit    Registers := 1     
++---Muxes : 
+	   2 Input    120 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module FIFO_buffer 
+Detailed RTL Component Info : 
++---Registers : 
+	              120 Bit    Registers := 1     
+Module signal_demodulator 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     13 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
+Module PISO_buffer 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module modulator_v2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 4     
+Module tree_adder__parameterized3 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 1     
+Module tree_adder__parameterized2 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      3 Bit       Adders := 1     
+Module tree_adder__parameterized1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+Module tree_adder__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 1     
+Module tree_adder 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 1     
+Module cross_correlation_binary 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input     40 Bit         XORs := 1     
++---Registers : 
+	               40 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module unsort 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 8     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 8     
+Module reciever_buffer 
+Detailed RTL Component Info : 
++---Registers : 
+	               88 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module CDC_sync 
+Detailed RTL Component Info : 
++---Registers : 
+	               80 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     80 Bit        Muxes := 1     
+Module PIPO_buffer__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	               80 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     80 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module PISO_buffer__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	               11 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module uart_fast_write 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	                8 Bit    Wide XORs := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-4471] merging register 'led0_reg_reg' into 'demod/started_reg' [C:/Users/Steph/Documents/Dev/Verilog/BPSK/src/modules/reciever.sv:90]
+INFO: [Synth 8-3886] merging instance 'cross_binary/reference/reset_old_reg' (FD) to 'demod/sine_table/reset_p/old_reg'
+INFO: [Synth 8-3886] merging instance 'buffer/buffer/buffer_reg[0]' (FDE) to 'pio_reg_reg'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5578] Moved timing constraint from pin 'reciever_MMCM/clk_carrier' to pin 'reciever_MMCM/bbstub_clk_carrier/O'
+INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+---------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                        | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+---------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|reciever    | demod/signal_buf_2_reg[11]      | 11     | 12    | NO           | YES                | YES               | 12     | 0       | 
+|reciever    | demod/sine_table/buffer_reg[70] | 4      | 5     | YES          | NO                 | YES               | 5      | 0       | 
+|reciever    | demod/sine_table/buffer_reg[59] | 6      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++------------+---------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |MMCM          |         1|
+|2     |demod_mult    |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |MMCM       |     1|
+|2     |demod_mult |     1|
+|3     |BUFG       |     1|
+|4     |CARRY4     |    26|
+|5     |LUT1       |    13|
+|6     |LUT2       |    87|
+|7     |LUT3       |    18|
+|8     |LUT4       |   321|
+|9     |LUT5       |    12|
+|10    |LUT6       |    38|
+|11    |MUXF7      |    11|
+|12    |SRL16E     |    18|
+|13    |FDRE       |   761|
+|14    |FDSE       |    69|
+|15    |IBUF       |    12|
+|16    |OBUF       |     4|
++------+-----------+------+
+
+Report Instance Areas: 
++------+-----------------------+----------------------------+------+
+|      |Instance               |Module                      |Cells |
++------+-----------------------+----------------------------+------+
+|1     |top                    |                            |  1424|
+|2     |  PIPO                 |PIPO_buffer__parameterized0 |    86|
+|3     |    reset_p            |edge_pulse_3                |     2|
+|4     |  buffer               |reciever_buffer             |   432|
+|5     |    buffer             |ring_buffer                 |   106|
+|6     |    unsorter           |unsort                      |   237|
+|7     |      reset_edge       |edge_pulse_2                |    12|
+|8     |  clock2               |clock_divider               |    11|
+|9     |  cross_binary         |cross_correlation_binary    |   515|
+|10    |    reference          |modulator_v2                |   515|
+|11    |      data_stream      |PISO_buffer                 |    10|
+|12    |      sine_table       |PIPO_buffer__2              |   242|
+|13    |        reset_p        |edge_pulse_1                |   122|
+|14    |      shift_sine_table |PIPO_buffer                 |   242|
+|15    |        reset_p        |edge_pulse_0                |   122|
+|16    |  demod                |signal_demodulator          |   325|
+|17    |    signal_FIFO        |FIFO_buffer                 |    24|
+|18    |    sine_table         |PIPO_buffer__3              |   127|
+|19    |      reset_p          |edge_pulse                  |     2|
+|20    |  uart_out             |uart_fast_write             |    35|
+|21    |    PISO               |PISO_buffer__parameterized0 |    24|
++------+-----------------------+----------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 905.395 ; gain = 380.074
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:24 . Memory (MB): peak = 905.395 ; gain = 241.543
+Synthesis Optimization Complete : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 905.395 ; gain = 380.074
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 37 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 913.680 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+67 Infos, 79 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 913.680 ; gain = 623.027
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 913.680 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/synth_1/reciever.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file reciever_utilization_synth.rpt -pb reciever_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Jul 21 17:16:39 2020...

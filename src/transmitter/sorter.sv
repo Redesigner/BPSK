@@ -40,7 +40,7 @@ module sorter
         data, indices, sorted
     );
 
-    assign sorted_packet_out = {>>{
+    assign sorted_packet_out = {<<{
         END_CHAR,
         indices,
         data,

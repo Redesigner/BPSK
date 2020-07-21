@@ -36,26 +36,18 @@ preamble = [1,0]*8
 
 sine_table = [0] * table_size
 for i in range(0, table_size):
-    sine_table[i] =  str(i) + " : begin\n signal <=" + str(int(((math.sin(factor * i)) + 1) * amplitude)) + ";\n end\n"
+    sine_table[i] = str(int(((math.sin(factor * i)) + 1) * amplitude))
 
-reference_table = [0] * (data_frame * len(preamble))
-for j in preamble:
-    for i in range(0, len(reference_table)):
-        if(j == 0):
-            reference_table[i] = int(math.sin(factor * (i % table_size)) * amplitude)
-        else:
-            reference_table[i] = int(math.sin(factor * (i % table_size)) * -amplitude)
+shifted_sine_table = [0] * table_size
+for i in range(0, table_size):
+    shifted_sine_table[i] = str(int(((math.sin(factor * i + math.pi)) + 1) * amplitude))
 
-phase_table_on = [0] * data_frame
-for i in range(0, data_frame):
-    phase_table_on[i] =  str(i) + " : begin\n phase <=" + str(i % wavelength) + ";\n end\n"
-phase_table_off = [0] * data_frame
-for i in range(0, data_frame):
-    phase_table_off[i] = str(i) + " : begin\n phase <=" + str((i + int(wavelength/2)) % wavelength) + ";\n end\n"
 
 max_value = int((2**4) * data_frame/2)
 
-sine_table_string = ''.join(map(str,sine_table))
+sine_table_string = ', '.join(map(str,sine_table))
+shifted_sine_table_string = ', '.join(map(str,shifted_sine_table))
+
 replacement_values = {
 "DATA_WIDTH":input_bits,
 "SINE_TABLE_SIZE": table_size,
@@ -64,10 +56,8 @@ replacement_values = {
 "AMPLITUDE": amplitude,
 
 "sine_table": sine_table_string,
-"phase_table_on": ''.join(map(str,phase_table_on)),
-"phase_table_off": ''.join(map(str,phase_table_off)),
+"shifted_sine_table": shifted_sine_table_string,
 "threshold": str(int(max_value * .99)), #because the values are int, the max value is the wave squared, times the number of samples
-"comparison_table": '{' + ','.join(map(str,reference_table)) + '}',
 "preamble": str(len(preamble)) + '\'b' + ''.join(map(str,preamble)),
 "preamble_length" : str(len(preamble))
 }

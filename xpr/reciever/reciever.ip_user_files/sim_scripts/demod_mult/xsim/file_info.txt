@@ -1,0 +1,2 @@
+demod_mult.vhd,vhdl,xil_defaultlib,../../../../../../src/ip/demod_mult/sim/demod_mult.vhd,
+glbl.v,Verilog,xil_defaultlib,glbl.v

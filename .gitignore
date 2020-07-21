@@ -2,3 +2,4 @@
 !/project_files/*.xpr
 *.log
 *.pb
+/mcs/*

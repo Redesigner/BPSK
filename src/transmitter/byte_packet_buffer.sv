@@ -1,5 +1,7 @@
 `include "../build/core_params.svh"
 
+localparam PACKET_WIDTH_RAW = PACKET_WIDTH - 2;
+
 module byte_packet_buffer
     (
         input wire clk,
@@ -11,7 +13,6 @@ module byte_packet_buffer
         output wire send                                 //the sys_packet is ready to be sent
     );
     //We need two bytes reserved for the start and end signal
-    localparam PACKET_WIDTH_RAW = PACKET_WIDTH - 2;
 
     reg [$clog2(PACKET_WIDTH_RAW):0] index = '0;
     reg [PACKET_WIDTH_RAW-1:0][7:0] buffer = '0;

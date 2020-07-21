@@ -1,0 +1,4 @@
+vhdl xil_defaultlib  \
+"../../../../../../src/ip/demod_mult/sim/demod_mult.vhd" \
+
+nosort

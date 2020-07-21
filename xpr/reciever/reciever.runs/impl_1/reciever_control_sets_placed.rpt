@@ -1,0 +1,102 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+| Date         : Tue Jul 21 17:17:34 2020
+| Host         : DESKTOP-SN1TKTU running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file reciever_control_sets_placed.rpt
+| Design       : reciever
+| Device       : xc7a35t
+-------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    24 |
+|    Minimum number of control sets                        |    24 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    56 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    24 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     8 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     8 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             130 |           38 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             115 |           20 |
+| Yes          | No                    | No                     |             371 |           81 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              48 |           11 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------------------+---------------------------------------------+------------------------------------+------------------+----------------+
+|           Clock Signal          |                Enable Signal                |          Set/Reset Signal          | Slice Load Count | Bel Load Count |
++---------------------------------+---------------------------------------------+------------------------------------+------------------+----------------+
+|  sysclk_IBUF                    |                                             |                                    |                1 |              1 |
+|  reciever_MMCM/inst/clk_carrier |                                             | buffer/buffer/E[0]                 |                1 |              1 |
+|  O_BUFG                         |                                             |                                    |                1 |              3 |
+|  sysclk_IBUF                    |                                             | clock2/clear                       |                1 |              4 |
+|  reciever_MMCM/inst/clk_carrier | demod/buffer_ready                          |                                    |                1 |              4 |
+|  reciever_MMCM/inst/clk_carrier | demod/buffer_delay                          |                                    |                1 |              4 |
+|  O_BUFG                         |                                             | uart_out/counter[3]_i_1__0_n_0     |                1 |              5 |
+|  reciever_MMCM/inst/clk_carrier | buffer/unsorter/reset_edge/started_reg_2[0] |                                    |                2 |              8 |
+|  reciever_MMCM/inst/clk_carrier | buffer/unsorter/reset_edge/started_reg_5[0] |                                    |                1 |              8 |
+|  reciever_MMCM/inst/clk_carrier | buffer/unsorter/reset_edge/started_reg_3[0] |                                    |                2 |              8 |
+|  reciever_MMCM/inst/clk_carrier | buffer/unsorter/reset_edge/started_reg_0[0] |                                    |                1 |              8 |
+|  reciever_MMCM/inst/clk_carrier | buffer/unsorter/reset_edge/started_reg_1[0] |                                    |                1 |              8 |
+|  reciever_MMCM/inst/clk_carrier | buffer/unsorter/reset_edge/E[0]             |                                    |                1 |              8 |
+|  reciever_MMCM/inst/clk_carrier | buffer/unsorter/reset_edge/started_reg_6[0] |                                    |                1 |              8 |
+|  reciever_MMCM/inst/clk_carrier | buffer/unsorter/reset_edge/started_reg_4[0] |                                    |                1 |              8 |
+|  O_BUFG                         | uart_out/PISO/data[10]_i_1_n_0              |                                    |                2 |             10 |
+|  O_BUFG                         | PIPO/reset_p/old_reg_0                      | PIPO/buffer[79]_i_1_n_0            |                3 |             16 |
+|  reciever_MMCM/inst/clk_carrier | demod/p_0_in                                |                                    |                8 |             32 |
+|  reciever_MMCM/inst/clk_carrier | buffer/unsorter/i0                          | buffer/unsorter/reset_edge/reset_o |                8 |             32 |
+|  O_BUFG                         | PIPO/reset_p/old_reg_0                      |                                    |               18 |             64 |
+|  reciever_MMCM/inst/clk_carrier | buffer/buffer/E[0]                          |                                    |               21 |             88 |
+|  reciever_MMCM/inst/clk_carrier |                                             | demod/sine_table/reset_p/old_reg_0 |               17 |            105 |
+|  reciever_MMCM/inst/clk_carrier | demod/phase_reg[4]_0[0]                     |                                    |               20 |            105 |
+|  reciever_MMCM/inst/clk_carrier |                                             |                                    |               36 |            144 |
++---------------------------------+---------------------------------------------+------------------------------------+------------------+----------------+
+
+

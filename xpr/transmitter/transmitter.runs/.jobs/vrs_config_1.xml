@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="clk_base_synth_1" LaunchDir="C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/transmitter/transmitter.runs/clk_base_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/transmitter/transmitter.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="clk_base_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

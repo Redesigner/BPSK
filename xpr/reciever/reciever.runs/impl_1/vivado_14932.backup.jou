@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Tue Jul 21 17:16:59 2020
+# Process ID: 14932
+# Current directory: C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/impl_1
+# Command line: vivado.exe -log reciever.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source reciever.tcl -notrace
+# Log file: C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/impl_1/reciever.vdi
+# Journal file: C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/reciever/reciever.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source reciever.tcl -notrace

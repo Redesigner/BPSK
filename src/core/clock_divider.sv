@@ -3,7 +3,7 @@ module clock_divider #(N = 10)
         input wire I,
         output reg O = 0
     );
-    parameter WIDTH = $clog2(N);
+    localparam WIDTH = $clog2(N);
     reg [WIDTH-1:0] index = '0;
 
     always @(posedge I) begin
