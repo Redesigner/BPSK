@@ -3,25 +3,35 @@ import serial
 import time
 import binascii
 
-datarate = 1000000
+def chunkstring(string, length):
+    return (string[0+i:length+i] for i in range(0, len(string), length))
 
-serial_port_tx = serial.Serial('COM6', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
-#serial_port_rx = serial.Serial('COM6', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
+datarate = 750000
 
-message = b'hello there! this is a test message, it can now be of any length! isn\'t that great? try saying something here if you want to see how well it sends a message'
+serial_port_tx = serial.Serial('COM4', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
+#serial_port_rx = serial.Serial('COM4', datarate, serial.EIGHTBITS, serial.PARITY_EVEN, serial.STOPBITS_ONE, timeout=1)
+
+data = 'hello!!!'
+message = data.encode('ascii')
+message_h = hex(int.from_bytes(message, "little"))
+message_b = ''.join(format(ord(i), 'b').zfill(8) for i in data) 
+message_length = len(message_b)
+print("sending message with length " + str(message_length) + " :" + str(message))
 serial_port_tx.write(message)
-message2 = serial_port_tx.read(10000)
 
-message_b = hex(int.from_bytes(message, "little"))
-print("sending message: \n" + message_b)
+message2 = serial_port_tx.read_until('00',int(message_length))
+message2_h = hex(int.from_bytes(message2, "little"))
+message2_b = ''.join(format(byte, '08b') for byte in message2)
+message2_length = len(message2_b)
+print("recieved message with length " + str(message2_length) + " :" + str(message2))
+print(' | '.join(chunkstring(str(message_b ), 8)) + " : sent")
+print(' | '.join(chunkstring(str(message2_b), 8)) + " : recieved")
 
-message2_b = hex(int.from_bytes(message2, "little"))
-print("recieved message: \n" + message2_b)
+diff = 0
+for i in range(min(len(message_b), len(message2_b))) :
+    if message_b[i] != message2_b[i] :
+        diff += 1
+err_rate = round((diff/message_length) * 100, 2)
 
-diff = int.from_bytes(message2, "little") ^ int.from_bytes(message, "little")
-errors = str(diff).count('1')
-message_length = len(format(int.from_bytes(message, "little"), 'b')) + 1
-err_rate = round((errors/message_length) * 100, 2)
-
-print("Encountered " + str(errors) + " errors, out of " + str(message_length) + " bits")
+print("Encountered " + str(diff) + " errors, out of " + str(message_length) + " bits")
 print("Error rate: " + str(err_rate) + "%")

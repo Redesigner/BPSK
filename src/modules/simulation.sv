@@ -31,7 +31,7 @@ module testbench
 	);
 	assign debug = uart_rxd_out;
 
-	//reg sysclk = 0; always #100 sysclk=~sysclk;
-	//test_data data(		.clk(sysclk),		.uart_rxd_out(uart_txd_in)	);
+	reg sysclk = 0; always #100 sysclk=~sysclk;
+	test_data data(		.clk(sysclk),		.uart_rxd_out(uart_txd_in)	);
 
 endmodule

@@ -56,8 +56,8 @@
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 demod_mult your_instance_name (
   .CLK(CLK),  // input wire CLK
-  .A(A),      // input wire [11 : 0] A
-  .B(B),      // input wire [11 : 0] B
+  .A(A),      // input wire [9 : 0] A
+  .B(B),      // input wire [9 : 0] B
   .C(C),      // input wire [31 : 0] C
   .P(P)      // output wire [31 : 0] P
 );

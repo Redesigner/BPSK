@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
--- Date        : Tue Jul 14 14:55:50 2020
+-- Date        : Wed Aug 19 15:27:30 2020
 -- Host        : DESKTOP-SN1TKTU running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/MMCM/MMCM_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top MMCM -prefix
+--               MMCM_ MMCM_sim_netlist.vhdl
 -- Design      : MMCM
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -19,8 +19,6 @@ entity MMCM_MMCM_clk_wiz is
     clk_carrier : out STD_LOGIC;
     clk_in_sys : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of MMCM_MMCM_clk_wiz : entity is "MMCM_clk_wiz";
 end MMCM_MMCM_clk_wiz;
 
 architecture STRUCTURE of MMCM_MMCM_clk_wiz is

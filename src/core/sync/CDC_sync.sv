@@ -18,6 +18,6 @@ module CDC_sync #(WIDTH = 16)
         stable_0 <= meta_stable;
         stable_1 <= stable_0;
     end
-    assign O = (stable_1 != stable_0) ? stable_0 : '0;
+    assign O = stable_1;
 
 endmodule

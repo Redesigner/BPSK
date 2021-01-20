@@ -1,9 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-// Date        : Tue Jul 14 14:55:50 2020
+// Date        : Wed Aug 19 15:27:30 2020
 // Host        : DESKTOP-SN1TKTU running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub c:/Users/Steph/Documents/Dev/Verilog/BPSK/src/ip/MMCM/MMCM_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top MMCM -prefix
+//               MMCM_ MMCM_stub.v
 // Design      : MMCM
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a35tcpg236-1

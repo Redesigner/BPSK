@@ -91,7 +91,7 @@ wire clk_in2_MMCM;
   //    * Unused outputs are labeled unused
 
   wire        clk_carrier_MMCM;
-  wire        clk_out2_MMCM;
+  wire        clk_sample_MMCM;
   wire        clk_out3_MMCM;
   wire        clk_out4_MMCM;
   wire        clk_out5_MMCM;

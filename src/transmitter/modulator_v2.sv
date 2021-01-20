@@ -1,5 +1,5 @@
-`include "../build/core_params.svh"
-`include "../build/sine_table.svh"
+`include "core_params.svh"
+`include "sine_table.svh"
 
 module modulator_v2 #(BITS = 32)
     (
@@ -7,7 +7,8 @@ module modulator_v2 #(BITS = 32)
         input wire reset,
         input wire [BITS - 1 : 0] data,
 
-        output wire [DATA_WIDTH - 1 : 0] signal
+        output signal signal,
+        output wire sleep
     );
     reg active = 1'b0;
     reg [$clog2(WAVELENGTH) : 0] counter = 0;
@@ -25,9 +26,9 @@ module modulator_v2 #(BITS = 32)
         .serial_signal(data_serial)
     );
 
-    wire [DATA_WIDTH - 1 : 0] sine;
+    wire [SIGNAL_WIDTH - 1 : 0] sine;
     (* keep_hierarchy = "yes" *)
-    PIPO_buffer #(SINE_RESOLUTION * DATA_WIDTH, DATA_WIDTH) sine_table
+    PIPO_buffer #(SINE_RESOLUTION * SIGNAL_WIDTH, SIGNAL_WIDTH) sine_table
     (
         .clk(clk),
         .read(active),
@@ -36,9 +37,9 @@ module modulator_v2 #(BITS = 32)
         .data_out(sine)
     );
 
-    wire [DATA_WIDTH - 1 : 0] sine_shift;
+    wire [SIGNAL_WIDTH - 1 : 0] sine_shift;
     (* keep_hierarchy = "yes" *)
-    PIPO_buffer #(SINE_RESOLUTION * DATA_WIDTH, DATA_WIDTH) shift_sine_table
+    PIPO_buffer #(SINE_RESOLUTION * SIGNAL_WIDTH, SIGNAL_WIDTH) shift_sine_table
     (
         .clk(clk),
         .read(active),
@@ -78,5 +79,7 @@ module modulator_v2 #(BITS = 32)
         (data_serial ? sine : sine_shift) :
         1'b0;
     assign reset_local = reset && ~reset_old;
+    
+    assign sleep = data_serial;
 
 endmodule

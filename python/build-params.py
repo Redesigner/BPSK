@@ -2,7 +2,7 @@
 from string import Template
 import fileinput, os, sys, math, traceback
 
-defaults = [12, 135, 13500, 10000]
+defaults = [10, 135, 13500, 13500]
 
 dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 src = os.path.join(dir_path,"src\\templates")
@@ -27,7 +27,7 @@ except:
 
 print("\nThe data rate has been adjusted to " + str(math.ceil(clock_speed/data_frame * 1000)) + " Kbps")
 print("Raw data rate is " + str(((clock_speed/data_frame * 1000)) / (96.0/64.0)) + " Kbps")
-print("The maximum Baud rate for a continous data stream is " + str(math.floor((clock_speed/data_frame * 1000000) / (96.0/88.0))) + " Baud\n")
+print("The maximum Baud rate for a continuous data stream is " + str(math.floor((clock_speed/data_frame * 1000000) / (96.0/88.0))) + " Baud\n")
 factor = math.pi / table_size * 2
 amplitude = 2 ** (input_bits-1) - 1
 preamble = [1,0]*8

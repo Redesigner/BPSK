@@ -51,13 +51,13 @@ module tree_adder #(N = 8, WIDTH_IN = 1)
             tree_adder #(N / 2, WIDTH_IN) left
             (
                 .clk(clk),
-                .data_in(data_in[0:N / 2 - 1]),
+                .data_in(data_in[N / 2 - 1 : 0]),
                 .sum(left_sum)
             );
             tree_adder #(N / 2, WIDTH_IN) right
             (
                 .clk(clk),
-                .data_in(data_in[N / 2:N - 1]),
+                .data_in(data_in[N - 1 : N / 2]),
                 .sum(right_sum)
             );
 
