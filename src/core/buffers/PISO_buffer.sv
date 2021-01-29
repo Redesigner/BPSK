@@ -1,4 +1,13 @@
 module PISO_buffer #(WIDTH = 32)
+/**
+* Parallel In; Parallel Out buffer
+* synchronized with clk
+*
+* if reset is brought high, will write 'parallel' to buffer
+*
+* while active, buffer will barrel shift, causing the 'serial_signal' to output data LSB first 
+*
+**/
     (
         input wire clk,
         input wire active,

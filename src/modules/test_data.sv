@@ -13,6 +13,8 @@ module test_data
 		.I(clk),
 		.O(clk_baud)
 	);
+    // Test data that should decode to 'hello!!!', when passed through the UART_read module
+    // contains several predefined errors and repeats multiple times
 	reg [TEST_MESSAGE_LENGTH - 1:0] test_data = 'b100001011011010100110010001101100100011011001011110110010100001000101000010001010000100010000101101101010100001011011010100110010001101100100011011001011110110010100001000101000010001010000100010000101101101010;
     edge_pulse pulser(
         .clk(clk_baud),

@@ -1,4 +1,7 @@
 module clock_divider #(N = 10)
+/**
+* Uses a register to divide a clock's frequency by N
+**/
     (    
         input wire I,
         output wire O

@@ -1,6 +1,10 @@
 `include "../build/core_params.svh"
 
 module stable_wave
+/**
+* Wrapper module that uses the modulator to send a constant stream of '0's
+* Intended for usage with testing DACs and signal strength
+**/
     (
         input wire sysclk,
         output wire [DATA_WIDTH - 1 : 0]wave,

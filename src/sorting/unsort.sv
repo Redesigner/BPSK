@@ -1,6 +1,9 @@
 `include "../build/core_params.svh"
 
 module unsort #(parameter SIZE = 4)
+/**
+* Uses the recieved 'index' integers to return the sorted data, 'data_i', to its pre-transmitted order
+**/
     (
         input wire clk,
         input wire [SIZE - 1 : 0][SLICE_WIDTH - 1 : 0] data_i,

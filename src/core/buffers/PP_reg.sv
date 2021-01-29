@@ -1,8 +1,15 @@
 module PP_reg #(WIDTH_I = 16, WIDTH_O = 4)
-    /**
-    A register that takes a parallel input and splits it into chunks, output one at a time
-    WIDTH_O must be a factor of WIDTH_I
-    **/
+/**
+* A register that takes a parallel input and splits it into chunks, output one at a time
+* alternatively, will store parallel inputs in a larger buffer, if the output width is larger than the input
+*
+* synchronized with clk
+*
+* on either 'cs' edge (sync'd with clk) executes read or write
+*
+* rw selects function: on 0, sets 'write' mode
+* on 1, sets 'read' mode
+**/
     (
         input wire clk,
         input wire cs,

@@ -5,11 +5,18 @@
 
 ## 12 MHz Clock Signal
 set_property -dict { PACKAGE_PIN L17   IOSTANDARD LVCMOS33 } [get_ports { sysclk }]; #IO_L12P_T1_MRCC_14 Sch=gclk
-#create_clock -add -name sys_clk_pin -period 83.33 -waveform {0 41.66} [get_ports {sysclk}];
+create_generated_clock -name rx_usb -source [get_ports sysclk] [get_pins rx/usb_clk/CLK] -divide_by 12;
+create_generated_clock -name tx_usb -source [get_ports sysclk] [get_pins tx/clk_divider/CLK] -divide_by 12;
+create_clock -add -name sys_clk -period 83.33 -waveform {0 41.66} [get_ports { sysclk }];
+
+set_false_path -from [get_clocks clk_carrier_MMCM] -to [get_clocks rx_usb];
+set_false_path -from [get_clocks tx_usb] -to [get_clocks clk_carrier_MMCM_1];
+set_false_path -from [get_clocks clk_carrier_MMCM_1] -to [get_clocks clk_carrier_MMCM];
+
 
 ## LEDs
 set_property -dict { PACKAGE_PIN A17   IOSTANDARD LVCMOS33 } [get_ports { led0   }];
-#set_property -dict { PACKAGE_PIN C16   IOSTANDARD LVCMOS33 } [get_ports { led[1] }]; #IO_L13P_T2_MRCC_16 Sch=led[2]
+set_property -dict { PACKAGE_PIN C16   IOSTANDARD LVCMOS33 } [get_ports { led1   }]; #IO_L13P_T2_MRCC_16 Sch=led[2]
 
 ## RGB LED
 #set_property -dict { PACKAGE_PIN B17   IOSTANDARD LVCMOS33 } [get_ports { led0_b }]; #IO_L14N_T2_SRCC_16 Sch=led0_b
@@ -82,7 +89,7 @@ set_property -dict { PACKAGE_PIN A17   IOSTANDARD LVCMOS33 } [get_ports { led0  
 #set_property -dict { PACKAGE_PIN U7    IOSTANDARD LVCMOS33 } [get_ports { pio45 }]; #IO_L19P_T3_34 Sch=pio[45]
 #set_property -dict { PACKAGE_PIN W7    IOSTANDARD LVCMOS33 } [get_ports { pio46 }]; #IO_L13P_T2_MRCC_34 Sch=pio[46]
 #set_property -dict { PACKAGE_PIN U8    IOSTANDARD LVCMOS33 } [get_ports { pio47 }]; #IO_L14P_T2_SRCC_34 Sch=pio[47]
-#set_property -dict { PACKAGE_PIN V8    IOSTANDARD LVCMOS33 } [get_ports { pio48 }]; #IO_L14N_T2_SRCC_34 Sch=pio[48]
+set_property -dict { PACKAGE_PIN V8    IOSTANDARD LVCMOS33 } [get_ports { debug }]; #IO_L14N_T2_SRCC_34 Sch=pio[48]
 
 ## UART
 set_property -dict { PACKAGE_PIN J18   IOSTANDARD LVCMOS33 } [get_ports { uart_rxd_out }]; #IO_L7N_T1_D10_14 Sch=uart_rxd_out

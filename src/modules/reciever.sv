@@ -1,6 +1,9 @@
 `include "../build/core_params.svh"
 
 module reciever
+/**
+* Wrapper module for the reciever functionality, includes one 'debug' output to be routed to an LED or other debug device
+**/
     (
         input wire sysclk,
         input signal wave,

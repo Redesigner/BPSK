@@ -1,8 +1,12 @@
 ///*DO NOT* MODIFY THIS CODE UNLESS YOU KNOW WHAT YOU'RE DOING!!!!
 ///RECURSIVE MODULES ARE SUSCEPTIBLE TO MEMORY LEAKS
 
-//WIDTH should be the input width
 module tree_adder #(N = 8, WIDTH_IN = 1)
+/**
+* Adds 'N' integers of width 'WIDTH_IN' using a binary tree
+* By default, does not use registers, so please be careful with the timing
+* It should take ln(N) additions
+**/
     (
         input wire clk,
         input wire [N - 1 : 0][WIDTH_IN - 1:0] data_in,

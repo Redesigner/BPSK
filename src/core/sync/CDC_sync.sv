@@ -1,4 +1,7 @@
 module CDC_sync #(WIDTH = 16)
+/**
+* Simple triple-buffered clock domain crossing module
+**/
     (
         input wire slow_clk,
         input wire fast_clk,

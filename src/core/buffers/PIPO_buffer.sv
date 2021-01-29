@@ -1,4 +1,14 @@
 module PIPO_buffer#(SIZE = 16, WIDTH = 4)
+/**
+* Parallel In; Parallel Out buffer
+* synchronized with clk
+*
+* Barrel shifts by WIDTH if read is high
+*
+* SIZE = width of data_in
+* WIDTH = width of data_out
+* Until the buffer is full, data_out will be 0
+**/
     (
         input wire clk,
         input wire [SIZE - 1: 0] data_in,
