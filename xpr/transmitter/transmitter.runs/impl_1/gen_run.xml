@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1595365789">
+  <File Type="BITSTR-BMM" Name="transmitter_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="transmitter_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="transmitter_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="transmitter_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="transmitter.tcl"/>
+  <File Type="OPT-TIMING" Name="transmitter_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="transmitter_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="transmitter_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="transmitter_reports.tcl"/>
+  <File Type="OPT-DRC" Name="transmitter_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="transmitter.hwdef"/>
+  <File Type="PWROPT-DCP" Name="transmitter_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="transmitter_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="transmitter_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="transmitter_placed.dcp"/>
+  <File Type="PLACE-IO" Name="transmitter_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="transmitter_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="transmitter_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="transmitter_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="transmitter_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="transmitter_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="transmitter_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BGN" Name="transmitter.bgn"/>
+  <File Type="PLACE-TIMING" Name="transmitter_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="transmitter_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="transmitter.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="transmitter_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="transmitter_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="transmitter_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="transmitter.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="transmitter_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="transmitter_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="transmitter_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="transmitter_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="transmitter_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="transmitter_drc_routed.pb"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="transmitter.ltx"/>
+  <File Type="ROUTE-DRC-RPX" Name="transmitter_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="transmitter.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="transmitter_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="transmitter_methodology_drc_routed.rpx"/>
+  <File Type="BITSTR-SYSDEF" Name="transmitter.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="transmitter_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="transmitter_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="transmitter_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="transmitter_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="transmitter_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="transmitter_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="transmitter_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="transmitter_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="transmitter_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="transmitter_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="transmitter_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="transmitter_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="transmitter_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="transmitter_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="transmitter_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="transmitter_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="transmitter_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="transmitter_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="transmitter_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="transmitter.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="transmitter_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="transmitter.rbt"/>
+  <File Type="BITSTR-NKY" Name="transmitter.nky"/>
+  <File Type="BG-DRC" Name="transmitter.drc"/>
+  <File Type="RDI-RDI" Name="transmitter.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../../src/modules/transmitter.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/transmitter/signal_modulator.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/transmitter/sorter.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/transmitter/byte_packet_buffer.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/transmitter/uart_fast_read.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/reciever/uart_fast_write.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/FIFO_buffer.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/CDC_sync.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/clock_divider.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/PISO_buffer.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/ring_buffer.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/edge_pulse.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/PIPO_buffer.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/sorting/register/comparison_merge_r.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/sorting/register/comparison_base_r.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/transmitter/modulator_v2.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="transmitter"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/../../xdc/cmod35t transmitter.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="MMCM"/>
+</GenRun>

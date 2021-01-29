@@ -1,6 +1,4 @@
-`include "../../build/core_params.svh"
-`include "../../build/network_params.svh"
-
+`include "core_params.svh"
 
 module comparison_base_r #(parameter UP = 1'b1)
     (
@@ -8,15 +6,15 @@ module comparison_base_r #(parameter UP = 1'b1)
         input wire reset,
         input wire ready,
 
-        input wire [NETWORK_WIDTH-1:0] in_a,
-        input wire [NETWORK_WIDTH-1:0] in_b,
+        input wire [SLICE_WIDTH-1:0] in_a,
+        input wire [SLICE_WIDTH-1:0] in_b,
 
         input wire [INDEX_WIDTH-1:0] in_a_index,
         input wire [INDEX_WIDTH-1:0] in_b_index,
 
 
-        output reg [NETWORK_WIDTH-1:0] out_a = '0,
-        output reg [NETWORK_WIDTH-1:0] out_b = '0,
+        output reg [SLICE_WIDTH-1:0] out_a = '0,
+        output reg [SLICE_WIDTH-1:0] out_b = '0,
 
         output reg [INDEX_WIDTH-1:0] out_a_index = '0,
         output reg [INDEX_WIDTH-1:0] out_b_index = '0,

@@ -1,23 +1,32 @@
-`include "../build/core_params.svh"
-`include "../build/network_params.svh"
-`include "../build/preamble_params.svh"
+`include "core_params.svh"
 
 `timescale 1ns/10ps
 module transmitter
     (
         input wire sysclk,
-        input wire clk_carrier,
         input wire uart_txd_in,
 
-        output wire [DATA_WIDTH:1] pio
+        output signal wave,
+        output wire clk_out,
+        output wire sleep,
+        output reg debug = 0
     );
+
+    always @(posedge clk_carrier) begin
+        if(sleep) begin
+            debug <= ~debug;
+        end
+    end
+
+    assign clk_out = clk_carrier;
+
     //WIRE DECLARATIONS
-    wire [7:0] uart_word, uart_word_slow;
-    wire [PACKET_WIDTH * 8 - 1:0] sys_packet;
-    wire [SORTING_WIDTH + PREAMBLE_LENGTH + PACKET_WIDTH_BITS - 1:0] sorted_packet;
-    wire [DATA_WIDTH - 1:0] ANALOGWAVE;
-    
-    assign pio[DATA_WIDTH:1] = ANALOGWAVE;
+    byte uart_word;
+    byte uart_word_slow;
+    wire [PAYLOAD_WIDTH - 1 : 0] payload;
+    packet sorted_packet;
+    signal signal;
+    assign wave = signal;
 
 //~~~~~~~~~~~~~~~~MODULES~~~~~~~~~~~~~~~~~~~
     uart_fast_read uart_rx
@@ -43,15 +52,23 @@ module transmitter
         .O(uart_write)
     );
 
-    (* keep_hierarchy = "yes" *)
-    byte_packet_buffer buffer
-    (   
-        //IN
+    /*UART_buffer #(PAYLOAD_WIDTH, 8) buffer
+    (
         .clk(clk_carrier),
-        .reset(reset),
-        .word(uart_word), .write(uart_write),
-        //OUT
-        .sys_packet(sys_packet), .send(data_send)
+        .data_in(uart_word),
+        .write(uart_write),
+        .data_out(payload),
+        .output_ready(data_send)
+    );*/
+    PP_reg #(8, PAYLOAD_WIDTH) buffer
+    (
+        .clk(clk_baud),
+        .cs(uart_write),
+        .rw(~flow),
+        .p_i(uart_word_slow),
+
+        .flow(flow),
+        .p_o(payload)
     );
 
     (* keep_hierarchy = "yes" *)
@@ -59,35 +76,34 @@ module transmitter
     (
         //IN
         .clk(clk_carrier),
-        .reset(reset),
-        .ready(data_send),
-        .sys_packet(sys_packet),
+        .reset(flow),
+        .sys_packet(payload),
         //OUT
         .sorted_packet_out(sorted_packet),
-        .done(data_sorted)
+        .done(sorting_done)
     );
 
     (* keep_hierarchy = "yes" *)
-	signal_modulator #(SORTING_WIDTH + PREAMBLE_LENGTH + PACKET_WIDTH_BITS) modulator
+	modulator_v2 #(PACKET_WIDTH) signal_modulator
     (
         //IN
-       .clk(clk_carrier),
-       .data(sorted_packet), .enable(data_sorted),
+        .clk(clk_carrier),
+        .data(sorted_packet),
+        .reset(sorting_done),
         //OUT
-        .signal_out(ANALOGWAVE), .done(reset)
+        .signal(signal),
+        .sleep(sleep)
     );
 
-
-//~~~~~~~~~~~~~~~~~CLOCKS~~~~~~~~~~~~~~~~~~~~~~
-/*
-  MMCM transmitter_MMCM
-   (
+    //~~~~~~~~~~~~~~~~~CLOCKS~~~~~~~~~~~~~~~~~~~~~~
+    MMCM transmitter_MMCM
+    (
     // Clock out ports
-    .clk_carrier(clk_carrier),     // output clk_carrier
-   // Clock in ports
+    .clk_carrier(clk_carrier),
+    // Clock in ports
     .clk_in_sys(sysclk));
-    */ 
-    //OUR UART CHIP ONLY SUPPORTS 12MBPS in standard mode, so the system clock works here
-    clock_divider#(12) clk_divider(sysclk, clk_baud);
+    
+    //THE UART CLOCK IS 16 times the bitrate, or 750kbaud right now
+    assign clk_baud = sysclk;
     
 endmodule

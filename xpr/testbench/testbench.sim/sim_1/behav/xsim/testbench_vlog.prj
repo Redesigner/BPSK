@@ -1,0 +1,41 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../src/build" --include "../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM" \
+"../../../../../../src/ip/demod_mult/demod_mult_sim_netlist.v" \
+
+sv xil_defaultlib  --include "../../../../../../src/build" --include "../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM" \
+"../../../../../../src/modules/testbench.sv" \
+"../../../../../../src/transmitter/signal_modulator.sv" \
+"../../../../../../src/transmitter/sorter.sv" \
+"../../../../../../src/transmitter/uart_fast_read.sv" \
+"../../../../../../src/reciever/signal_demodulator.sv" \
+"../../../../../../src/reciever/peak_detection_v2.sv" \
+"../../../../../../src/reciever/uart_fast_write.sv" \
+"../../../../../../src/modules/transmitter.sv" \
+"../../../../../../src/modules/reciever.sv" \
+"../../../../../../src/modules/test_data.sv" \
+"../../../../../../src/reciever/reciever_buffer.sv" \
+"../../../../../../src/transmitter/byte_packet_buffer.sv" \
+"../../../../../../src/core/CDC_sync.sv" \
+"../../../../../../src/core/clock_divider.sv" \
+"../../../../../../src/core/PISO_buffer.sv" \
+"../../../../../../src/core/ring_buffer.sv" \
+"../../../../../../src/core/edge_pulse.sv" \
+"../../../../../../src/core/PIPO_buffer.sv" \
+"../../../../../../src/sorting/unsort.sv" \
+"../../../../../../src/sorting/register/comparison_merge_r.sv" \
+"../../../../../../src/sorting/register/comparison_base_r.sv" \
+"../../../../../../src/core/FIFO_buffer.sv" \
+
+verilog xil_defaultlib  --include "../../../../../../src/build" --include "../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM" \
+"../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM/MMCM_sim_netlist.v" \
+
+sv xil_defaultlib  --include "../../../../../../src/build" --include "../../../../../../project_files/testbench/testbench.srcs/sources_1/ip/MMCM" \
+"../../../../../../src/reciever/cross_correlation_binary.sv" \
+"../../../../../../src/core/tree_adder.sv" \
+"../../../../../../src/transmitter/modulator_v2.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,38 +1,44 @@
 `include "../build/core_params.svh"
 
 module unsort #(parameter SIZE = 4)
+/**
+* Uses the recieved 'index' integers to return the sorted data, 'data_i', to its pre-transmitted order
+**/
     (
         input wire clk,
-        input wire [SIZE-1:0][NETWORK_WIDTH-1:0] data_in,
-        input wire [SIZE-1:0][INDEX_WIDTH-1:0] index_in,
-        input wire reset,
-        output wire [SIZE-1:0][NETWORK_WIDTH-1:0] data_out,
-        output reg done = 0
-    );
-    int i = 0;
-    reg [SIZE-1:0][NETWORK_WIDTH-1:0] buffer = '0;
-    reg started = 0;
+        input wire [SIZE - 1 : 0][SLICE_WIDTH - 1 : 0] data_i,
+        input wire [SIZE - 1 : 0][INDEX_WIDTH - 1 : 0] index_i,
+        input wire w,
 
-    edge_pulse reset_edge(
-        .clk(clk),
-        .I(reset),
-        .O(reset_o)
+        output reg [SIZE - 1 : 0][SLICE_WIDTH - 1 : 0] data_o ='0,
+        output wire send
     );
+    logic [$clog2(SIZE) : 0] i = 0;
+    reg [SIZE - 1 : 0][SLICE_WIDTH - 1 : 0] data_buf = '0;
+    reg [SIZE - 1 : 0][INDEX_WIDTH - 1 : 0] index_buf = '0;
+
+    logic active = 0;
 
     always @(posedge clk) begin
-        if(reset_o) begin
+        if (w) begin
+            data_buf <= data_i;
+            index_buf <= index_i;
+            active <= 1;
             i <= 0;
-            started <= 1;
+
         end
-        else if(i < SIZE && started) begin
-            buffer[index_in[i]] <= data_in[i];
-            i <= i + 1;
-        end
-        else if(i >= SIZE) begin
-            done <= 1;
+
+        if (active) begin
+            if(i < SIZE) begin
+                data_o[index_buf[i]] <= data_i[i];
+                i <= i + 1;
+            end
+            else if(i >= SIZE) begin
+                active <= 0;
+            end
         end
     end
-
-    assign data_out = buffer;
     
+    assign send = active & (i == SIZE);
+
 endmodule

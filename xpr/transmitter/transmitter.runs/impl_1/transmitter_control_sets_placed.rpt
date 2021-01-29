@@ -1,0 +1,120 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+| Date         : Tue Jul 21 17:11:26 2020
+| Host         : DESKTOP-SN1TKTU running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file transmitter_control_sets_placed.rpt
+| Design       : transmitter
+| Device       : xc7a35t
+----------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    42 |
+|    Minimum number of control sets                        |    42 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   113 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    42 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |    11 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    24 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              56 |           19 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |               4 |            1 |
+| Yes          | No                    | No                     |            2016 |          384 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              43 |           25 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+
+|            Clock Signal            |                                       Enable Signal                                       |                                Set/Reset Signal                                | Slice Load Count | Bel Load Count |
++------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+
+|  sysclk_IBUF                       |                                                                                           |                                                                                |                1 |              1 |
+|  transmitter_MMCM/inst/clk_carrier | signal_modulator/active_reg_n_0                                                           | signal_modulator/clear                                                         |                2 |              4 |
+|  clk_divider/clk                   | uart_rx/sel                                                                               | buffer_sync/SR[0]                                                              |                1 |              4 |
+|  sysclk_IBUF                       |                                                                                           | clk_divider/clear                                                              |                1 |              4 |
+|  transmitter_MMCM/inst/clk_carrier | write_sync/write                                                                          | buffer/index_reg[3]                                                            |                2 |              4 |
+|  transmitter_MMCM/inst/clk_carrier | signal_modulator/bit_counter[6]_i_2_n_0                                                   | signal_modulator/bit_counter[6]_i_1_n_0                                        |                2 |              7 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/buffer[4][7]_i_1_n_0                                                               |                                                                                |                1 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/buffer[6][7]_i_1_n_0                                                               |                                                                                |                1 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/buffer                                                                             |                                                                                |                1 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/buffer[3][7]_i_1_n_0                                                               |                                                                                |                1 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_top/sorter_ready_0                                          | packet_sorter/comparison/sort_top/sort_bottom/comparator_base/sorter_ready_reg |                6 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_done                                                        | packet_sorter/comparison/(null)[1].merge_surface_i/sort_done_reg               |                6 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_bottom/sort_done_0                                          | packet_sorter/comparison/sort_bottom/(null)[1].merge_surface_i/sort_done_reg   |                6 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/buffer[2][7]_i_1_n_0                                                               |                                                                                |                1 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/buffer[1][7]_i_1_n_0                                                               |                                                                                |                1 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/buffer[0][7]_i_1_n_0                                                               |                                                                                |                1 |              8 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/buffer[5][7]_i_1_n_0                                                               |                                                                                |                1 |              8 |
+|  clk_divider/clk                   |                                                                                           |                                                                                |                4 |             13 |
+|  transmitter_MMCM/inst/clk_carrier |                                                                                           |                                                                                |               14 |             42 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/index_reg[3]                                                                       |                                                                                |               10 |             64 |
+|  transmitter_MMCM/inst/clk_carrier | buffer/buffer_edge/send                                                                   |                                                                                |                9 |             65 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_top/sorter_ready_0                                          |                                                                                |               10 |             65 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sorter_ready                                                     |                                                                                |               12 |             65 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_bottom/sort_done_0                                          |                                                                                |               10 |             73 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_top/sort_top/comparator_base/sort_bottom/sort_bottom_done   |                                                                                |               12 |             73 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_done                                                        |                                                                                |               13 |             80 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_bottom/merge_surface_done                                   |                                                                                |               11 |             81 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_bottom/(null)[0].merge_surface_i/done_reg_n_0               |                                                                                |               15 |             81 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_bottom/sort_bottom_done                                     |                                                                                |               16 |             81 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/sort_bottom/merge_top/comparator_base/E[0]                       |                                                                                |               14 |             82 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/merge_bottom/(null)[0].merge_surface_i/done_reg_n_0              |                                                                                |               19 |             88 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/merge_top/sort_top/comparator_base/merge_bottom/sort_bottom_done |                                                                                |               18 |             88 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/merge_bottom/sort_done                                           |                                                                                |               13 |             88 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/merge_bottom/merge_surface_done_0                                |                                                                                |               12 |             88 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/merge_surface_done                                               |                                                                                |               14 |             88 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/(null)[0].merge_surface_i/done_reg_n_0                           |                                                                                |               16 |             88 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/merge_top/sorter_ready                                           |                                                                                |               13 |             88 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/merge_bottom/merge_top/comparator_base/E[0]                      |                                                                                |               19 |             89 |
+|  transmitter_MMCM/inst/clk_carrier | packet_sorter/comparison/merge_bottom/E[0]                                                |                                                                                |               20 |             89 |
+|  transmitter_MMCM/inst/clk_carrier | signal_modulator/data_stream/data[0]_i_1_n_0                                              |                                                                                |               32 |            108 |
+|  transmitter_MMCM/inst/clk_carrier | signal_modulator/shift_sine_table/reset_p/E[0]                                            |                                                                                |               32 |            120 |
+|  transmitter_MMCM/inst/clk_carrier | signal_modulator/sine_table/reset_p/E[0]                                                  |                                                                                |               36 |            120 |
++------------------------------------+-------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+
+
+

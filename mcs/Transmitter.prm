@@ -8,4 +8,4 @@ Start Address      0x00000000
 End Address        0x003FFFFF
 
 Addr1         Addr2         Date                    File(s)
-0x00000000    0x00080C03    Jun  9 17:56:48 2020    C:/Users/Steph/Documents/Dev/Verilog/BPSK/project_files/transmitter/transmitter.runs/impl_1/transmitter.bit
+0x00000000    0x0009164F    Nov 18 13:11:57 2020    C:/Users/Steph/Documents/Dev/Verilog/BPSK/xpr/transmitter/transmitter.runs/impl_1/transmitter.bit

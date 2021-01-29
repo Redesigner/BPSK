@@ -4,42 +4,34 @@ module testbench
 	(
 		input wire sysclk,
 		input wire uart_txd_in,
+		output wire debug,
+		output wire uart_rxd_out,
 		output wire led0,
-		output wire uart_rxd_out
+		output wire led1
 	);
-	reg sysclk = 0;
-	always #100 sysclk=~sysclk;
-
-    wire [DATA_WIDTH - 1:0] signal;
+    signal signal;
 
 	(* keep_hierarchy = "yes" *)
-    transmitter tx(
-		.sysclk(sysclk),
-		.clk_carrier(clk_carrier),
-		.uart_txd_in(uart_txd_in),
-		.pio(signal)
+	transmitter tx (
+		.sysclk(sysclk),            // input wire sysclk
+		.uart_txd_in(uart_txd_in),  // input wire uart_txd_in
+		.wave(signal),              // output wire [9 : 0] wave
+		.clk_out(clk_out),          // output wire clk_out
+		.sleep(sleep),              // output wire sleep
+		.debug(led0)
 	);
 
 	(* keep_hierarchy = "yes" *)
 	reciever rx
 	(
 		.sysclk(sysclk),
-		.clk_carrier(clk_carrier),
-		.pio(signal),
-		.uart_rxd_out(uart_rxd_out)
+		.wave(signal),
+		.uart_rxd_out(uart_rxd_out),
+		.debug(led1)
 	);
-	(* keep_hierarchy = "yes" *)
-    clk_wiz_0 clk_MMCM
-       (
-        // Clock out ports
-        .clk_carrier(clk_carrier),     // output clk_carrier
-       // Clock in ports
-        .clk_in_sys(sysclk));
+	assign debug = uart_rxd_out;
 
-	assign led0 = signal[1];
-	test_data data(
-		.clk(sysclk),
-		.uart_rxd_out(uart_txd_in)
-	);
+	//reg sysclk = 0; always #100 sysclk=~sysclk;
+	//test_data data(		.clk(sysclk),		.uart_rxd_out(uart_txd_in)	);
 
 endmodule

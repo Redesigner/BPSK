@@ -1,90 +1,87 @@
 `include "../build/core_params.svh"
 
 module reciever
+/**
+* Wrapper module for the reciever functionality, includes one 'debug' output to be routed to an LED or other debug device
+**/
     (
         input wire sysclk,
-        input wire clk_carrier,
-        input wire [DATA_WIDTH:1] pio,
-
-        output wire debug,
-        output wire uart_rxd_out
+        input signal wave,
+        output wire uart_rxd_out,
+        output wire clk_out,
+        output wire debug
     );
+    signal signal;
+    logic [PAYLOAD_WIDTH - 1 : 0] sys_payload_a;
+    logic [PAYLOAD_WIDTH - 1 : 0] sys_payload_b;
 
-    wire [PACKET_WIDTH * 8 - 1: 0] sys_packet;
-    wire [PACKET_WIDTH * 8 - 1: 0] sys_packet_o;
-    wire [7:0] uart_word;
-    wire [DATA_WIDTH - 1:0] wave;
-    assign wave = pio[DATA_WIDTH:1];
-    clock_divider #(12) clock2(sysclk, clk_baud);
+    clock_divider #(16) usb_clk (sysclk, clk_baud);
+    
+    assign signal = wave;
+    assign clk_out = clk_carrier;
     
     signal_demodulator demod
     (
         //IN
         .clk(clk_carrier),
-        .reset(peak_ready),
-        .signal(wave),
+        .init(cb_done),
+        .stp(cb_reset),
+        .sig(signal),
         //OUT
-        .guess(data_guess),
+        .guess(guess),
         .write(write)
     );
 
-    peak_detection_v2 peak_detection
+    wire signal_MSB = signal[SIGNAL_WIDTH - 1];
+    cross_correlation_binary cross_binary
     (
-        //IN
         .clk(clk_carrier),
-        .signal(wave),
-        //OUT
-        .done(peak_ready)
+        .signal(signal_MSB),
+        .clr(cb_reset),
+        .done(cb_done)
+    );
+    edge_pulse cb_edge
+    (
+        .clk(clk_carrier),
+        .I(done),
+        .O(cb_reset)
     );
 
     reciever_buffer buffer
     (
         //IN
         .clk(clk_carrier),
-        .read(write),
-        .clear('b0),
-        .data_stream(data_guess),
+        .write(write),
+        .clr(cb_done),
+        .data_stream(guess),
         //OUT
-        .sys_packet(sys_packet),
-        .send(done)
+        .payload(sys_payload_a),
+        .send(done),
+        .debug(debug)
+    );
+    sync #(PAYLOAD_WIDTH) sync
+    (
+        .clk_a(clk_carrier),
+        .clk_b(clk_baud),
+        .r(done),
+        .w(w),
+
+        .I(sys_payload_a),
+        .O(sys_payload_b)
     );
 
-    CDC_sync #(PACKET_WIDTH * 8) sync
+    UART_Rx #(PAYLOAD_WIDTH) usb_interface
     (
-        //IN
-        .slow_clk(clk_carrier),
-        .fast_clk(clk_baud),
-        .I(sys_packet),
-        //OUT
-        .O(sys_packet_o)
-    );
-
-    PIPO_buffer #(PACKET_WIDTH * 8, 8) PIPO
-    (
-        //IN
         .clk(clk_baud),
-        .data_in(sys_packet),
-        .write(done),
-        .read(read),
-        //OUT
-        .data_out(uart_word)
+        .w(w),
+        .p({<<{sys_payload_b}}),
+        .Rx(uart_rxd_out)
     );
 
-    uart_fast_write uart_out
+    MMCM reciever_clk
     (
-        //IN
-        .clk(clk_baud),
-        .ready(done),
-        .word(uart_word),
-        //OUT
-        .next(read),
-        .rxd(uart_rxd_out)
-    );
-assign debug = data_guess;
-  /*MMCM reciever_MMCM
-   (
     // Clock out ports
-    .clk_carrier(clk_carrier),     // output clk_carrier
-   // Clock in ports
-    .clk_in_sys(sysclk)); */
+    .clk_carrier(clk_carrier),
+    // Clock in ports
+    .clk_in_sys(sysclk));
 endmodule

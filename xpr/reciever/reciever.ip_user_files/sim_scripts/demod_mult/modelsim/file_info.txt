@@ -1,0 +1,8 @@
+xpm_cdc.sv,systemverilog,xil_defaultlib,E:/SDKs/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv,
+xpm_VCOMP.vhd,vhdl,xpm,E:/SDKs/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_VCOMP.vhd,
+xbip_dsp48_wrapper_v3_0_vh_rfs.vhd,vhdl,xbip_dsp48_wrapper_v3_0_4,../../../ipstatic/hdl/xbip_dsp48_wrapper_v3_0_vh_rfs.vhd,
+xbip_utils_v3_0_vh_rfs.vhd,vhdl,xbip_utils_v3_0_10,../../../ipstatic/hdl/xbip_utils_v3_0_vh_rfs.vhd,
+xbip_pipe_v3_0_vh_rfs.vhd,vhdl,xbip_pipe_v3_0_6,../../../ipstatic/hdl/xbip_pipe_v3_0_vh_rfs.vhd,
+xbip_dsp48_macro_v3_0_vh_rfs.vhd,vhdl,xbip_dsp48_macro_v3_0_17,../../../ipstatic/hdl/xbip_dsp48_macro_v3_0_vh_rfs.vhd,
+demod_mult.vhd,vhdl,xil_defaultlib,../../../../../../src/ip/demod_mult/sim/demod_mult.vhd,
+glbl.v,Verilog,xil_defaultlib,glbl.v
